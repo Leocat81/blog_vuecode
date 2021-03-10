@@ -51,7 +51,7 @@ module.exports = {
       },
       {
         title: "VUE",
-        children: ["/vueguide/"],
+        children: ["/vueguide/","/vueguide/rendermechanism"],
       },
             {
         title: "CSS3",
