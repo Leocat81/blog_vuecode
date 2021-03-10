@@ -4,7 +4,7 @@
 使用vuepress构建的个人博客。
 
 #### 运行
-1.npm install 
+1.npm install <br>
 2.npm run docs:dev
 
 #### 打包
