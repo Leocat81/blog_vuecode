@@ -47,7 +47,7 @@ module.exports = {
       {
         title: "ECMAScript",
         collapsable: true,
-        children: ["/guide/", "/guide/a", "/guide/prototype","guide/ArrowDifNomal"],
+        children: ["/guide/", "/guide/a", "/guide/prototype","guide/ArrowDifNomal","guide/reduce"],
       },
       {
         title: "VUE",
