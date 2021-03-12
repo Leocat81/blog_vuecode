@@ -37,6 +37,12 @@ module.exports = {
     ["vuepress-plugin-gotop-plus"],
   ],
   themeConfig: {
+     lastUpdated: 'Last Updated',
+        // 假定是 GitHub. 同时也可以是一个完整的 GitLab URL
+    repo: 'https://gitee.com/pipepandafeng/blog_vuecode',
+    // 自定义仓库链接文字。默认从 `themeConfig.repo` 中自动推断为
+    // "GitHub"/"GitLab"/"Bitbucket" 其中之一，或是 "Source"。
+    repoLabel: '查看源码',
     // nav : [
     //     { text: '接口定义', link: '/apiword' },
     //     { text: '接口字段定义', link: '/api' },
@@ -47,15 +53,26 @@ module.exports = {
       {
         title: "ECMAScript",
         collapsable: true,
-        children: ["/guide/", "/guide/a", "/guide/prototype","guide/ArrowDifNomal","guide/reduce"],
+        children: [
+          "/guide/",
+          "/guide/a",
+          "/guide/prototype",
+          "guide/ArrowDifNomal",
+          "guide/reduce",
+          "guide/DataHijacking"
+        ],
       },
       {
         title: "VUE",
-        children: ["/vueguide/","/vueguide/rendermechanism"],
+        children: ["/vueguide/", "/vueguide/rendermechanism"],
       },
-            {
+      {
         title: "CSS3",
         children: ["/css3guide/"],
+      },
+      {
+        title: "http协议",
+        children: ["/httpguide/"],
       },
     ],
     sidebarDepth: 1,
