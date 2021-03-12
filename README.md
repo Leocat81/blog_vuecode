@@ -14,4 +14,8 @@
 #### 打包
 
 <br>
-⛄npm run docs:build⛄
+⛄
+
+`npm run docs:build`
+
+⛄
