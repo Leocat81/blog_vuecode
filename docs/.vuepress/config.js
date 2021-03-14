@@ -1,11 +1,27 @@
+const autometa_options = {
+  site: {
+    name: 'pipe blog',
+    twitter: 'pipe',
+  },
+    author: {
+    name   : '司俊峰',
+    twitter: 'pipe',
+  },
+  canonical_base: 'http://pipepandafeng.gitee.io/pipe_blog',
+};
 module.exports = {
   base: "/pipe_blog/",
-  title: "笔记", // 设置网站标题
+  title: "pipe blog", // 设置网站标题
   description: "欢迎来到我的博客",
+    head: [
+    ['link', { rel: 'icon', href: '/img/panda4.png' }]
+  ],
   markdown: {
     lineNumbers: true,
   },
   plugins: [
+     [ 'autometa', autometa_options ],
+      'vuepress-plugin-baidu-autopush',
     /* 两个插件只能选一个 */
     [
       "vuepress-plugin-helper-live2d",
@@ -14,7 +30,7 @@ module.exports = {
         log: true,
         live2d: {
           // 是否启用(关闭请设置为false)(default: true)
-          enable: false,
+          enable: true,
           // 模型名称(default: hibiki)>>>取值请参考：
           // https://github.com/JoeyBling/hexo-theme-yilia-plus/wiki/live2d%E6%A8%A1%E5%9E%8B%E5%8C%85%E5%B1%95%E7%A4%BA
           model: "hibiki",
@@ -37,7 +53,7 @@ module.exports = {
     ["vuepress-plugin-gotop-plus"],
   ],
   themeConfig: {
-     lastUpdated: 'Last Updated',
+    lastUpdated: 'Last Updated',
         // 假定是 GitHub. 同时也可以是一个完整的 GitLab URL
     repo: 'https://gitee.com/pipepandafeng/blog_vuecode',
     // 自定义仓库链接文字。默认从 `themeConfig.repo` 中自动推断为
@@ -59,12 +75,13 @@ module.exports = {
           "/guide/prototype",
           "guide/ArrowDifNomal",
           "guide/reduce",
-          "guide/DataHijacking"
+          "guide/DataHijacking",
+          "guide/lowcopyAnddeepCopy"
         ],
       },
       {
         title: "VUE",
-        children: ["/vueguide/", "/vueguide/rendermechanism"],
+        children: ["/vueguide/", "/vueguide/rendermechanism","/vueguide/ComputedDifWatch"],
       },
       {
         title: "CSS3",

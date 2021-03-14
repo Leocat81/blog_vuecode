@@ -174,7 +174,7 @@ console.log(JSON.stringify(obj));
 
 ![RUNOOB 图标](../assets/datahijack2.png)
 
-<style>
+<style scoped>
 .point_text{
     font-weight:600;
     font-size:18px;

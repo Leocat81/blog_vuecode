@@ -134,9 +134,9 @@ var sum = result.reduce(function(prev, cur) {
 console.log(sum) //60
 ```
 
-  <style>
+<style scoped>
   .code_title{
     text-align:center;
     font-size:12px;
   }
-  </style>
+</style>

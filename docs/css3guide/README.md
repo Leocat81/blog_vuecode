@@ -23,7 +23,7 @@
 - 阴影不触发滚动条，也不增加滚动区域的大小。
 - 所以布局时可忽略阴影。
 
-<style>
+<style scoped>
 .desc{
     border:5px solid LightCoral;
      box-shadow: 0 0 15px 5px ;
