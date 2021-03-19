@@ -17,6 +17,9 @@
     "vuepress-plugin-baidu-autopush": "^1.0.1"
   },
   "dependencies": {
+    "@vssue/api-gitee-v5": "^1.4.7",
+    "@vssue/api-github-v3": "^1.4.7",
+    "@vssue/vuepress-plugin-vssue": "^1.4.7",
     "vuepress-plugin-gotop-plus": "^1.0.4",
     "vuepress-plugin-helper-live2d": "^1.0.2"
   }
