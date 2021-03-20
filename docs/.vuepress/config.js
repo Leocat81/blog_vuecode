@@ -1,37 +1,45 @@
 const autometa_options = {
   site: {
-    name: 'pipepandafeng',
-    twitter: 'pipe',
+    name: "pipepandafeng",
+    twitter: "pipe",
   },
-    author: {
-    name   : '司俊峰',
-    twitter: 'pipe',
+  author: {
+    name: "司俊峰",
+    twitter: "pipe",
   },
-  canonical_base: 'http://pipepandafeng.gitee.io',
+  canonical_base: "http://pipepandafeng.gitee.io",
 };
 module.exports = {
+  locales: {
+    "/zh/": {
+      lang: "zh-CN",
+    },
+  },
   base: "/pipepandafeng/",
   title: "笔记", // 设置网站标题
   description: "欢迎来到我的博客",
-    head: [
-    ['link', { rel: 'icon', href: '/img/panda4.png' }]
-  ],
+  head: [["link", { rel: "icon", href: "/img/panda4.png" }]],
   markdown: {
     lineNumbers: true,
   },
   plugins: [
-    [ '@vssue/vuepress-plugin-vssue',{
-      // 设置 `platform` 而不是 `api`
-      platform: 'gitee',
+    [
+      "@vssue/vuepress-plugin-vssue",
+      {
+        // 设置 `platform` 而不是 `api`
+        platform: "gitee",
 
-      // 其他的 Vssue 配置
-      owner: 'pipepandafeng',
-      repo: 'blog_vuecode',
-      clientId: 'a9ff2a019c4cfd9aebefe2c69240cf8b91e447a971097d8ffc94eed4b8fe575c',
-      clientSecret: '41b6d9e7f29b0f228a8eded6e6ee58b7f7aea01cb3117a50e25ab920f549ff53',
-    }],
-     [ 'autometa', autometa_options ],
-      'vuepress-plugin-baidu-autopush',
+        // 其他的 Vssue 配置
+        owner: "pipepandafeng",
+        repo: "blog_vuecode",
+        clientId:
+          "a9ff2a019c4cfd9aebefe2c69240cf8b91e447a971097d8ffc94eed4b8fe575c",
+        clientSecret:
+          "41b6d9e7f29b0f228a8eded6e6ee58b7f7aea01cb3117a50e25ab920f549ff53",
+      },
+    ],
+    ["autometa", autometa_options],
+    "vuepress-plugin-baidu-autopush",
     /* 两个插件只能选一个 */
     [
       "vuepress-plugin-helper-live2d",
@@ -63,12 +71,12 @@ module.exports = {
     ["vuepress-plugin-gotop-plus"],
   ],
   themeConfig: {
-    lastUpdated: 'Last Updated',
-        // 假定是 GitHub. 同时也可以是一个完整的 GitLab URL
-    repo: 'https://gitee.com/pipepandafeng/blog_vuecode',
+    lastUpdated: "Last Updated",
+    // 假定是 GitHub. 同时也可以是一个完整的 GitLab URL
+    repo: "https://gitee.com/pipepandafeng/blog_vuecode",
     // 自定义仓库链接文字。默认从 `themeConfig.repo` 中自动推断为
     // "GitHub"/"GitLab"/"Bitbucket" 其中之一，或是 "Source"。
-    repoLabel: '查看源码',
+    repoLabel: "查看源码",
     // nav : [
     //     { text: '接口定义', link: '/apiword' },
     //     { text: '接口字段定义', link: '/api' },
@@ -86,22 +94,26 @@ module.exports = {
           "guide/ArrowDifNomal",
           "guide/reduce",
           "guide/DataHijacking",
-          "guide/lowcopyAnddeepCopy"
+          "guide/lowcopyAnddeepCopy",
         ],
       },
       {
         title: "VUE",
-        children: ["/vueguide/", "/vueguide/rendermechanism","/vueguide/ComputedDifWatch"],
+        children: [
+          "/vueguide/",
+          "/vueguide/rendermechanism",
+          "/vueguide/ComputedDifWatch",
+        ],
       },
       {
         title: "CSS3",
-        children: ["/css3guide/","css3guide/BFC"],
+        children: ["/css3guide/", "css3guide/BFC"],
       },
       {
         title: "http协议",
-        children: ["/httpguide/"],
+        children: ["/httpguide/", "/httpguide/cors"],
       },
     ],
-    sidebarDepth: 1,
+    sidebarDepth: 3,
   },
 };
