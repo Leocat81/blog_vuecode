@@ -91,7 +91,7 @@ module.exports = router;
 
 nginx具体配置：
 
-``` config
+```
 #proxy服务器
 server {
     listen       81;
