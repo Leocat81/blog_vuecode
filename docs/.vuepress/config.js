@@ -28,7 +28,7 @@ module.exports = {
       {
         // 设置 `platform` 而不是 `api`
         platform: "gitee",
-
+        locale: "zh",
         // 其他的 Vssue 配置
         owner: "pipepandafeng",
         repo: "blog_vuecode",
@@ -95,6 +95,7 @@ module.exports = {
           "guide/reduce",
           "guide/DataHijacking",
           "guide/lowcopyAnddeepCopy",
+          "guide/VariableAndFunction",
         ],
       },
       {
