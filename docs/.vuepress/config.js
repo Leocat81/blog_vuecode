@@ -96,6 +96,8 @@ module.exports = {
           "guide/DataHijacking",
           "guide/lowcopyAnddeepCopy",
           "guide/VariableAndFunction",
+          "guide/transmitParams",
+          "guide/bibao",
         ],
       },
       {
