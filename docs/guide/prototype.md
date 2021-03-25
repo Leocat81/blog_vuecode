@@ -26,3 +26,23 @@ console.log(person1.sayName === person2.sayName); //true
 ![RUNOOB 图标](../assets/1.jpg)
 
 图 6-1 展示了 Person 构造函数，Person 的原型属性以及现有的两个实例之间的关系。
+
+```js
+function Person() {
+  this.color = "yellow";
+  this.showColor = function() {
+    return this.color;
+  };
+}
+
+var person1 = new Person();
+
+console.log(Person.prototype.constructor === Person); // 构造函数Person的默认对象的constructor // 属性
+console.log(person1.constructor === Person); //person1实例通过__proto__指向了Person的原型，所以具有了 // person1实例可以访问到constructor
+Person.prototype = {}; //把Person构造函数的原型进行了重新赋值
+
+// Person.prototype.constructor = Person;
+
+var person2 = new Person(); // person2实例通过__proto__指向了Person的原型，此时Person的原型是{}，这个空对象的 // constructor 的值不是Person了，而是Object
+console.log("person2.constructor: " + person2.constructor === Person); // false
+```
