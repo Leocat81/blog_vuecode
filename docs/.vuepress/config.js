@@ -20,15 +20,18 @@ module.exports = {
     lineNumbers: true,
   },
   plugins: [
-    [ '@vssue/vuepress-plugin-vssue',{
+    // vssue评论插件
+    [ "@vssue/vuepress-plugin-vssue",{
       // 设置 `platform` 而不是 `api`
-      platform: 'gitee',
-
+      platform: "gitee",
+      locale:'zh',
       // 其他的 Vssue 配置
-      owner: 'pipepandafeng',
-      repo: 'blog_vuecode',
+      owner: "pipepandafeng",
+      repo: "blog_vuecode",
       clientId: 'a9ff2a019c4cfd9aebefe2c69240cf8b91e447a971097d8ffc94eed4b8fe575c',
+      proxy: url => 'wode',
       clientSecret: '41b6d9e7f29b0f228a8eded6e6ee58b7f7aea01cb3117a50e25ab920f549ff53',
+      
     }],
      [ 'autometa', autometa_options ],
       'vuepress-plugin-baidu-autopush',
