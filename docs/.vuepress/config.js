@@ -98,6 +98,7 @@ module.exports = {
           "guide/VariableAndFunction",
           "guide/transmitParams",
           "guide/bibao",
+          "guide/debounceAndThrottle",
         ],
       },
       {
