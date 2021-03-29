@@ -99,6 +99,7 @@ module.exports = {
           "guide/transmitParams",
           "guide/bibao",
           "guide/debounceAndThrottle",
+          "guide/es6new",
         ],
       },
       {
