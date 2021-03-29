@@ -117,6 +117,10 @@ module.exports = {
         title: "http协议",
         children: ["/httpguide/", "/httpguide/cors"],
       },
+      {
+        title: "html",
+        children: ["/htmlguide/"],
+      },
     ],
     sidebarDepth: 3,
   },
