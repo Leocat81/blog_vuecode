@@ -104,15 +104,11 @@ module.exports = {
       },
       {
         title: "VUE",
-<<<<<<< HEAD
         children: [
           "/vueguide/",
           "/vueguide/rendermechanism",
           "/vueguide/ComputedDifWatch",
         ],
-=======
-        children: ["/vueguide/", "/vueguide/rendermechanism"],
->>>>>>> 1b9bda091b5d197d63d25cea156307ded4916f83
       },
       {
         title: "CSS3",
