@@ -1,5 +1,6 @@
-.vscode/*
-!.vscode/settings.json
-!.vscode/tasks.json
-!.vscode/launch.json
-!.vscode/extensions.json
+/node_modules/*
+/.temp/**
+/.vscode/**
+docs/.vuepress/dist/**
+!/node_modules/@vssue/api-gitee-v5/lib/index.js
+.temp/**
