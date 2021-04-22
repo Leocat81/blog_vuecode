@@ -77,12 +77,9 @@ module.exports = {
     // 自定义仓库链接文字。默认从 `themeConfig.repo` 中自动推断为
     // "GitHub"/"GitLab"/"Bitbucket" 其中之一，或是 "Source"。
     repoLabel: "查看源码",
-    // nav : [
-    //     { text: '接口定义', link: '/apiword' },
-    //     { text: '接口字段定义', link: '/api' },
-    //     { text: '附录：错误码', link: '/error' },
-    //     { text: '附录：错误码', link: '/error' }
-    // ],
+    nav : [
+        { text: '面试宝典', link: 'https://github.com/yisainan/web-interview' }
+    ],
     sidebar: [
       {
         title: "ECMAScript",
