@@ -4,17 +4,22 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start":"npm run docs:dev",
-    "build":"npm run docs:build",
+    "start": "npm run docs:dev",
+    "build": "npm run docs:build",
     "docs:dev": "vuepress dev docs --temp .temp",
     "docs:build": "vuepress build docs"
   },
   "author": "pipe",
   "license": "ISC",
   "devDependencies": {
-    "vuepress": "^1.8.2"
+    "vuepress": "^1.8.2",
+    "vuepress-plugin-autometa": "^0.1.13",
+    "vuepress-plugin-baidu-autopush": "^1.0.1"
   },
   "dependencies": {
+    "@vssue/api-gitee-v5": "^1.4.7",
+    "@vssue/api-github-v3": "^1.4.7",
+    "@vssue/vuepress-plugin-vssue": "^1.4.7",
     "vuepress-plugin-gotop-plus": "^1.0.4",
     "vuepress-plugin-helper-live2d": "^1.0.2"
   }

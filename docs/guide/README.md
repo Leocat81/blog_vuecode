@@ -57,7 +57,7 @@ Promise1.prototype.then = function(onFulfilled, onRejected) {
 <h3>TODO:</h3>
 
 - 完成链式调用
-  <style>
+<style scoped>
   .title{
     color:red;
     box-shadow: 2px 2px 3px  #888888;

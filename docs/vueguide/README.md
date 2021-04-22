@@ -32,7 +32,7 @@ export default {
   },
 };
 </script>
-<style>
+<style scoped>
 .box {
   background: rgba(0, 0, 0, 0.5);
 }
@@ -107,7 +107,7 @@ TODO:介绍createElement如何绑定元素，事件及其他处理
 
 ## JSX
 
-<style>
+<style scoped>
 .codepart-title{
  text-align:center;
  color:dodgerblue

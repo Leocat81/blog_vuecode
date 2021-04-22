@@ -120,7 +120,7 @@ A.sayHello.print() //输出为 "c"
 
 <h3>总结：箭头函数this在定义时就已经确定了，不会更改了。箭头函数this永远为该函数所在作用域指向的对象（结合上面例子仔细理解这句话）</h3>
 
-  <style>
+  <style scoped>
   .diff{
       letter-spacing:2px;
   }

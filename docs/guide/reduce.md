@@ -133,10 +133,27 @@ var sum = result.reduce(function(prev, cur) {
 }, 0);
 console.log(sum) //60
 ```
+(6) 迭代获取对象中的变量值
 
-  <style>
+```js
+let data = {
+  person: {
+    name: "Niko",
+  },
+};
+// 已知：let attr='peroson.name'
+// 求：person.name的值
+// 采用方式 data[person.name]
+let attr = "person.name";
+const value = attr.split(".").reduce((pre, cur) => {
+  return pre[cur];
+}, data);
+console.log(value); // NIko
+```
+
+<style scoped>
   .code_title{
     text-align:center;
     font-size:12px;
   }
-  </style>
+</style>
