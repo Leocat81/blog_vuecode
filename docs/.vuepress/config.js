@@ -77,8 +77,11 @@ module.exports = {
     // 自定义仓库链接文字。默认从 `themeConfig.repo` 中自动推断为
     // "GitHub"/"GitLab"/"Bitbucket" 其中之一，或是 "Source"。
     repoLabel: "查看源码",
-    nav : [
-        { text: '面试宝典', link: 'https://github.com/yisainan/web-interview' }
+    nav: [
+      { text: "面试宝典", link: "https://github.com/yisainan/web-interview" },
+      { text: "vue原理讲解", link: "http://hcysun.me/vue-design/zh" },
+      { text: "前端工匠", link: "https://github.com/ljianshu/Blog" },
+      { text: "typescript入门教程", link: "https://ts.xcatliu.com/" }
     ],
     sidebar: [
       {
@@ -109,7 +112,7 @@ module.exports = {
       },
       {
         title: "CSS3",
-        children: ["/css3guide/", "css3guide/BFC","css3guide/flex"],
+        children: ["/css3guide/", "css3guide/BFC", "css3guide/flex"],
       },
       {
         title: "http协议",
