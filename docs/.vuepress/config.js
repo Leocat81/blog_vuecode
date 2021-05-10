@@ -80,8 +80,12 @@ module.exports = {
     nav: [
       { text: "面试宝典", link: "https://github.com/yisainan/web-interview" },
       { text: "vue原理讲解", link: "http://hcysun.me/vue-design/zh" },
+      {
+        text: "vue源码解析",
+        link: "https://ustbhuangyi.github.io/vue-analysis",
+      },
       { text: "前端工匠", link: "https://github.com/ljianshu/Blog" },
-      { text: "typescript入门教程", link: "https://ts.xcatliu.com/" }
+      { text: "typescript入门教程", link: "https://ts.xcatliu.com/" },
     ],
     sidebar: [
       {
