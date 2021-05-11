@@ -77,12 +77,16 @@ module.exports = {
     // 自定义仓库链接文字。默认从 `themeConfig.repo` 中自动推断为
     // "GitHub"/"GitLab"/"Bitbucket" 其中之一，或是 "Source"。
     repoLabel: "查看源码",
-    // nav : [
-    //     { text: '接口定义', link: '/apiword' },
-    //     { text: '接口字段定义', link: '/api' },
-    //     { text: '附录：错误码', link: '/error' },
-    //     { text: '附录：错误码', link: '/error' }
-    // ],
+    nav: [
+      { text: "面试宝典", link: "https://github.com/yisainan/web-interview" },
+      { text: "vue原理讲解", link: "http://hcysun.me/vue-design/zh" },
+      {
+        text: "vue源码解析",
+        link: "https://ustbhuangyi.github.io/vue-analysis",
+      },
+      { text: "前端工匠", link: "https://github.com/ljianshu/Blog" },
+      { text: "typescript入门教程", link: "https://ts.xcatliu.com/" },
+    ],
     sidebar: [
       {
         title: "ECMAScript",
@@ -100,6 +104,8 @@ module.exports = {
           "guide/bibao",
           "guide/debounceAndThrottle",
           "guide/es6new",
+          "guide/ArrayLike",
+          "guide/ImplementationMechanism"
         ],
       },
       {
@@ -112,7 +118,7 @@ module.exports = {
       },
       {
         title: "CSS3",
-        children: ["/css3guide/", "css3guide/BFC","css3guide/flex"],
+        children: ["/css3guide/", "css3guide/BFC", "css3guide/flex"],
       },
       {
         title: "http协议",
