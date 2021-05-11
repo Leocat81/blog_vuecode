@@ -104,6 +104,8 @@ module.exports = {
           "guide/bibao",
           "guide/debounceAndThrottle",
           "guide/es6new",
+          "guide/ArrayLike",
+          "guide/ImplementationMechanism"
         ],
       },
       {
