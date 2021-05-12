@@ -4,6 +4,25 @@
 
 <p class="codepart-title"> 👍➡️<a href="https://www.cnblogs.com/goloving/p/7774077.html">构造函数"继承"的六种方法</a>⬅️</p>
 
+```js
+//现在有一个"动物"对象的构造函数。
+function Animal() {
+  this.species = "动物";
+}
+
+//还有一个"猫"对象的构造函数。
+function Cat(name, color) {
+  this.name = name;
+  this.color = color;
+}
+console.log(typeof new Animal());
+Cat.prototype = new Animal();
+Cat.prototype.constructor = Cat;
+let cat = new Cat("xi", "red");
+console.log(cat);
+console.log(cat.species);
+```
+
 <!-- TODO:完成js面向对象编程 -->
 
 <style scoped>
