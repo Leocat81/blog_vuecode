@@ -102,7 +102,7 @@ createElement(
 );
 ```
 
-<p class="codepart-title"> → <a href="https://cn.vuejs.org/v2/guide/render-function.html#createElement-%E5%8F%82%E6%95%B0"  target = "_blank">查看官网示例</a></p>
+<p class="codepart-title"> 👍➡️<a href="https://cn.vuejs.org/v2/guide/render-function.html#createElement-%E5%8F%82%E6%95%B0"  target = "_blank">查看官网示例</a>⬅️</p>
 TODO:介绍createElement如何绑定元素，事件及其他处理
 
 ## JSX
@@ -111,5 +111,8 @@ TODO:介绍createElement如何绑定元素，事件及其他处理
 .codepart-title{
  text-align:center;
  color:dodgerblue
+}
+.codepart-title a{
+     color:dodgerblue
 }
 </style>

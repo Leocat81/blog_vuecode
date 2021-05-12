@@ -105,7 +105,8 @@ module.exports = {
           "guide/debounceAndThrottle",
           "guide/es6new",
           "guide/ArrayLike",
-          "guide/ImplementationMechanism"
+          "guide/ImplementationMechanism",
+          "guide/ExtendObject"
         ],
       },
       {

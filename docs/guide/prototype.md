@@ -46,3 +46,21 @@ Person.prototype = {}; //把Person构造函数的原型进行了重新赋值
 var person2 = new Person(); // person2实例通过__proto__指向了Person的原型，此时Person的原型是{}，这个空对象的 // constructor 的值不是Person了，而是Object
 console.log("person2.constructor: " + person2.constructor === Person); // false
 ```
+
+::: tip 结论
+任何一个 prototype 对象（原型对象）都有一个 constructor 属性，指向它的构造函数
+:::
+
+<p class="codepart-title"> 👍➡️<a href="https://github.com/ljianshu/Blog/issues/18"  target = "_blank">
+其他优秀文章讲解（原型与原型链详解）
+</a>⬅️</p>
+
+<style scoped>
+.codepart-title{
+ text-align:center;
+ color:dodgerblue
+}
+.codepart-title a{
+     color:dodgerblue
+}
+</style>
