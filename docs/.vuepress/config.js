@@ -129,10 +129,10 @@ module.exports = {
         title: "html",
         children: ["/htmlguide/"],
       },
-      {
-        title: "http协议",
-        children: ["/httpguide/"],
-      },
+      // {
+      //   title: "http协议",
+      //   children: ["/httpguide/"],
+      // },
     ],
     sidebarDepth: 3,
   },
