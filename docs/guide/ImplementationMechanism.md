@@ -6,6 +6,21 @@
 掘金优质博文：这一次，彻底弄懂JavaScript 执行机制
 </a>⬅️</p>
 
+```js
+setTimeout(() => {
+  var date3 = new Date(); //结束时间
+  console.log(date3.getTime() - date1.getTime());
+  console.log("object");
+}, 2000);
+
+var date1 = new Date(); //开始时间
+for (let a = 0; a < 10000000000; a++) {
+  // console.log(a);
+}
+var date2 = new Date(); //结束时间
+console.log(date2.getTime() - date1.getTime());
+```
+
 <!-- TODO:完成js执行机制 -->
 
 <style scoped>

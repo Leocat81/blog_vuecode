@@ -134,6 +134,6 @@ module.exports = {
       //   children: ["/httpguide/"],
       // },
     ],
-    sidebarDepth: 3,
+    sidebarDepth: 3
   },
 };
