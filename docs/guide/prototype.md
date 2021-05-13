@@ -65,6 +65,7 @@ function Person(name, age, job) {
 let person1 = new Person();
 person1.sayName(); //somebody
 let person2 = new Person();
+person2.name="Nike"
 person2.sayName(); //somebody
 console.log(person1.sayName === person2.sayName); //true
 ```
@@ -90,6 +91,59 @@ console.log(Person.prototype.isPrototypeOf(person2)); //true
 console.log(Object.getPrototypeOf(person1) == Person.prototype); // true 
 console.log(Object.getPrototypeOf(person1).name);
 ```
+### 2.1 判断对象或实例上是否存在某个属性
+- `hasOwnProperty()` (这个方法由Object继承而来)
+
+``` js
+/* 
+  只有给定的属性存在于实例中，而不是由原型继承而来，才返回true。
+*/
+console.log(person1.hasOwnProperty('name')); //false
+console.log(person2.hasOwnProperty('name')); //true 
+```
+- `in 操作符`
+
+``` js
+/* 
+  判断对象实例是否包含某个属性，无论该属性存在于实例中还是原型中
+*/
+console.log('name' in person1); //true
+console.log('name' in person2); //true 
+```
+### 2.2 判断一个属性到底使用的是实例中还是原型中
+ 使用`hasOwnProperty()`和`in 操作符`结合判断，即可分清属性到底是在实例中被调用还是原型中被调用。（实例中的属性会覆盖原型中的属性）
+``` JS
+/* 
+  in 操作符只要对象能访问到该属性就返回true
+  hasOwnProperty() 只在属性存在于实例中时才返回true
+  只要属性存在于对象实例中即返回false
+  注意：当原型和对象实例中都存在该属性时，该函数返回false
+*/
+function hasPrototypePeroperty(object,name) {
+  return !object.hasOwnProperty(name) && (name in object);
+}
+```
+请看下面例子
+
+``` JS
+function Person() {
+  Person.prototype.name = "somebody";
+  Person.prototype.age = 29;
+  Person.prototype.job = "tyloo";
+  Person.prototype.sayName = function() {
+    console.log(this.name);
+  };
+}
+let person = new Person()
+console.log(hasPrototypePeroperty(person,"name")); // true
+person.name="Greg"
+console.log(hasPrototypePeroperty(person,"name")); // false
+```
+
+::: warning 
+实例中的属性会覆盖原型中的属性
+:::
+
 
 
 <p class="codepart-title"> 👍➡️<a href="https://github.com/ljianshu/Blog/issues/18"  target = "_blank">
