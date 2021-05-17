@@ -123,7 +123,7 @@ module.exports = {
       },
       {
         title: "http协议",
-        children: ["/httpguide/", "/httpguide/cors"],
+        children: ["/httpguide/", "/httpguide/cors","httpguide/httpcode"],
       },
       {
         title: "html",

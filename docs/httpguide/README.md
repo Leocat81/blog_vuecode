@@ -1,8 +1,15 @@
-# 状态码 401 和 403 区别
+# 如何通俗易懂的给你讲明白 HTTPS？
 
-| 状态码 | 状态码英文名称 |                      描述                      |
-| ------ | :------------: | :--------------------------------------------: |
-| 401    |  Unauthorized  |             请求要求用户的身份认证             |
-| 403    |   Forbidden    | 服务器理解请求客户端的请求，但是拒绝执行此请求 |
+![RUNOOB 图标](../assets/https.png)
 
-<h3>总结：401 未过服务端身份认证，403 过了身份认证，但是用户无权限操作。</h3>
+<p class="codepart-title"> 👍➡️<a href="https://juejin.cn/post/6955767063524671524">xieyezi：如何通俗易懂的给你讲明白HTTPS?</a>⬅️</p>
+
+<style>
+.codepart-title{
+ text-align:center;
+ color:dodgerblue
+}
+.codepart-title a{
+     color:dodgerblue
+}
+</style>

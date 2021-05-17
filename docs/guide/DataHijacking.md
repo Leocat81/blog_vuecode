@@ -182,6 +182,8 @@ console.log(JSON.stringify(obj));
 
 <p class="codepart-title"> 👍➡️<a href="https://es6.ruanyifeng.com/#docs/proxy">阮一峰：Proxy</a>⬅️</p>
 
+<span class="todo">实例：TODO:使用 proxy 实现观察者模式</span>
+
 ### Object.defineProperty()和 Proxy 区别
 
 <p class="codepart-title"> 👍➡️<a href="https://mp.weixin.qq.com/s/SPoxin9LYJ4Bp0goliEaUw">数据劫持 OR 数据代理</a>⬅️</p>
