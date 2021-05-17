@@ -116,7 +116,13 @@ Object.defineProperties(book, {
 
 ## 数据劫持
 
+### ES5 Object.defineProperty()
+
 经过以上简单介绍对象的属性类型和 Object.defineProperty()方法，相信大家都已经想到了数据劫持实现方法了，实际就是使用对象访问器属性的 getter 和 setter 函数对数据变化进行拦截通知，下面直接上代码。
+
+::: warning
+`Object.defineProperty()`为 Es5 新特性，不能兼容 IE8 以下浏览器。
+:::
 
 ```ts
 let obj = {
@@ -153,8 +159,6 @@ console.log(JSON.stringify(obj)); // 这里进行的读取操作，故见下图"
 
 <h2>总结：以上即为简单的数据劫持模型</h2>
 
-
-
 <span class="point_text">特别注意:setter 函数不能劫持到以下几种情况</span>
 
 1：不能检测以下数组的变动
@@ -173,6 +177,42 @@ console.log(JSON.stringify(obj));
 ```
 
 ![RUNOOB 图标](../assets/datahijack2.png)
+
+### Proxy
+
+<p class="codepart-title"> 👍➡️<a href="https://es6.ruanyifeng.com/#docs/proxy">阮一峰：Proxy</a>⬅️</p>
+
+### Object.defineProperty()和 Proxy 区别
+
+<p class="codepart-title"> 👍➡️<a href="https://mp.weixin.qq.com/s/SPoxin9LYJ4Bp0goliEaUw">数据劫持 OR 数据代理</a>⬅️</p>
+
+::: tip
+
+<P>
+优势:Proxy 的第二个参数可以有 13 种拦截方法，比 Object.defineProperty() 要更加丰富,Proxy 作为新标准受到浏览器厂商的重点关注和性能优化，相比之下 Object.defineProperty() 是一个已有的老方法。
+</p>
+<P>
+劣势:Proxy 的兼容性不如 Object.defineProperty() (caniuse 的数据表明，QQ 浏览器和百度浏览器并不支持 Proxy，这对国内移动开发来说估计无法接受，但两者都支持 Object.defineProperty()),不能使用 polyfill 来处理兼容性
+</p>
+:::
+
+### 数据劫持的一些简单巧妙用法
+
+- 巧妙的面试题
+  <p> 问： 什么样的 a 可以满足 (a === 1 && a === 2 && a === 3) === true 呢？(注意是 3 个 =，也就是严格相等) </p>
+  <p> 解决: 每次访问 a 返回的值都不一样，那么肯定会想到数据劫持(有其它解法) </p>
+
+```js
+let current = 0;
+Object.defineProperty(window, "a", {
+  get() {
+    current++;
+    console.log(current);
+    return current;
+  },
+});
+console.log(a === 1 && a === 2 && a === 3); // true
+```
 
 <style scoped>
 .point_text{
@@ -193,5 +233,12 @@ console.log(JSON.stringify(obj));
     font-weight:600;
     font-size:18px;
     color:Blue !important;
+}
+.codepart-title{
+ text-align:center;
+ color:dodgerblue
+}
+.codepart-title a{
+     color:dodgerblue
 }
 </style>
