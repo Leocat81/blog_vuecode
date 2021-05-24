@@ -86,6 +86,7 @@ module.exports = {
       },
       { text: "前端工匠", link: "https://github.com/ljianshu/Blog" },
       { text: "typescript入门教程", link: "https://ts.xcatliu.com/" },
+      { text: "源码学习视频", link: "https://www.bilibili.com/video/BV1LE411e7HE" }
     ],
     sidebar: [
       {
