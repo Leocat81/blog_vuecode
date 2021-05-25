@@ -93,9 +93,9 @@ module.exports = {
         title: "ECMAScript",
         collapsable: true,
         children: [
-          "/guide/",
-          "/guide/a",
-          "/guide/prototype",
+          "guide/",
+          "guide/a",
+          "guide/prototype",
           "guide/ArrowDifNomal",
           "guide/reduce",
           "guide/DataHijacking",
@@ -107,28 +107,29 @@ module.exports = {
           "guide/es6new",
           "guide/ArrayLike",
           "guide/ImplementationMechanism",
-          "guide/ExtendObject"
+          "guide/ExtendObject",
+          "guide/appy"
         ],
       },
       {
         title: "VUE",
         children: [
-          "/vueguide/",
-          "/vueguide/rendermechanism",
-          "/vueguide/ComputedDifWatch",
+          "vueguide/",
+          "vueguide/rendermechanism",
+          "vueguide/ComputedDifWatch",
         ],
       },
       {
         title: "CSS3",
-        children: ["/css3guide/", "css3guide/BFC", "css3guide/flex"],
+        children: ["css3guide/", "css3guide/BFC", "css3guide/flex"],
       },
       {
         title: "http协议",
-        children: ["/httpguide/", "/httpguide/cors","httpguide/httpcode"],
+        children: ["httpguide/", "httpguide/cors","httpguide/httpcode"],
       },
       {
         title: "html",
-        children: ["/htmlguide/"],
+        children: ["htmlguide/"],
       },
       // {
       //   title: "http协议",
