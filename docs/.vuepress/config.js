@@ -108,7 +108,8 @@ module.exports = {
           "guide/ArrayLike",
           "guide/ImplementationMechanism",
           "guide/ExtendObject",
-          "guide/appy"
+          "guide/appy",
+          "guide/ClassDesc"
         ],
       },
       {
