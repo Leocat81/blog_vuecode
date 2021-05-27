@@ -155,8 +155,22 @@ console.log(hasPrototypePeroperty(person,"name")); // false
 
 ### 2.3 对象创建 new Object()和 Object.create()比较
 
-new Object() 通过构造函数来创建对象, 添加的属性是在自身实例下。
+`Object.create(proto，[propertiesObject])`
+
+- <h4>参数</h4>
+
+  > proto 新创建对象的原型对象。
+
+  > propertiesObject 可选。需要传入一个对象，该对象的属性类型参照 Object.defineProperties()的第二个参数。如果该参数被指定且不为 undefined，该传入对象的自有可枚举属性(即其自身定义的属性，而不是其原型链上的枚举属性)将为新创建的对象添加指定的属性值和对应的属性描述符。
+
+通过构造函数来创建对象, 添加的属性是在自身实例下。
 Object.create() es6 创建对象的另一种方式，可以理解为继承一个对象, 添加的属性是在原型下。
+
+- <h4>返回值</h4>
+
+  > 一个新对象，带着指定的原型对象和属性。
+
+- <h4>例子</h4>
 
 ```js
 // new Object() 方式创建
@@ -180,6 +194,11 @@ Object.create()方法创建的对象时，属性是在原型下面的，也可�
 <p class="codepart-title"> 👍➡️<a href="https://github.com/ljianshu/Blog/issues/18"  target = "_blank">
 其他优秀文章讲解（原型与原型链详解）
 </a>⬅️</p>
+
+## 参考文献
+
+- <a href="#_2-3-对象创建-new-object-和-object-create-比较">javascript 高级开发指南</a>
+- <a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/create" target="_blank">MDN. 《Object.create()》</a>
 
 <style scoped>
 .codepart-title{
