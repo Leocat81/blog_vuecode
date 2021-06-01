@@ -114,6 +114,43 @@ Object.defineProperties(book, {
 });
 ```
 
+### 三 ： 获取数据属性和访问器属性
+
+[Object.getOwnPropertyDescriptor()[1]](#参考文献) 方法返回指定对象上一个自有属性对应的属性描述符。（自有属性指的是直接赋予该对象的属性，不需要从原型链上进行查找的属性）
+
+```js
+const object1 = {
+  property1: 42,
+};
+
+const descriptor1 = Object.getOwnPropertyDescriptor(object1, "property1");
+
+console.log(descriptor1.configurable);
+// expected output: true
+
+console.log(descriptor1.value);
+// expected output: 42
+```
+
+::: danger
+如果对象的方法使用了取值函数（getter）和存值函数（setter），则 name 属性不是在该方法上面，而是该方法的属性的描述对象的 get 和 set 属性上面，返回值是方法名前加上 get 和 set。见下面例子：
+:::
+
+```js
+const obj = {
+  get foo() {},
+  set foo(x) {},
+};
+
+obj.foo.name;
+// TypeError: Cannot read property 'name' of undefined
+
+const descriptor = Object.getOwnPropertyDescriptor(obj, "foo");
+
+descriptor.get.name; // "get foo"
+descriptor.set.name; // "set foo"
+```
+
 ## 数据劫持
 
 ### ES5 Object.defineProperty()
@@ -216,31 +253,37 @@ Object.defineProperty(window, "a", {
 console.log(a === 1 && a === 2 && a === 3); // true
 ```
 
+## 参考文献
+
+- <a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/getOwnPropertyDescriptor" target="_blank">MDN.《Object.getOwnPropertyDescriptor()》</a>
+- <a href="https://es6.ruanyifeng.com/#docs/object" target="_blank">阮一峰. 《方法的 name 属性》</a>
+- <a href="https://es6.ruanyifeng.com/#docs/proxy" target="_blank">阮一峰. 《Proxy》</a>
+
 <style scoped>
-.point_text{
-    font-weight:600;
-    font-size:18px;
-    color:red;
-}
-.warn_text{
-    font-weight:600;
-    font-size:18px;
-}
-.warn_code code{
-    font-size:16px;
-    color:DarkOrange !important;
+  .point_text{
+      font-weight:600;
+      font-size:18px;
+      color:red;
+  }
+  .warn_text{
+      font-weight:600;
+      font-size:18px;
+  }
+  .warn_code code{
+      font-size:16px;
+      color:DarkOrange !important;
 
 }
 .todo{
-    font-weight:600;
-    font-size:18px;
-    color:Blue !important;
+font-weight:600;
+font-size:18px;
+color:Blue !important;
 }
 .codepart-title{
- text-align:center;
- color:dodgerblue
+text-align:center;
+color:dodgerblue
 }
 .codepart-title a{
-     color:dodgerblue
+color:dodgerblue
 }
 </style>

@@ -2,7 +2,7 @@
 
 ## 构造函数继承实现方法
 
-<p class="codepart-title"> 👍➡️<a href="https://www.cnblogs.com/goloving/p/7774077.html">构造函数"继承"的六种方法</a>⬅️</p>
+<p class="codepart-title"> 👍➡️<a href="https://www.cnblogs.com/goloving/p/7774077.html" target = "_blank">构造函数"继承"的六种方法</a>⬅️</p>
 
 ```js
 //现在有一个"动物"对象的构造函数。
