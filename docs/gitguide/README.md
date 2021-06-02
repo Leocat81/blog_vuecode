@@ -135,4 +135,21 @@ $ git pull
 
 ## 冲突
 
-`git merge`和`git rebase`都用于解决冲突
+ `git merge`和`git rebase`都用于解决冲突
+
+- `git log --oneline --graph --decorate --all` 以树形式查看git提交历史记录
+- vscode中 `Git Graph` 也可以以树形式查看git提交历史记录
+
+(1) git merge 处理冲突
+
+(2) git rebase 结合 git merge  处理冲突
+
+(3)git pull –rebase 处理冲突
+
+(3)git checkout -m XXX 切换分支时，但当前有·未提交的更改·
+
+git rebase master 
+
+git rebase --continue
+
+git rebase --abort
