@@ -126,7 +126,11 @@ module.exports = {
       },
       {
         title: "http协议",
-        children: ["httpguide/", "httpguide/cors","httpguide/httpcode"],
+        children: ["httpguide/", "httpguide/cors", "httpguide/httpcode"],
+      },
+      {
+        title: "git",
+        children: ["gitguide/"],
       },
       {
         title: "html",
