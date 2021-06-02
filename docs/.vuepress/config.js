@@ -125,15 +125,15 @@ module.exports = {
         children: ["css3guide/", "css3guide/BFC", "css3guide/flex"],
       },
       {
-        title: "http协议",
+        title: "HTTP协议",
         children: ["httpguide/", "httpguide/cors", "httpguide/httpcode"],
       },
       {
-        title: "git",
+        title: "GIT",
         children: ["gitguide/"],
       },
       {
-        title: "html",
+        title: "HTML",
         children: ["htmlguide/"],
       },
       // {
