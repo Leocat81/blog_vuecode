@@ -142,13 +142,7 @@ $ git pull
 
 其下所有例子均假设有两个分支`master，dev`。`master` 分支和 `dev` 有无冲突两种情况，现需要将 `dev` 分支合并到 `master` 上。
 
-<<<<<<< HEAD
-
-# <h4>(1) git merge</h4>
-
-(2) git rebase 结合 git merge 处理冲突
-
-> > > > > > > add:git_todo,vue3.0
+<h4>(1) git merge</h4>
 
 - 无冲突
 
