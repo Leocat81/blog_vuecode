@@ -118,6 +118,7 @@ module.exports = {
           "vueguide/",
           "vueguide/rendermechanism",
           "vueguide/ComputedDifWatch",
+          "vueguide/vue3"
         ],
       },
       {
