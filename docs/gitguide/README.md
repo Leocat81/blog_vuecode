@@ -15,7 +15,7 @@ $ git clone https://gitee.com/pipepandafeng/blog_vuecode.git blog_vuecode_local
 
 `git fetch` 和`git pull` 都用于代码和分支的更新。
 
-- <h4>git fetch</h4>
+- <h3>git fetch</h3>
 
 一旦远程主机的版本库有了更新（Git 术语叫做 commit），需要将这些更新取回本地，这时就要用到 git fetch 命令。
 
@@ -32,7 +32,7 @@ $ git merge tmp
 $ git push origin master
 ```
 
-- <h4>git pull</h4>
+- <h3>git pull</h3>
 
 ```bash
 /*
@@ -52,7 +52,7 @@ git fetch 是从远程获取最新版本到本地，但不会自动 merge。
 
 ## 分支
 
-- <h4>基础操作</h4>
+- <h3>基础操作</h3>
 
 - `git branch`用于查看本地分支
 - `git branch -a`查看所有分支（包括远程分支）
@@ -60,7 +60,7 @@ git fetch 是从远程获取最新版本到本地，但不会自动 merge。
 - `git checkout master` 切换分支
 - `git checkout -t orgin/master` 本地创建一个 master 并建立一个追踪关系，自动追踪远程分支（origin/master)
 
-- <h4>同步本地与线上分支</h4>
+- <h3>同步本地与线上分支</h3>
 
 (1) 将线上新增分支更新到本地
 
@@ -95,7 +95,7 @@ $ git fetch --prune origin
 $ git fetch -p
 ```
 
-- <h4>追踪关系（tracking）</h4>
+- <h3>追踪关系（tracking）</h3>
 
 查看分支跟踪的远程分支
 
@@ -142,7 +142,7 @@ $ git pull
 
 其下所有例子均假设有两个分支`master，dev`。`master` 分支和 `dev` 有无冲突两种情况，现需要将 `dev` 分支合并到 `master` 上。
 
-<h4>(1) git merge</h4>
+<h3>(1) git merge</h3>
 
 - 无冲突
 
@@ -170,7 +170,7 @@ $ git push origin master
 但对 git history 提交历史看上去不太友好，接下来我们使用 git rebase 结合 git merge 使用，
 以打到优化 git hostory 效果。
 
-<h4>(2) git rebase 结合 git merge 处理冲突</h4>
+<h3>(2) git rebase 结合 git merge 处理冲突</h3>
 
 - 无冲突
 
@@ -210,14 +210,15 @@ $ git push origin master
 
 可以看到当使用 git rebase 结合 git merge 后，我们的 Git History 变为了线性排序，利于我们查看 git 的历史信息。
 
-<h4>(3)git pull –rebase 处理冲突</h4>
+<h3>(3)git pull –rebase 处理冲突</h3>
 
 与上面解决冲突同理
 git rebase master
 
-(3) git rebase -i HEAD~
+<h3>(4) git rebase -i HEAD~</h3>
 
-<a href="https://www.jianshu.com/p/ec45ce13289f">rebase</a>
-git rebase --abort
+- <a href="https://www.jianshu.com/p/ec45ce13289f">修改已经 push 的 commit message</a>
+
+## 回滚
 
 TODO:补充 git
