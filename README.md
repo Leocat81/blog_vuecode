@@ -1,5 +1,7 @@
 <p align="center">
 <a href='https://gitee.com/pipepandafeng/blog_vuecode'><img src='https://gitee.com/pipepandafeng/blog_vuecode/widgets/widget_3.svg' alt='Fork me on Gitee'></img></a>
+</p>
+<p align="center">
 <img src="./docs/.vuepress/public/img/panda4.png" width="300"><br>
 <a href='https://gitee.com/pipepandafeng/blog_vuecode/stargazers'><img src='https://gitee.com/pipepandafeng/blog_vuecode/badge/star.svg?theme=dark' alt='star'></img><img src='https://gitee.com/pipepandafeng/blog_vuecode/badge/fork.svg?theme=dark' alt='fork'></img></a>
 <p align="center">✨ 使用 vuepress 构建的个人博客。✨</p>
