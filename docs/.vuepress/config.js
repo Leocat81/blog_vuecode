@@ -1,3 +1,4 @@
+require("dotenv").config({ path: ".env" });
 const autometa_options = {
   site: {
     name: "pipepandafeng",
@@ -32,10 +33,9 @@ module.exports = {
         // 其他的 Vssue 配置
         owner: "pipepandafeng",
         repo: "blog_vuecode",
-        clientId:
-          "a9ff2a019c4cfd9aebefe2c69240cf8b91e447a971097d8ffc94eed4b8fe575c",
-        clientSecret:
-          "41b6d9e7f29b0f228a8eded6e6ee58b7f7aea01cb3117a50e25ab920f549ff53",
+        // 获取本地gitee clientId和clientSecret
+        clientId: process.env.clientId,
+        clientSecret: process.env.clientId.clientSecret,
       },
     ],
     ["autometa", autometa_options],
@@ -86,7 +86,10 @@ module.exports = {
       },
       { text: "前端工匠", link: "https://github.com/ljianshu/Blog" },
       { text: "typescript入门教程", link: "https://ts.xcatliu.com/" },
-      { text: "源码学习视频", link: "https://www.bilibili.com/video/BV1LE411e7HE" }
+      {
+        text: "源码学习视频",
+        link: "https://www.bilibili.com/video/BV1LE411e7HE",
+      },
     ],
     sidebar: [
       {
@@ -109,7 +112,7 @@ module.exports = {
           "guide/ImplementationMechanism",
           "guide/ExtendObject",
           "guide/appy",
-          "guide/ClassDesc"
+          "guide/ClassDesc",
         ],
       },
       {
@@ -118,7 +121,7 @@ module.exports = {
           "vueguide/",
           "vueguide/rendermechanism",
           "vueguide/ComputedDifWatch",
-          "vueguide/vue3"
+          "vueguide/vue3",
         ],
       },
       {
@@ -131,7 +134,13 @@ module.exports = {
       },
       {
         title: "GIT",
-        children: ["gitguide/clone","gitguide/fetch","gitguide/branch","gitguide/merge","gitguide/reset"],
+        children: [
+          "gitguide/clone",
+          "gitguide/fetch",
+          "gitguide/branch",
+          "gitguide/merge",
+          "gitguide/reset",
+        ],
       },
       {
         title: "HTML",
@@ -142,6 +151,6 @@ module.exports = {
       //   children: ["/httpguide/"],
       // },
     ],
-    sidebarDepth: 3
+    sidebarDepth: 3,
   },
 };

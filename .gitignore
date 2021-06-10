@@ -4,3 +4,4 @@
 docs/.vuepress/dist/**
 !/node_modules/@vssue/api-gitee-v5/lib/index.js
 .temp/
+.env
