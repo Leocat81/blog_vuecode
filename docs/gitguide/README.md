@@ -260,5 +260,3 @@ $ git push
 - `git reset`不会保留 commitID 之后的提交记录，`git revert`不会对 commitID 之前和之后的 commit 产生影响，但会生成一个新的 commit。
 
 :::
-
-TODO:补充 git
