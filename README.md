@@ -1,4 +1,5 @@
 <p align="center">
+[![Fork me on Gitee](https://gitee.com/pipepandafeng/blog_vuecode/widgets/widget_4.svg)](https://gitee.com/pipepandafeng/blog_vuecode)
 <img src="./docs/.vuepress/public/img/panda4.png" width="300"><br>
 ✨使用 vuepress 构建的个人博客。✨
 </p>
