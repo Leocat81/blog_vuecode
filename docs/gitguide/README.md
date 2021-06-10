@@ -62,7 +62,7 @@ git fetch 是从远程获取最新版本到本地，但不会自动 merge。
 
 - <h3>同步本地与线上分支</h3>
 
-(1) 将线上新增分支更新到本地
+🔔 将线上新增分支更新到本地
 
 第一种方式：拉取分支不创建本地分支,其后一步完成创建分支与建立追踪关系
 
@@ -82,7 +82,7 @@ git pull origin XXX || git fetch origin XXX:XXX
 $ git branch --set-upstream-to=origin/master master
 ```
 
-(2) 将线上删除分支更新到本地
+🔔 将线上删除分支更新到本地
 
 如果远程主机删除了某个分支，默认情况下，git pull 不会在拉取远程分支的时候，删除对应的本地分支。这是为了防止，由于其他人操作了远程主机，导致 git pull 不知不觉删除了本地分支。
 
@@ -142,7 +142,7 @@ $ git pull
 
 其下所有例子均假设有两个分支`master，dev`。`master` 分支和 `dev` 有无冲突两种情况，现需要将 `dev` 分支合并到 `master` 上。
 
-<h3>(1) git merge</h3>
+<h3>1️⃣ git merge</h3>
 
 - 无冲突
 
@@ -170,7 +170,7 @@ $ git push origin master
 但对 git history 提交历史看上去不太友好，接下来我们使用 git rebase 结合 git merge 使用，
 以打到优化 git hostory 效果。
 
-<h3>(2) git rebase 结合 git merge 处理冲突</h3>
+<h3>2️⃣ git rebase 结合 git merge 处理冲突</h3>
 
 - 无冲突
 
@@ -210,15 +210,55 @@ $ git push origin master
 
 可以看到当使用 git rebase 结合 git merge 后，我们的 Git History 变为了线性排序，利于我们查看 git 的历史信息。
 
-<h3>(3)git pull –rebase 处理冲突</h3>
+<h3>3️⃣ git pull –rebase 处理冲突</h3>
 
 与上面解决冲突同理
 git rebase master
 
-<h3>(4) git rebase -i HEAD~</h3>
+<h3>4️⃣ git rebase -i HEAD~</h3>
 
-- <a href="https://www.jianshu.com/p/ec45ce13289f">修改已经 push 的 commit message</a>
+- <a href="https://www.jianshu.com/p/ec45ce13289f" target="_blank">修改已经 push 的 commit message</a>
 
 ## 回滚
+
+`git reset`和`git revert`都可用于代码版本回滚
+
+<h3> 1️⃣ git reset </h3>
+
+`git rese`是回退到某个 commit ID 版本位置
+
+```bash
+# 查询commitID
+$ git log
+# 执行版本回退
+$ git reset --hard [commitID]
+# 强制push代码到远程仓库
+$ git push -f
+```
+
+<h3> 1️⃣ git revert </h3>
+
+`git revert`是撤销某个 commit ID 版本，会撤销某个 commitID 的提交。
+
+```bash
+# 查询commitID
+$ git log
+# 执行版本回退
+$ git revert -n [commitID]
+# 出现冲突就解决冲突，如无冲突
+$ git commit -m "版本名"
+# push代码到远程仓库
+$ git push
+```
+
+![RUNOOB 图标](../assets/git_revert.png)
+
+::: warning
+
+- `git reset`是回退到某个 commitID 版本历史，`git revert`是撤销某个 commitID 得提交。
+
+- `git reset`不会保留 commitID 之后的提交记录，`git revert`不会对 commitID 之前和之后的 commit 产生影响，但会生成一个新的 commit。
+
+:::
 
 TODO:补充 git
