@@ -4,7 +4,9 @@
 
 <h3> 🧽 git reset </h3>
 
-`git rese`是回退到某个 commit ID 版本位置
+- `git reset --merge` 回退到 merge 以前，用于不想解决冲突的时候
+
+`git reset`是回退到某个 commit ID 版本位置
 
 ```bash
 # 查询commitID
