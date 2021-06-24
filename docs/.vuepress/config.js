@@ -135,6 +135,7 @@ module.exports = {
       {
         title: "GIT",
         children: [
+          "gitguide/base",
           "gitguide/clone",
           "gitguide/fetch",
           "gitguide/branch",
