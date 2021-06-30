@@ -113,6 +113,7 @@ module.exports = {
           "guide/ExtendObject",
           "guide/appy",
           "guide/ClassDesc",
+          "guide/BitOperation"
         ],
       },
       {
