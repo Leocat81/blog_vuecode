@@ -123,7 +123,8 @@ module.exports = {
           "vueguide/rendermechanism",
           "vueguide/ComputedDifWatch",
           "vueguide/vue3",
-          "vueguide/tabbar"
+          "vueguide/tabbar",
+          "vueguide/EventBus"
         ],
       },
       {
