@@ -124,7 +124,8 @@ module.exports = {
           "vueguide/ComputedDifWatch",
           "vueguide/vue3",
           "vueguide/tabbar",
-          "vueguide/EventBus"
+          "vueguide/EventBus",
+          "vueguide/scrollthrough"
         ],
       },
       {
