@@ -1,5 +1,8 @@
 # 多页应用 
-VUE多入口多项目项目架构（multi-page）（例如：OA系统，CRM系统）
+当系统项目越来越复杂化，需要根据类似渠道来区分系统（例如：OA系统，CRM系统），这个时候需要考虑采用多页配置来架构。
+
+## 项目地址
+<a href="https://gitee.com/pipepandafeng/vue_multi_pages" target = "_blank">vue_multi_pages</a>
 
 ## 参考文献
 

@@ -152,6 +152,12 @@ module.exports = {
         title: "HTML",
         children: ["htmlguide/"],
       },
+            {
+        title: "构建工具",
+        children: ["buildtools/npmscripts",
+        "buildtools/webpack"
+      ],
+      },
       // {
       //   title: "http协议",
       //   children: ["/httpguide/"],
