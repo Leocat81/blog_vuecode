@@ -125,7 +125,8 @@ module.exports = {
           "vueguide/vue3",
           "vueguide/tabbar",
           "vueguide/EventBus",
-          "vueguide/scrollthrough"
+          "vueguide/scrollthrough",
+          "vueguide/MultiPage"
         ],
       },
       {
