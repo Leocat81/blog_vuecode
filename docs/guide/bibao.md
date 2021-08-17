@@ -46,3 +46,8 @@ console.log(p()); // 4
 缺点1：导致变量不会被垃圾回收机制回收，造成内存消耗
 
 缺点2：不恰当的使用闭包可能会造成内存泄漏的问题
+
+https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Closures
+
+## 推荐文献
+- <a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Closures" target = "_blank">闭包:MDN</a>

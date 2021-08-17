@@ -113,6 +113,7 @@ module.exports = {
           "guide/ExtendObject",
           "guide/appy",
           "guide/ClassDesc",
+          "guide/BitOperation"
         ],
       },
       {
@@ -122,6 +123,10 @@ module.exports = {
           "vueguide/rendermechanism",
           "vueguide/ComputedDifWatch",
           "vueguide/vue3",
+          "vueguide/tabbar",
+          "vueguide/EventBus",
+          "vueguide/scrollthrough",
+          "vueguide/MultiPage"
         ],
       },
       {
@@ -135,6 +140,7 @@ module.exports = {
       {
         title: "GIT",
         children: [
+          "gitguide/base",
           "gitguide/clone",
           "gitguide/fetch",
           "gitguide/branch",
@@ -145,6 +151,12 @@ module.exports = {
       {
         title: "HTML",
         children: ["htmlguide/"],
+      },
+            {
+        title: "构建工具",
+        children: ["buildtools/npmscripts",
+        "buildtools/webpack"
+      ],
       },
       // {
       //   title: "http协议",
