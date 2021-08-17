@@ -113,7 +113,7 @@ module.exports = {
           "guide/ExtendObject",
           "guide/appy",
           "guide/ClassDesc",
-          "guide/BitOperation"
+          "guide/BitOperation",
         ],
       },
       {
@@ -126,7 +126,7 @@ module.exports = {
           "vueguide/tabbar",
           "vueguide/EventBus",
           "vueguide/scrollthrough",
-          "vueguide/MultiPage"
+          "vueguide/MultiPage",
         ],
       },
       {
@@ -152,11 +152,13 @@ module.exports = {
         title: "HTML",
         children: ["htmlguide/"],
       },
-            {
+      {
         title: "构建工具",
-        children: ["buildtools/npmscripts",
-        "buildtools/webpack"
-      ],
+        children: ["buildtools/npmscripts", "buildtools/webpack"],
+      },
+            {
+        title: "pixi",
+        children: ["pixi/"],
       },
       // {
       //   title: "http协议",
