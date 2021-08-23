@@ -25,7 +25,7 @@
 
 ⚠️ Warning
 
-因为@vssue/api-gitee-v5 包存在问题，所以 npm 下载@vssue/api-gitee-v5 包后，需要去 node_modules 里@vssue/api-gitee-v5/lib/index.js
+1:因为@vssue/api-gitee-v5 包存在问题，所以 npm 下载@vssue/api-gitee-v5 包后，需要去 node_modules 里@vssue/api-gitee-v5/lib/index.js
 
 ```js
 const { data } = await this.$http.post(originalURL, {  //proxyURL换为originalURL
@@ -38,6 +38,7 @@ const { data } = await this.$http.post(originalURL, {  //proxyURL换为originalU
  return data.access_token;
 }
 ```
+2: 需采用https部署
 
 🧱 Contribute
 
