@@ -1,3 +1,5 @@
 # pixijs
 
-<pixi></pixi>
+<!-- <ClientOnly> -->
+<Pixi></Pixi>
+<!-- </ClientOnly> -->
