@@ -3,7 +3,7 @@
 ## 语法
 
 ```js
-array.reduce(function (total, currentValue, currentIndex, arr),initialValue )
+array.reduce(function(total, currentValue, currentIndex, arr), initialValue)
 ```
 
 ## 参数解析
@@ -18,15 +18,15 @@ array.reduce(function (total, currentValue, currentIndex, arr),initialValue )
 
 ## 简单用法
 
-- 数组求和，求积。
+* 数组求和，求积。
 
 ```JS
-let names = [1,2,3,4];
+let names = [1, 2, 3, 4];
 
-let sum=names.reduce((pre,cur)=> pre+cur) //数组求和
-let mul=names.reduce((pre,cur)=>pre*cur)  //数组求积
-let sum2=names.reduce((pre,cur)=> pre+cur,5)  // 传递给函数初始值为5  故为5+1+2+3+4+5
-let mul2=names.reduce((pre,cur)=>pre*cur,5)   // 传递给函数初始值为5  故为5*1*2*3*4*5
+let sum = names.reduce((pre, cur) => pre + cur) //数组求和
+let mul = names.reduce((pre, cur) => pre * cur) //数组求积
+let sum2 = names.reduce((pre, cur) => pre + cur, 5) // 传递给函数初始值为5  故为5+1+2+3+4+5
+let mul2 = names.reduce((pre, cur) => pre * cur, 5) // 传递给函数初始值为5  故为5*1*2*3*4*5
 
 console.log(sum); // 10
 console.log(mul); // 24
@@ -113,8 +113,7 @@ console.log(newArr(arr));
 (5) 对象里的属性求和
 
 ```JS
-var result = [
-    {
+var result = [{
         subject: 'math',
         score: 10
     },
@@ -133,27 +132,47 @@ var sum = result.reduce(function(prev, cur) {
 }, 0);
 console.log(sum) //60
 ```
+
 (6) 迭代获取对象中的变量值
 
 ```js
 let data = {
-  person: {
-    name: "Niko",
-  },
+    person: {
+        name: "Niko",
+    },
 };
 // 已知：let attr='peroson.name'
 // 求：person.name的值
 // 采用方式 data[person.name]
 let attr = "person.name";
 const value = attr.split(".").reduce((pre, cur) => {
-  return pre[cur];
+    return pre[cur];
 }, data);
 console.log(value); // NIko
 ```
 
+(7) 获取非连续数组的长度
+
+<ReduceDemo></ReduceDemo>
+
+```js
+const arr = []
+arr[0] = 'a'
+arr[9] = 'b'
+console.log(arr.length) // 10
+
+/* 采用reduce获取非连续数组长度 */
+const length = arr.reduce((prev, currentValue, currentIndex) => {
+    return ++prev;
+}, 0);
+console.log(length) // 2
+```
+
 <style scoped>
   .code_title{
+
     text-align:center;
     font-size:12px;
+
   }
 </style>
