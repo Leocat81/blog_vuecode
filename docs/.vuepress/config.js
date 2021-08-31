@@ -155,7 +155,7 @@ module.exports = {
       },
       {
         title: "构建工具",
-        children: ["buildtools/npmscripts", "buildtools/webpack"],
+        children: ["buildtools/npmscripts", "buildtools/webpack","buildtools/gulp"],
       },
             {
         title: "pixi",
