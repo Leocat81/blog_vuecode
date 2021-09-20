@@ -177,6 +177,10 @@ module.exports = {
         title: "pixi",
         children: ["pixi/"],
       },
+            {
+        title: "shell",
+        children: ["shell/"],
+      },
       // {
       //   title: "http协议",
       //   children: ["/httpguide/"],
