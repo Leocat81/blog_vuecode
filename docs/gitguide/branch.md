@@ -1,18 +1,17 @@
 # 分支
+* <h3>基础操作</h3>
 
-- <h3>基础操作</h3>
+* `git branch`用于查看本地分支
+* `git branch -a`查看所有分支（包括远程分支）
+* `git branch XXX`新建一个分支
+* `git checkout master` 切换分支
+* `git checkout -t orgin/master` 本地创建一个 master 并建立一个追踪关系，自动追踪远程分支（origin/master)
 
-- `git branch`用于查看本地分支
-- `git branch -a`查看所有分支（包括远程分支）
-- `git branch XXX`新建一个分支
-- `git checkout master` 切换分支
-- `git checkout -t orgin/master` 本地创建一个 master 并建立一个追踪关系，自动追踪远程分支（origin/master)
-
-- <h3>同步本地与线上分支</h3>
+* <h3>同步本地与线上分支</h3>
 
 🔔 将线上新增分支更新到本地
 
-第一种方式：拉取分支不创建本地分支,其后一步完成创建分支与建立追踪关系
+第一种方式：拉取分支不创建本地分支, 其后一步完成创建分支与建立追踪关系
 
 ```bash
 ##1：拉取远程分支(不创建本地分支)
@@ -43,7 +42,7 @@ $ git fetch --prune origin
 $ git fetch -p
 ```
 
-- <h3>追踪关系（tracking）</h3>
+* <h3>追踪关系（tracking）</h3>
 
 查看分支跟踪的远程分支
 
@@ -79,4 +78,31 @@ $ git pull origin
 
 ```bash
 $ git pull
+```
+
+* <h3>创建分支</h3>
+
+从某个point创建一个新的XXX分支
+
+```bash 
+$ git branch <branch> <start point>
+
+```
+强制创建一个分支
+```bash
+$ git checkout -B <branch>
+```
+
+创建一个没有提交记录的分支(常用于删除本地分支记录)
+
+```bash
+$ git checkout --orphan <branch>
+
+## 删除本地分支记录（假设当前仅有一个分支master）
+$ git checkout --orphan develop # 基于master分支 创建一个没有commit log 的develop分支
+$ git branch -D master # 删除原有master分支
+$ git branch -m master # 将当前分支develop 重命名为 master
+$ git add . 
+$ git commit -m "XXX" 
+$ git push -f 
 ```
