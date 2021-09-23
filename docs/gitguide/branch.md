@@ -102,6 +102,7 @@ $ git checkout --orphan <branch>
 $ git checkout --orphan develop # 基于master分支 创建一个没有commit log 的develop分支
 $ git branch -D master # 删除原有master分支
 $ git branch -m master # 将当前分支develop 重命名为 master
+#或者直接 git commit -a -m "XXX"
 $ git add . 
 $ git commit -m "XXX" 
 $ git push -f 
