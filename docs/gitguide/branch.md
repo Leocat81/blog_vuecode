@@ -62,9 +62,11 @@ Git 也允许手动建立追踪关系。
 
 ```bash
 ##该命令指定master分支追踪origin/next分支。
-$ git branch --set-upstream master origin/next
+$ git branch --set-upstream-to= master origin/next
 ##该命令创建一个本地 master 并建立一个追踪关系，自动追踪远程分支（origin/master)
 $ git checkout -t orgin/master
+## 推送本地分支并与线上分支建立追踪关系
+$ git push -u origin/master
 ```
 
 如果<b>当前分支</b>与远程分支存在追踪关系，git pull 就可以省略远程分支名。
