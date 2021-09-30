@@ -123,6 +123,7 @@ module.exports = {
           "guide/appy",
           "guide/ClassDesc",
           "guide/BitOperation",
+          "guide/module"
         ],
       },
       {
