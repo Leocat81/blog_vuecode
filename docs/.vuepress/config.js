@@ -169,9 +169,8 @@ module.exports = {
       {
         title: "构建工具",
         children: [
+           "buildtools/",
           "buildtools/npmscripts",
-          "buildtools/webpack",
-          "buildtools/gulp",
         ],
       },
       {
