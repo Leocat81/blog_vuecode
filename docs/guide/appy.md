@@ -43,6 +43,10 @@ alert(
 );
 ```
 
+::: tip 解释
+apply是应用的意思，即为把Person应用到Student的this上。或者理解为Student的this去调用Person方法，`this.Person(arguments)`，因为是Student的this去调用的Person函数，故Person函数中this指向了Student中的this（此处重要：得出一个结论，函数的调用方式决定了  this  的值（运行时绑定）。详见[箭头函数和普通函数的区别](/guide/ArrowDifNomal.html#this)），会把Person当中的属性添加到Student的this上。
+:::
+
 Student 实现了继承于 Person 构造函数
 
 - <h4>用 apply 将数组各项添加到另一个数组</h4>
