@@ -29,6 +29,12 @@ git pull origin XXX || git fetch origin XXX:XXX
 $ git branch --set-upstream-to=origin/master master
 ```
 
+🔔 删除线上分支
+
+```bash
+git push origin --delete XXXXX(分支名)
+```
+
 🔔 将线上删除分支更新到本地
 
 如果远程主机删除了某个分支，默认情况下，git pull 不会在拉取远程分支的时候，删除对应的本地分支。这是为了防止，由于其他人操作了远程主机，导致 git pull 不知不觉删除了本地分支。
@@ -65,7 +71,9 @@ Git 也允许手动建立追踪关系。
 $ git branch --set-upstream-to= master origin/next
 ##该命令创建一个本地 master 并建立一个追踪关系，自动追踪远程分支（origin/master)
 $ git checkout -t orgin/master
+
 ## 推送本地分支并与线上分支建立追踪关系
+
 $ git push -u origin/master
 ```
 
@@ -101,6 +109,7 @@ $ git checkout -B <branch>
 $ git checkout --orphan <branch>
 
 ## 删除本地分支记录（假设当前仅有一个分支master）
+
 $ git checkout --orphan develop # 基于master分支 创建一个没有commit log 的develop分支
 $ git branch -D master # 删除原有master分支
 $ git branch -m master # 将当前分支develop 重命名为 master

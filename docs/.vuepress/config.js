@@ -167,10 +167,11 @@ module.exports = {
         children: ["cdn/"],
       },
       {
-        title: "构建工具",
+        title: "构建",
         children: [
            "buildtools/",
           "buildtools/npmscripts",
+          "buildtools/npmlink"
         ],
       },
       {
