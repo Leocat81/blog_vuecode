@@ -21,6 +21,8 @@ $ git push -f
 
 `git revert`是撤销某个 commit ID 版本，会撤销某个 commitID 的提交。
 
+- revert 适合需要回退的历史提交不多，且无合并冲突的情景。
+
 ```bash
 # 查询commitID
 $ git log
