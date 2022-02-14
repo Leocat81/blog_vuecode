@@ -1,4 +1,21 @@
-# 冲突
+# 合并
+## Cherry-pick
+
+对于多分支的代码库，将代码从一个分支转移到另一个分支是常见需求。
+
+这时分两种情况。一种情况是，你需要另一个分支的所有代码变动，那么就采用合并`git merge`。另一种情况是，你只需要部分代码变动（某几个提交），这时可以采用 **Cherry pick**。
+
+> `cherry-pick` 可以选择性的合并某些commit到当前分支
+
+```bash
+$ git cherry-pick <commitHash>
+```
+
+上面命令就会将指定的提交commitHash，应用于当前分支。这会在当前分支产生一个新的提交，当然它们的哈希值会不一样。
+
+> 详细用法可参照`git 使用手册`和 <a href="http://www.ruanyifeng.com/blog/2020/04/git-cherry-pick.html" target="_blank">阮一峰-git cherry-pick 教程</a>
+
+## 解决冲突
 
 `git merge`和`git rebase`都用于解决冲突
 
