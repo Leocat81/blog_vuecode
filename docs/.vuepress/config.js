@@ -19,16 +19,16 @@ module.exports = {
   base: "/pipepandafeng/",
   title: "pipe的笔记", // 设置网站标题
   description: "欢迎来到我的博客",
-  // head: [
-  //   ["link", { rel: "icon", href: "/img/panda4.png" }],
-  //   [
-  //     "script",
-  //     {
-  //       src:
-  //         "https://cdn.jsdelivr.net/npm/pixi.js@6.1.2/dist/browser/pixi.min.js",
-  //     },
-  //   ],
-  // ],
+  head: [
+    ["link", { rel: "icon", href: "/img/panda4.png" }],
+    [
+      "script",
+      {
+        src:
+          "https://cdn.jsdelivr.net/npm/pixi.js@6.1.2/dist/browser/pixi.min.js", // html头添加script标签
+      },
+    ],
+  ],
   markdown: {
     lineNumbers: true,
   },
@@ -161,7 +161,7 @@ module.exports = {
           "gitguide/branch",
           "gitguide/merge",
           "gitguide/reset",
-          "gitguide/filter"
+          "gitguide/history"
         ],
       },
       {
