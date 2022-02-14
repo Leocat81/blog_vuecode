@@ -17,7 +17,7 @@ module.exports = {
     },
   },
   base: "/pipepandafeng/",
-  title: "笔记", // 设置网站标题
+  title: "pipe的笔记", // 设置网站标题
   description: "欢迎来到我的博客",
   head: [
     ["link", { rel: "icon", href: "/img/panda4.png" }],
@@ -123,7 +123,7 @@ module.exports = {
           "guide/appy",
           "guide/ClassDesc",
           "guide/BitOperation",
-          "guide/module"
+          "guide/module",
         ],
       },
       {
@@ -141,7 +141,12 @@ module.exports = {
       },
       {
         title: "CSS3",
-        children: ["css3guide/", "css3guide/BFC", "css3guide/flex","css3guide/margin"],
+        children: [
+          "css3guide/",
+          "css3guide/BFC",
+          "css3guide/flex",
+          "css3guide/margin",
+        ],
       },
       {
         title: "HTTP协议",
@@ -156,6 +161,7 @@ module.exports = {
           "gitguide/branch",
           "gitguide/merge",
           "gitguide/reset",
+          "gitguide/filter"
         ],
       },
       {
@@ -169,16 +175,16 @@ module.exports = {
       {
         title: "构建",
         children: [
-           "buildtools/",
+          "buildtools/",
           "buildtools/npmscripts",
-          "buildtools/npmlink"
+          "buildtools/npmlink",
         ],
       },
       {
         title: "pixi",
         children: ["pixi/"],
       },
-            {
+      {
         title: "shell",
         children: ["shell/"],
       },
