@@ -87,7 +87,11 @@ module.exports = {
     // "GitHub"/"GitLab"/"Bitbucket" 其中之一，或是 "Source"。
     repoLabel: "查看源码",
     nav: [
-      {text:"测试库集合",link:"https://testing-library.com"},
+      {
+        text: "深入理解 TypeScript",
+        link: "https://jkchao.github.io/typescript-book-chinese",
+      },
+      { text: "测试库集合", link: "https://testing-library.com" },
       { text: "面试宝典", link: "https://github.com/yisainan/web-interview" },
       { text: "vue原理讲解", link: "http://hcysun.me/vue-design/zh" },
       {
@@ -162,7 +166,7 @@ module.exports = {
           "gitguide/branch",
           "gitguide/merge",
           "gitguide/reset",
-          "gitguide/history"
+          "gitguide/history",
         ],
       },
       {
