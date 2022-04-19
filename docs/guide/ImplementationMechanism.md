@@ -23,6 +23,8 @@ console.log(date2.getTime() - date1.getTime());
 
 <!-- TODO:完成js执行机制 -->
 
+其他文献：[MDN-微任务与Javascript运行时环境](https://developer.mozilla.org/zh-CN/docs/Web/API/HTML_DOM_API/Microtask_guide/In_depth)
+
 <style scoped>
 .codepart-title{
  text-align:center;
