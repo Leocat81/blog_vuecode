@@ -1,14 +1,13 @@
 # 分支
+* <h3>基础操作</h3>
 
-- <h3>基础操作</h3>
+* `git branch`用于查看本地分支
+* `git branch -a`查看所有分支（包括远程分支）
+* `git branch XXX`新建一个分支
+* `git checkout master` 切换分支
+* `git checkout -t orgin/master` 本地创建一个 master 并建立一个追踪关系，自动追踪远程分支（origin/master)
 
-- `git branch`用于查看本地分支
-- `git branch -a`查看所有分支（包括远程分支）
-- `git branch XXX`新建一个分支
-- `git checkout master` 切换分支
-- `git checkout -t orgin/master` 本地创建一个 master 并建立一个追踪关系，自动追踪远程分支（origin/master)
-
-- <h3>同步本地与线上分支</h3>
+* <h3>同步本地与线上分支</h3>
 
 🔔 将线上新增分支更新到本地
 
@@ -49,7 +48,7 @@ $ git fetch --prune origin
 $ git fetch -p
 ```
 
-- <h3>追踪关系（tracking）</h3>
+* <h3>追踪关系（tracking）</h3>
 
 查看分支跟踪的远程分支
 
@@ -91,7 +90,7 @@ $ git pull origin
 $ git pull
 ```
 
-- <h3>创建分支</h3>
+* <h3>创建分支</h3>
 
 从某个 point 创建一个新的 XXX 分支
 
@@ -122,26 +121,31 @@ $ git commit -m "XXX"
 $ git push -f
 ```
 
-- <h3>历史文件操作(高阶指南)</h3>
+* <h3>历史文件操作(高阶指南)</h3>
 
 基础介绍： `git branch -filter` ，可用于删除没有使用的大文件。
 
-场景介绍：比如不小心提交了一个大文件，已经推送到了线上。导致线上仓库体积很大，虽然可以将文件删除后再次提交一次，但是 `git history` 已经存在此文件的记录，故就算是删除了文件，但是仓库的实际体积大小依然不能减小。那么此时`git branch -filter`就会起到了大作用。
+场景介绍：比如不小心提交了一个大文件，已经推送到了线上。导致线上仓库体积很大，虽然可以将文件删除后再次提交一次，但是 `git history` 已经存在此文件的记录，故就算是删除了文件，但是仓库的实际体积大小依然不能减小。那么此时 `git branch -filter` 就会起到了大作用。
 
 ```bash
 $ git filter-branch --force --prune-empty --index-filter 'git rm -rf --cached --ignore-unmatch XXX.framework(文件名)' --tag-name-filter cat -- --all
 $ git push -f
 ```
 
-- `filter-branch` 是让 git 重写每一个分支
+* `filter-branch` 是让 git 重写每一个分支
 
-- `--force` 假如遇到冲突也让 git 强制执行
+* `--force` 假如遇到冲突也让 git 强制执行
 
-- `--index-filter` 选项指定重写的时候应该执行什么命令，要执行的命令紧跟在它的后面，在这里就是 `git rm --cached --ignore-unmatch password.txt` ，让 git 删除掉缓存的文件，如果有匹配的话
+* `--index-filter` 选项指定重写的时候应该执行什么命令，要执行的命令紧跟在它的后面，在这里就是 `git rm --cached --ignore-unmatch password.txt` ，让 git 删除掉缓存的文件，如果有匹配的话
 
-- `--prune-empty` 选项告诉 git，如果因为重写导致某些 commit 变成了空（比如修改的文件全部被删除），那么忽略掉这个 commit
+* `--prune-empty` 选项告诉 git，如果因为重写导致某些 commit 变成了空（比如修改的文件全部被删除），那么忽略掉这个 commit
 
-- `-tag-name-filter` 表示对每一个 tag 如何重命名，重命名的命令紧跟在后面，当前的 tag 名会从标注输入送给后面的命令，用 cat 就表示保持 tag 名不变
+* `-tag-name-filter` 表示对每一个 tag 如何重命名，重命名的命令紧跟在后面，当前的 tag 名会从标注输入送给后面的命令，用 cat 就表示保持 tag 名不变
 
+::: warning
+1: 此操作会修改有关的commit hashID，谨慎操作！
+
+2：执行完命令，一定要使用强制推送 `git push -f` ，切记不要 `git pull` , 否则会出现两份同样的commit。
+:::
 
 > 其他文献：<a href="https://www.jianshu.com/p/780161d32c8e" target="_blank">彻底删除 git 中没用的大文件</a>
