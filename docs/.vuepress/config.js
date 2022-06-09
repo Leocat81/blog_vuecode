@@ -142,7 +142,8 @@ module.exports = {
           "vueguide/EventBus",
           "vueguide/scrollthrough",
           "vueguide/MultiPage",
-          "vueguide/key"
+          "vueguide/key",
+          "vueguide/element"
         ],
       },
       {
