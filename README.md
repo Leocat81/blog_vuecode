@@ -10,7 +10,7 @@
 🌈 Site
 
 线上预览地址：
-<a href="http://pipepandafeng.gitee.io/pipepandafeng" target="_blank">http://pipepandafeng.gitee.io/pipepandafeng</a>
+<a href="http://180.76.109.184" target="_blank">http://180.76.109.184</a>
 
 🦄 Usage
 
