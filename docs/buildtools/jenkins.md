@@ -56,7 +56,11 @@ $ vi initialAdminPassword
 - 安装`Nodejs`,`Gitee` plugins
 - 重启`jenkins`
 
+## 安装nginx 
 
+`docker run --name my-nginx -p 80:80 -v /home/blogs:/home/blogs -d nginx`
+
+`docker cp /home/nginx/conf.d containerID:/etc/nginx/conf.d`
 
  ## 一些问题
 
