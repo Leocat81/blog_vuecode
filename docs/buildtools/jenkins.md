@@ -53,8 +53,47 @@ $ vi initialAdminPassword
 ```
 - 设置密码
 - 安装推荐插件
-- 安装`Nodejs`,`Gitee` plugins
+- 安装`Nodejs`
+  
+  >[nodejs安装后执行打包异常](./jenkins.md#一些问题)
+
+
+- `Gitee`
+- `Publish over SSH` plugins
+  
 - 重启`jenkins`
+
+## 新建任务
+
+- 配置源码管理
+  
+- 构建触发库 
+  
+  1. 勾选`Gitee webhook`触发构建
+  2. 生成`Gitee webhook密码`并填写到自己的gitee项目设置中
+
+- 构建环境
+  
+  1. `Provide Node & npm bin/ folder to PATH` 勾选系统配置中的`nodejs` (已在jenkins系统管理中配置成功)
+
+- 构建
+  
+  1. 执行自己的构建命令
+  
+  ```sh
+     npm config set registry https://registry.npmmirror.com
+     npm install --verbose
+     npm run build 
+  ```
+  2. Send files or execute commands over SSH 上传构建好的包到服务器
+   > 此处需要在`jenkins系统管理`中将`Publish over SSH`配置好，此处选择需要上传的文件即可，注意文件匹配规则！
+
+   ```sh
+   Source files: **/docs/.vuepress/dist/**
+   Remove prefix: /docs/.vuepress/dist
+   ```
+- 保存配置
+
 
 ## 安装nginx 
 
