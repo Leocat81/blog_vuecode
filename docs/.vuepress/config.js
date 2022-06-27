@@ -185,6 +185,7 @@ module.exports = {
           "buildtools/",
           "buildtools/npmscripts",
           "buildtools/npmlink",
+          "buildtools/jenkins"
         ],
       },
       {
