@@ -87,7 +87,6 @@ export default {
 };
 </script>
 <style scoped>
-/* @import url(); 引入css类 */
 .dialog__wrapper {
   width: 100%;
   height: 100%;
