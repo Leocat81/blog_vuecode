@@ -21,7 +21,7 @@
 <script>
 import { Toast } from "zen-toast";
 import BScroll from "better-scroll";
-import Vue from "vue";
+import Vue from "Vue";
 Vue.use(Toast);
 export default {
   data() {
