@@ -97,6 +97,8 @@ $ vi initialAdminPassword
 
 ## 安装nginx 
 
+- 拉去镜像
+
 `docker run --name my-nginx -p 80:80 -v /home/blogs:/home/blogs -d nginx`
 
 `docker cp /home/nginx/conf.d containerID:/etc/nginx/conf.d`
