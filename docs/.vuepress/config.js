@@ -49,7 +49,7 @@ module.exports = {
     ],
     ["autometa", autometa_options],
     "vuepress-plugin-baidu-autopush",
-    /* 两个插件只能选一个 */
+    /* 两个插件只能选一个, */
     [
       "vuepress-plugin-helper-live2d",
       {
