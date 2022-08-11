@@ -153,6 +153,7 @@ module.exports = {
           "css3guide/BFC",
           "css3guide/flex",
           "css3guide/margin",
+          "css3guide/WaterFall"
         ],
       },
       {
