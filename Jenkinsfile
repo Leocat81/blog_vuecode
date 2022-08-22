@@ -5,41 +5,26 @@ pipeline {
         }
     }
     stages {
-    //     stage('下载依赖包') {
-    //         steps {
-    //               sh '''
-    //                     yarn install
-    //                  '''
-    //         }
-    //     }
-        //    stage('打包构建') {
-        //     steps {
-        //            sh '''
-        //                 yarn build
-        //               '''
-        //     }
-        //    }
-            stage('安装zip') {
-                steps {
+        stage('下载依赖包') {
+            steps {
+                  sh '''
+                        yarn install
+                     '''
+            }
+        }
+           stage('打包构建') {
+            steps {
                    sh '''
-                       # 将系统升级到新版本
-                       apt-get dist-upgrade
-                       # 将系统升级到新版本
-                       apt-get  upgrade
-                       apt-get install zip
-                       zip -v
+                        yarn build
                       '''
             }
+           }
+            stage('整理构建包') {
+                steps {
+sshPublisher(publishers: [sshPublisherDesc(configName: '180.76.109.184', transfers: [sshTransfer(cleanRemote: false, excludes: '', execCommand: '''cd /home/project/blog
+rm -rf dist
+unzip blog.zip''', execTimeout: 120000, flatten: false, makeEmptyDirs: false, noDefaultExcludes: false, patternSeparator: '[, ]+', remoteDirectory: 'blog', remoteDirectorySDF: false, removePrefix: '/docs/.vuepress', sourceFiles: '**/docs/.vuepress/blog.zip')], usePromotionTimestamp: false, useWorkspaceInPromotion: false, verbose: false)])
             }
-        //     stage('整理构建包') {
-        //         steps {
-        //            sh '''
-        //                   cd ./docs/.vuepress/dist
-        //                   zip -r blog.zip ./**
-        //                   # 删除 除压缩依赖包以外的包
-        //                   rm -rf dist
-        //               '''
-        //     }
-        //    }
+           }
      }
 }
