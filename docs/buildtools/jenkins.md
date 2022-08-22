@@ -118,5 +118,7 @@ $ vi initialAdminPassword
      `node -v`
   5. 去掉配置步骤中的软链
 
-- `如何在node docker 镜像中使用zip命令`
+- 如何在`node docker` 镜像中使用`zip命令`
+- 部署成功与否都发送邮件通知
+
   
