@@ -22,7 +22,8 @@ pipeline {
             stage('安装zip') {
                 steps {
                    sh '''
-                       apt install -y zip
+                       apt-get upgrade
+                       apt-get install zip
                        zip -v
                       '''
             }
