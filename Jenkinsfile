@@ -4,7 +4,7 @@ pipeline {
             image 'node:14.19.3'
         }
     }
-    // stages {
+    stages {
     //     stage('下载依赖包') {
     //         steps {
     //               sh '''
