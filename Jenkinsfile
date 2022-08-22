@@ -26,6 +26,7 @@ pipeline {
                        zip -v
                       '''
             }
+            }
             stage('整理构建包') {
                 steps {
                    sh '''
@@ -34,7 +35,6 @@ pipeline {
                           # 删除 除压缩依赖包以外的包
                           rm -rf dist
                       '''
-            }
             }
            }
      }
