@@ -22,7 +22,10 @@ pipeline {
             stage('安装zip') {
                 steps {
                    sh '''
-                       apt-get -y upgrade
+                       # 将系统升级到新版本
+                       apt-get dist-upgrade
+                       # 将系统升级到新版本
+                       apt-get  upgrade
                        apt-get install zip
                        zip -v
                       '''
