@@ -117,4 +117,6 @@ $ vi initialAdminPassword
   4. 确认下载成功
      `node -v`
   5. 去掉配置步骤中的软链
+
+- `如何在node docker 镜像中使用zip命令`
   
