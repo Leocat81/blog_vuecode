@@ -12,9 +12,9 @@
   "author": "pipe",
   "license": "ISC",
   "devDependencies": {
-    "vuepress": "^1.8.2",
-    "vuepress-plugin-autometa": "^0.1.13",
-    "vuepress-plugin-baidu-autopush": "^1.0.1"
+    "vuepress": "~1.8.2",
+    "vuepress-plugin-autometa": "~0.1.13",
+    "vuepress-plugin-baidu-autopush": "~1.0.1"
   },
   "dependencies": {
     "@better-scroll/core": "^2.4.2",
@@ -22,8 +22,8 @@
     "@vssue/api-github-v3": "^1.4.7",
     "@vssue/vuepress-plugin-vssue": "^1.4.7",
     "better-scroll": "^2.4.2",
-    "dotenv": "^10.0.0",
-    "pixi.js": "^6.1.2",
+    "dotenv": "~10.0.0",
+    "pixi.js": "~6.1.2",
     "vuepress-plugin-gotop-plus": "^1.0.4",
     "vuepress-plugin-helper-live2d": "^1.0.2",
     "zen-toast": "^1.0.0"

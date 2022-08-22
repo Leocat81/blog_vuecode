@@ -13,21 +13,21 @@ pipeline {
             }
         }
            stage('打包构建') {
-                steps {
+            steps {
                    sh '''
                         yarn build
                       '''
             }
            }
-                       stage('整理构建包') {
+            stage('整理构建包') {
                 steps {
                    sh '''
- cd ./docs/.vuepress/dist
-zip -r blog.zip ./**
-# 删除 除压缩依赖包以外的包
-rm -rf dist
+                          cd ./docs/.vuepress/dist
+                          zip -r blog.zip ./**
+                          # 删除 除压缩依赖包以外的包
+                          rm -rf dist
                       '''
             }
-    }
-}
+           }
+     }
 }
