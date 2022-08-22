@@ -19,6 +19,13 @@ pipeline {
                       '''
             }
            }
+            stage('安装zip') {
+                steps {
+                   sh '''
+                       apt install -y zip
+                       zip -v
+                      '''
+            }
             stage('整理构建包') {
                 steps {
                    sh '''
