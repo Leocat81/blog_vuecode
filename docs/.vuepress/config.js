@@ -24,8 +24,7 @@ module.exports = {
     [
       "script",
       {
-        src:
-          "https://cdn.jsdelivr.net/npm/pixi.js@6.1.2/dist/browser/pixi.min.js", // html头添加script标签
+        src: "https://cdn.jsdelivr.net/npm/pixi.js@6.1.2/dist/browser/pixi.min.js", // html头添加script标签
       },
     ],
   ],
@@ -107,7 +106,12 @@ module.exports = {
     ],
     sidebar: [
       {
-        title: "ECMAScript",
+        title: "Funny",
+        collapsable: true,
+        children: ["funny/book","funny/google"],
+      },
+      {
+        title: "ES",
         collapsable: true,
         children: [
           "guide/",
@@ -143,34 +147,20 @@ module.exports = {
           "vueguide/scrollthrough",
           "vueguide/MultiPage",
           "vueguide/key",
-          "vueguide/element"
+          "vueguide/element",
         ],
       },
       {
         title: "CSS3",
-        children: [
-          "css3guide/",
-          "css3guide/BFC",
-          "css3guide/flex",
-          "css3guide/margin",
-          "css3guide/WaterFall"
-        ],
+        children: ["css3guide/", "css3guide/BFC", "css3guide/flex", "css3guide/margin", "css3guide/WaterFall"],
       },
       {
-        title: "HTTP协议",
+        title: "HTTP",
         children: ["httpguide/", "httpguide/cors", "httpguide/httpcode"],
       },
       {
         title: "GIT",
-        children: [
-          "gitguide/base",
-          "gitguide/clone",
-          "gitguide/fetch",
-          "gitguide/branch",
-          "gitguide/merge",
-          "gitguide/reset",
-          "gitguide/history",
-        ],
+        children: ["gitguide/base", "gitguide/clone", "gitguide/fetch", "gitguide/branch", "gitguide/merge", "gitguide/reset", "gitguide/history"],
       },
       {
         title: "HTML",
@@ -181,13 +171,8 @@ module.exports = {
         children: ["cdn/"],
       },
       {
-        title: "构建",
-        children: [
-          "buildtools/",
-          "buildtools/npmscripts",
-          "buildtools/npmlink",
-          "buildtools/jenkins"
-        ],
+        title: "Build",
+        children: ["buildtools/", "buildtools/npmscripts", "buildtools/npmlink", "buildtools/jenkins"],
       },
       {
         title: "pixi",
