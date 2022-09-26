@@ -172,7 +172,7 @@ module.exports = {
       },
       {
         title: "Build",
-        children: ["buildtools/", "buildtools/npmscripts", "buildtools/npmlink", "buildtools/jenkins"],
+        children: ["buildtools/", "buildtools/npmscripts", "buildtools/npmlink", "buildtools/jenkins","buildtools/deploy"],
       },
       {
         title: "pixi",
