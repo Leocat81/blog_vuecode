@@ -5,6 +5,11 @@ pipeline {
         }
     }
     stages {
+        stage('删除工作空间'){
+            steps {
+              cleanWs(patterns: [[pattern: 'node_modules/**', type: 'INCLUDE']])
+            }
+        }
         stage('下载依赖包') {
             steps {
                   sh '''
