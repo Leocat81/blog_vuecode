@@ -16,7 +16,7 @@ pipeline {
             steps {
                    sh '''
                         yarn build
-                        cd /docs/.vuepress/dist
+                        cd docs/.vuepress/dist
                         tar -cvzf dist.tar.gz *
                       '''
             }
