@@ -9,3 +9,7 @@ pageClass: custom-page-class
 ---
 
 <Vssue :title="$title" />
+
+<div style="font-size:14px;display:flex;justify-content: center;align-items: center;height:100px">
+   <a href="http://beian.miit.gov.cn" target=”_blank” style="color:black">Copyright © 2022 蜀ICP备2022022647号</a>
+</div>
