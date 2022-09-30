@@ -5,9 +5,9 @@ pipeline {
         }
     }
     stages {
-        stage('删除工作空间'){
+        stage('加载配置文件'){
             steps {
-              cleanWs(patterns: [[pattern: 'node_modules/**', type: 'INCLUDE']])
+            configFileProvider([configFile(fileId: '367a28d8-0c00-4a4d-a52e-4c17347e73c2', targetLocation: '.env')]) {}
             }
         }
         stage('下载依赖包') {
