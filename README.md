@@ -26,6 +26,7 @@
 ⚠️ Warning
 
 - 1:因为@vssue/api-gitee-v5 包存在问题，所以 npm 下载@vssue/api-gitee-v5 包后，需要去 node_modules 里@vssue/api-gitee-v5/lib/index.js
+  
 
 ```js
 const { data } = await this.$http.post(originalURL, {  //proxyURL换为originalURL
@@ -38,9 +39,13 @@ const { data } = await this.$http.post(originalURL, {  //proxyURL换为originalU
  return data.access_token;
 }
 ```
+
+该问题已解决，更新`@vssue/vuepress-plugin-vssue 1.4.8` 即可解决。
+
 - 2：应采用了`dotenv`读取配置文件，所以克隆代码后需要在本地新建文件`.env`,然后填写gitee第三方应用的`clientId`,`clientSecret`。
 
 - 3: 需采用https部署
+- 4：CI/CD 部署时，需提供配置文件`.env`，文件里需要配置`gitee`的`clientId`,`clientSecret`,否则无法实现评论功能。
 
 🧱 Contribute
 
