@@ -35,7 +35,7 @@ pipeline {
                 makeEmptyDirs: false, noDefaultExcludes: false,
                 patternSeparator: '[, ]+', remoteDirectory: 'blog',
                 remoteDirectorySDF: false, removePrefix: '/docs/.vuepress/dist',
-                sourceFiles: '/docs/.vuepress/dist/dist.tar.gz')], usePromotionTimestamp: false, 
+                sourceFiles: 'docs/.vuepress/dist/dist.tar.gz')], usePromotionTimestamp: false, 
                 useWorkspaceInPromotion: false, verbose: false)])
             }
         }
