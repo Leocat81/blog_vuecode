@@ -16,7 +16,7 @@ module.exports = {
       lang: "zh-CN",
     },
   },
-  base: "/blog",
+  base: "/blog/",
   title: "pipe的笔记", // 设置网站标题
   description: "欢迎来到我的博客",
   head: [
