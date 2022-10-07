@@ -108,7 +108,7 @@ module.exports = {
       {
         title: "Funny",
         collapsable: true,
-        children: ["funny/book","funny/google"],
+        children: ["funny/book", "funny/google", "funny/curl"],
       },
       {
         title: "ES",
@@ -172,7 +172,7 @@ module.exports = {
       },
       {
         title: "Build",
-        children: ["buildtools/", "buildtools/npmscripts", "buildtools/npmlink", "buildtools/jenkins","buildtools/deploy"],
+        children: ["buildtools/", "buildtools/npmscripts", "buildtools/npmlink", "buildtools/jenkins", "buildtools/deploy"],
       },
       {
         title: "pixi",
