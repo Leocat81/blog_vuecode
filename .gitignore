@@ -6,3 +6,4 @@ docs/.vuepress/dist/**
 .temp/
 .env
 
+**/.DS_Store
