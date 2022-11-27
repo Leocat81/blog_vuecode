@@ -87,28 +87,15 @@ module.exports = {
     repoLabel: "查看源码",
     nav: [
       {
-        text: "深入理解 TypeScript",
-        link: "https://jkchao.github.io/typescript-book-chinese",
-      },
-      { text: "测试库集合", link: "https://testing-library.com" },
-      { text: "面试宝典", link: "https://github.com/yisainan/web-interview" },
-      { text: "vue原理讲解", link: "http://hcysun.me/vue-design/zh" },
-      {
-        text: "vue源码解析",
-        link: "https://ustbhuangyi.github.io/vue-analysis",
-      },
-      { text: "前端工匠", link: "https://github.com/ljianshu/Blog" },
-      { text: "typescript入门教程", link: "https://ts.xcatliu.com/" },
-      {
-        text: "源码学习视频",
-        link: "https://www.bilibili.com/video/BV1LE411e7HE",
+        text: "gitignore",
+        link: "https://www.toptal.com/developers/gitignore",
       },
     ],
     sidebar: [
       {
         title: "Funny",
         collapsable: true,
-        children: ["funny/book", "funny/google", "funny/curl","funny/npmlink","funny/npmscripts","funny/nginx"],
+        children: ["funny/book", "funny/google", "funny/curl", "funny/npmlink", "funny/npmscripts", "funny/nginx"],
       },
       {
         title: "ES",
@@ -152,7 +139,7 @@ module.exports = {
       },
       {
         title: "CSS3",
-        children: ["css3guide/", "css3guide/BFC", "css3guide/flex", "css3guide/margin", "css3guide/WaterFall","css3guide/BEM"],
+        children: ["css3guide/", "css3guide/BFC", "css3guide/flex", "css3guide/margin", "css3guide/WaterFall", "css3guide/BEM"],
       },
       {
         title: "HTTP",
