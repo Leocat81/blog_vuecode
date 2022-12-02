@@ -90,6 +90,10 @@ module.exports = {
         text: "gitignore",
         link: "https://www.toptal.com/developers/gitignore",
       },
+      {
+        text: "google字体",
+        link: "https://fonts.google.com",
+      },
     ],
     sidebar: [
       {
