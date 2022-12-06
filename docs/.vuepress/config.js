@@ -99,7 +99,7 @@ module.exports = {
       {
         title: "Funny",
         collapsable: true,
-        children: ["funny/book", "funny/google", "funny/curl", "funny/npmlink", "funny/npmscripts", "funny/nginx"],
+        children: ["funny/book", "funny/google", "funny/curl", "funny/npmlink", "funny/npmscripts", "funny/nginx", "funny/crawler"],
       },
       {
         title: "ES",
