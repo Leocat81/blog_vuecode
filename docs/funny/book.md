@@ -14,6 +14,7 @@
 
 * [深入理解 TypeScript](https://jkchao.github.io/typescript-book-chinese)
 * [typescript入门教程](https://ts.xcatliu.com)
+* [TypeScript 类型体操姿势合集\<type-challenges\>](https://github.com/type-challenges/type-challenges)
 
 ## 测试
 
