@@ -23,6 +23,7 @@ pipeline {
                         yarn build
                         cd docs/.vuepress/dist
                         tar -cvzf dist.tar.gz *
+                        yarn cache dir
                       '''
             }
         }
