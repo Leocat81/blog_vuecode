@@ -110,5 +110,5 @@ git rebase master
 
 <h3>🧯 git rebase -i HEAD~</h3>
 
-* [修改已经 push 的 commit message](https://www.jianshu.com/p/ec45ce13289f)
-* 使用`git commit --amend`
+<!-- * [修改已经 push 的 commit message](https://www.jianshu.com/p/ec45ce13289f)
+* 使用`git commit --amend` -->

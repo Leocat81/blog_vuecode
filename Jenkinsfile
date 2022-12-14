@@ -7,7 +7,7 @@ pipeline {
     stages {
         stage('加载配置文件'){
             steps {
-            configFileProvider([configFile(fileId: '367a28d8-0c00-4a4d-a52e-4c17347e73c2', targetLocation: '.env')]) {}
+              configFileProvider([configFile(fileId: '367a28d8-0c00-4a4d-a52e-4c17347e73c2', targetLocation: '.env')]) {}
             }
         }
         stage('下载依赖包') {
@@ -25,6 +25,19 @@ pipeline {
                         tar -cvzf dist.tar.gz *
                         yarn cache dir
                       '''
+            }
+        }
+        stage('删除之前的依赖包'){
+            steps {
+            sshPublisher(publishers: [sshPublisherDesc(configName: '180.76.109.184',
+             transfers: [sshTransfer(cleanRemote: false, excludes: '', execCommand: 
+             '''
+             rm -rf /home/project/blog/**
+             '''
+             ,
+              execTimeout: 120000, flatten: false, makeEmptyDirs: false, noDefaultExcludes: false, 
+              patternSeparator: '[, ]+', remoteDirectory: '', remoteDirectorySDF: false, removePrefix: '', 
+              sourceFiles: '')], usePromotionTimestamp: false, useWorkspaceInPromotion: false, verbose: false)])
             }
         }
         stage('上传构建包') {
