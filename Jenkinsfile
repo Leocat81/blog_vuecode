@@ -23,7 +23,6 @@ pipeline {
                         yarn build
                         cd docs/.vuepress/dist
                         tar -cvzf dist.tar.gz *
-                        split -b 3M -d -a 1 dist.tar.gz dist.tar.gz.
                       '''
             }
         }
@@ -54,7 +53,7 @@ pipeline {
                 makeEmptyDirs: false, noDefaultExcludes: false,
                 patternSeparator: '[, ]+', remoteDirectory: 'blog',
                 remoteDirectorySDF: false, removePrefix: '/docs/.vuepress/dist',
-                sourceFiles: 'docs/.vuepress/dist/dist.tar.gz.*')], usePromotionTimestamp: false, 
+                sourceFiles: 'docs/.vuepress/dist/dist.tar.gz')], usePromotionTimestamp: false, 
                 useWorkspaceInPromotion: false, verbose: false)])
             }
         }
