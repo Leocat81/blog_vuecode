@@ -1,6 +1,6 @@
 ---
 home: true
-heroImage: /img/logo2.png
+heroImage: /img/logo2.webp
 heroText: Hi, 我是 pipe
 tagline: 欢迎大家来到我的博客
 actionText: " 开始阅读  "
