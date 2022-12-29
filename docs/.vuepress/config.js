@@ -148,7 +148,7 @@ module.exports = {
       },
       {
         title: "CSS3",
-        children: ["css3guide/", "css3guide/BFC", "css3guide/flex", "css3guide/margin", "css3guide/WaterFall", "css3guide/BEM"],
+        children: ["css3guide/", "css3guide/BFC", "css3guide/flex", "css3guide/margin", "css3guide/WaterFall", "css3guide/BEM","css3guide/ResponsiveImages"],
       },
       {
         title: "HTTP",
