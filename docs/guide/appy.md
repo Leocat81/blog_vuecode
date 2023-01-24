@@ -84,7 +84,7 @@ let min = Math.min.apply(null, numbers);
 
 apply 的一个巧妙的用处, 可以将一个类数组数组默认的转换为一个参数列表 `[param1,param2,param3]` 转换为 `param1,param2,param3` 这个如果让我们用程序来实现将数组的每一个项, 来装换为参数的列表, 可能都得费一会功夫, 借助 apply 的这点特性, 所有就有了以上的特殊用法。
 
-* 一些其他的用法（将数组转换为对象）
+* 一些其他的用法（将数组转换为下标对象）
 
 ```js
 const arr = ['niko', 'simple', 'device']
