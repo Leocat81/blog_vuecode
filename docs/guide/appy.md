@@ -158,10 +158,10 @@ console.log(new Food('cheese', 5).name);
 
 ### 参考文献
 
-* [Function.prototype.call(): MDN](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Function/call)
+* [Function.prototype.apply(): MDN](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Function/apply)
 
 * [Function.prototype.bind(): MDN](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Function/bind)
 
-* [Function.prototype.apply(): MDN](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Function/apply)
+* [Function.prototype.call(): MDN](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Function/call)
 
 * [\_\_\_\_chen. Js apply 方法详解, 及其 apply()方法的妙用: 博客园](https://www.cnblogs.com/chenhuichao/p/8493095.html)
