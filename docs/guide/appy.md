@@ -84,11 +84,41 @@ let min = Math.min.apply(null, numbers);
 
 apply 的一个巧妙的用处, 可以将一个类数组数组默认的转换为一个参数列表 `[param1,param2,param3]` 转换为 `param1,param2,param3` 这个如果让我们用程序来实现将数组的每一个项, 来装换为参数的列表, 可能都得费一会功夫, 借助 apply 的这点特性, 所有就有了以上的特殊用法。
 
+* 一些其他的用法（将数组转换为对象）
+
+```js
+const arr = ['niko', 'simple', 'device']
+let a = {};
+Array.prototype.push.apply(a, arr);
+//@ts-ignore
+console.log(a); // 输出: {0: 'niko', 1: 'simple', 2: 'device', length: 3}
+```
+
 ## bind
 
 ### 介绍
 
 MDN介绍：bind() 方法创建一个新的函数，在 bind() 被调用时，这个新函数的 this 被指定为 bind() 的第一个参数，而其余参数将作为新函数的参数，供调用时使用。
+
+实现Bind
+
+```js
+Function.prototype.bind = function(context) {
+    var self = this; // 保存原函数
+    return function() { // 返回一个新的函数
+        return self.apply(context, arguments);
+        // 执行新的函数的时候，会把之前传入的 context // 当作新函数体内的 this
+    }
+};
+var obj = {
+    name: 'sven'
+};
+var func = function() {
+    alert(this.name);
+}.bind(obj);
+func();
+// 输出:sven
+```
 
 bind函数使用方法有三种
 
