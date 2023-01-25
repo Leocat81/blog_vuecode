@@ -129,6 +129,7 @@ module.exports = {
           "guide/ClassDesc",
           "guide/BitOperation",
           "guide/module",
+          "guide/HigherOrder"
         ],
       },
       {
