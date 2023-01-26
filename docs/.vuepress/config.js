@@ -133,6 +133,10 @@ module.exports = {
         ],
       },
       {
+        title: "Build",
+        children: ["buildtools/", "buildtools/jenkins", "buildtools/deploy","buildtools/sentry"],
+      },
+      {
         title: "VUE",
         children: [
           "vueguide/",
@@ -166,10 +170,6 @@ module.exports = {
       {
         title: "CDN",
         children: ["cdn/"],
-      },
-      {
-        title: "Build",
-        children: ["buildtools/", "buildtools/jenkins", "buildtools/deploy"],
       },
       {
         title: "pixi",
