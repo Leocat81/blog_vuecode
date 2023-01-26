@@ -12,7 +12,7 @@ Sentry 是一个流行的错误监控平台，帮助开发者分析，修复问�
 
 ### 准备工作
 
-1. 环境需要:
+#### 环境需要:
 
 * Docker 19.03.6+
 * Compose 1.28.0+
@@ -22,9 +22,27 @@ Sentry 是一个流行的错误监控平台，帮助开发者分析，修复问�
 * git 1.8.0.0+
 * python 3
 
-`docker` , `git` , `python3` , 安装教程在此篇不做讲述。(tips：git, python3 使用yum安装即可)
+---
 
-2. 项目准备
+1. `docker`  `docker compose` 安装
+
+  + [docker 安装](/buildtools/jenkins.html#安装-docker)
+
+  + [docker compose 安装](https://www.runoob.com/docker/docker-compose.html)
+
+> `docker`  `docker compose` 安装完成后启动docker!。
+
+```bash
+sudo systemctl start docker
+```
+
+2. `git`,`python3`安装
+
+```bash
+yum install git python3
+```
+
+#### 项目准备
 
 ```bash
 /* 克隆项目 */
@@ -34,7 +52,7 @@ cd self-hosted
 git checkout 22.11.0
 ```
 
-3. 安装项目
+#### 安装项目
 
 ```bash
 ./install.sh
