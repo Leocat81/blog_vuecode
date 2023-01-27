@@ -10,9 +10,7 @@ Sentry 是一个流行的错误监控平台，帮助开发者分析，修复问�
 
 主要采用docker实现部署。
 
-### 准备工作
-
-#### 环境需要:
+### 环境需要:
 
 * Docker 19.03.6+
 * Compose 1.28.0+
@@ -42,7 +40,7 @@ sudo systemctl start docker
 yum install git python3
 ```
 
-#### 项目准备
+### 项目准备
 
 ```bash
 /* 克隆项目 */
@@ -52,12 +50,151 @@ cd self-hosted
 git checkout 22.11.0
 ```
 
-#### 安装项目
+### 配置docker镜像加速
+
+此处尽量配置docker镜像加速，不然拉取资源速度很慢
+
+[推荐使用阿里云镜像加速链接](https://cr.console.aliyun.com/cn-hangzhou/instances/mirrors)
+
+### 安装项目
+
+配置完镜像加速后，即可直接执行shell脚本命令
 
 ```bash
 ./install.sh
+/* 如果 git 链接不稳，可以跳过 commit 检查 */
+./install.sh --skip-commit-check
 /* 提示权限不足可以执行下面这条命令对文件夹赋权 */
 chmod 777 ./*
+```
+
+等几分钟。看到下图就是安装完成了
+
+![RUNOOB 图标](../assets/sentry_1.png)
+
+选择 `Y` ，创建一个账号和密码
+
+> 不小心点了 n 咋办?
+
+重新运行下面的命令，会在让你输入一个账户的
+
+```bash
+docker - compose run--rm web upgrade
+```
+
+### 运行docker
+
+创建账号和密码完成后，项目的基本配置就已经结束了，接下来直接运行项目即可
+
+```bash
+docker-compose up -d
+```
+
+然后浏览器访问 **http://{ip}:9000** , IP 改成自己服务器的 ip 地址。默认是 9000 端口
+
+![RUNOOB 图标](../assets/sentry_2.png)
+
+## Vue3.0 集成 sentry
+
+### 下载依赖
+
+* @sentry/vue
+* @sentry/tracing
+* vite-plugin-sentry
+
+```bash
+yarn add @sentry/vue @sentry/tracing 
+```
+
+### 引入依赖
+
+在 `/src/mian.ts` 中引入依赖包，此处可查看[sentry 官方教程](https://docs.sentry.io/platforms/javascript/guides/vue/#vue-3)
+
+```js
+import {
+    createApp
+} from "vue";
+import {
+    createRouter
+} from "vue-router";
+import * as Sentry from "@sentry/vue";
+import {
+    BrowserTracing
+} from "@sentry/tracing";
+
+const app = createApp({
+    // ...
+});
+const router = createRouter({
+    // ...
+});
+
+Sentry.init({
+    app,
+    dsn: "https://84e093ad22194ca8ab6eaf7a8a0d9087@o4504565504999424.ingest.sentry.io/4504565506441216",
+    integrations: [
+        new BrowserTracing({
+            routingInstrumentation: Sentry.vueRouterInstrumentation(router),
+            tracePropagationTargets: ["localhost", "my-site-url.com", /^\//],
+        }),
+    ],
+    // Set tracesSampleRate to 1.0 to capture 100%
+    // of transactions for performance monitoring.
+    // We recommend adjusting this value in production
+    tracesSampleRate: 1.0,
+});
+
+app.use(router);
+app.mount("#app");
+```
+
+### 生产模式上传SourceMap 
+
+在生产环境中上传SourceMap以方便定位出现问题的源码位置, 此处可查看[官方配置教程](https://www.npmjs.com/package/vite-plugin-sentry)
+
+```bash
+/* 安装依赖 */
+yarn add vite-plugin-sentry
+```
+
+```js
+// vite.config.ts
+// other declarations
+import type {
+    ViteSentryPluginOptions
+} from 'vite-plugin-sentry'
+import viteSentry from 'vite-plugin-sentry'
+
+/*
+  Configure sentry plugin
+*/
+const sentryConfig: ViteSentryPluginOptions = {
+    url: 'https://sentry.io',
+    authToken: '<SECRET_TOKEN_HERE>',
+    org: 'my_org',
+    project: 'my_project',
+    release: '1.0',
+    deploy: {
+        env: 'production'
+    },
+    setCommits: {
+        auto: true
+    },
+    sourceMaps: {
+        include: ['./dist/assets'],
+        ignore: ['node_modules'],
+        urlPrefix: '~/assets'
+    }
+}
+
+export default defineConfig({
+    // other options
+    plugins: [viteSentry(sentryConfig)],
+    build: {
+        // required: tells vite to create source maps
+        sourcemap: true,
+    }
+})
 ```
 
 ## 参考文献
