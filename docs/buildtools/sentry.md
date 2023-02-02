@@ -2,13 +2,13 @@
 
 Sentry 是一个流行的错误监控平台，帮助开发者分析，修复问题，优化代码的性能。可以进行错误捕获，问题追踪，并提供问题详情，适用于多个平台，多种语言。
 
-本章主要介绍如何私有化部署sentry, 以及搭建sentry环境，实现前端监控平台的搭建。
+本章主要介绍如何私有化部署 sentry, 以及搭建 sentry 环境，实现前端监控平台的搭建。
 
-## 私有化部署sentry
+## 私有化部署 sentry
 
 > [项目地址](https://github.com/getsentry/self-hosted)
 
-主要采用docker实现部署。
+主要采用 docker 实现部署。
 
 ### 环境需要:
 
@@ -22,13 +22,13 @@ Sentry 是一个流行的错误监控平台，帮助开发者分析，修复问�
 
 ---
 
-1. `docker`  `docker compose` 安装
+1. `docker` `docker compose` 安装
 
-  + [docker 安装](/buildtools/jenkins.html#安装-docker)
+* [docker 安装](/buildtools/jenkins.html#安装-docker)
 
-  + [docker compose 安装](https://www.runoob.com/docker/docker-compose.html)
+* [docker compose 安装](https://www.runoob.com/docker/docker-compose.html)
 
-> `docker`  `docker compose` 安装完成后启动docker!。
+> `docker`  `docker compose` 安装完成后启动 docker!。
 
 ```bash
 sudo systemctl start docker
@@ -50,15 +50,15 @@ cd self-hosted
 git checkout 22.11.0
 ```
 
-### 配置docker镜像加速
+### 配置 docker 镜像加速
 
-此处尽量配置docker镜像加速，不然拉取资源速度很慢
+此处尽量配置 docker 镜像加速，不然拉取资源速度很慢
 
 [推荐使用阿里云镜像加速链接](https://cr.console.aliyun.com/cn-hangzhou/instances/mirrors)
 
 ### 安装项目
 
-配置完镜像加速后，即可直接执行shell脚本命令
+配置完镜像加速后，即可直接执行 shell 脚本命令
 
 ```bash
 ./install.sh
@@ -82,7 +82,7 @@ chmod 777 ./*
 docker - compose run--rm web upgrade
 ```
 
-### 运行docker
+### 运行 docker
 
 创建账号和密码完成后，项目的基本配置就已经结束了，接下来直接运行项目即可
 
@@ -103,7 +103,7 @@ docker-compose up -d
 * vite-plugin-sentry
 
 ```bash
-yarn add @sentry/vue @sentry/tracing 
+yarn add @sentry/vue @sentry/tracing
 ```
 
 ### 引入依赖
@@ -148,9 +148,9 @@ app.use(router);
 app.mount("#app");
 ```
 
-### 生产模式上传SourceMap 
+### 生产模式上传 SourceMap
 
-在生产环境中上传SourceMap以方便定位出现问题的源码位置, 此处可查看[官方配置教程](https://www.npmjs.com/package/vite-plugin-sentry)
+在生产环境中上传 SourceMap 以方便定位出现问题的源码位置, 此处可查看[官方配置教程](https://www.npmjs.com/package/vite-plugin-sentry)
 
 ```bash
 /* 安装依赖 */
@@ -162,35 +162,35 @@ yarn add vite-plugin-sentry
 // other declarations
 import type {
     ViteSentryPluginOptions
-} from 'vite-plugin-sentry'
-import viteSentry from 'vite-plugin-sentry'
+} from "vite-plugin-sentry";
+import viteSentry from "vite-plugin-sentry";
 
 /*
   Configure sentry plugin
 */
 const sentryConfig: ViteSentryPluginOptions = {
-    url: 'https://sentry.io',
-    authToken: '<SECRET_TOKEN_HERE>',
-    org: 'my_org',
-    project: 'my_project',
-    release: '1.0',
+    url: "https://sentry.io",
+    authToken: "<SECRET_TOKEN_HERE>",
+    org: "my_org",
+    project: "my_project",
+    release: "1.0",
     deploy: {
-        env: 'production'
+        env: "production",
     },
     setCommits: {
-        auto: true
+        auto: true,
     },
     sourceMaps: {
-        include: ['./dist/assets'],
-        ignore: ['node_modules'],
+        include: ["./dist/assets"],
+        ignore: ["node_modules"],
         /**
          * This sets an URL prefix at the beginning of all files.
          * This defaults to `~/` but you might want to set this to the full URL.
          * This is also useful if your files are stored in a sub folder. eg: url-prefix `~/static/js`.
          */
-        urlPrefix: '~/assets' // url前缀：该参数应设置为源码映射文件的url前缀。可参考下面注意事项
-    }
-}
+        urlPrefix: "~/assets", // url前缀：该参数应设置为源码映射文件的url前缀。可参考下面注意事项
+    },
+};
 
 export default defineConfig({
     // other options
@@ -198,33 +198,36 @@ export default defineConfig({
     build: {
         // required: tells vite to create source maps
         sourcemap: true,
-    }
-})
+    },
+});
 ```
 
-上传成功后，可在sentry平台 Project -> settings -> Source Maps 中查看SourceMap是否上传成功
+上传成功后，可在 sentry 平台 Project -> settings -> Source Maps 中查看 SourceMap 是否上传成功
 
 ![sourcemap](../assets/sentry_3.png)
 
-当看到soucemap确实上传成功后，并不代表源码映射已完成，可能此时看到的错误仍然无法准确的映射到源码。
+当看到 soucemap 确实上传成功后，并不代表源码映射已完成，可能此时看到的错误仍然无法准确的映射到源码。
 
-此处需要几个方面来排查，sentry也提供了一些工具来帮助我们验证和检查源码映射。[Sentry Validating Files](https://docs.sentry.io/platforms/javascript/guides/vue/sourcemaps/validating/)
+此处需要几个方面来排查，sentry 也提供了一些工具来帮助我们验证和检查源码映射。[Sentry Validating Files](https://docs.sentry.io/platforms/javascript/guides/vue/sourcemaps/validating/)
 
 ::: warning 注意事项
 其实最有可能出现映射异常的问题就是 `urlPrefix` 参数设置失败，下面用举例的方式来说明该参数如何配置：
 
-比如我们的js文件访问地址为：http://www.pipef.top/vue3admin/assets/index.73cac8e8.js
+比如我们的 js 文件访问地址为：http://www.pipef.top/vue3admin/assets/index.73cac8e8.js
 
 那么此处 `urlPrefix` 应该设置为 `~/vue3admin/assets`
 
 :::
 
-TODO: 配置ssl, 并解决User. IP不能正常展示问题
+TODO:
+
+* 配置 ssl, 并解决 User. IP 不能正常展示问题
+* 性能指标的一些专业术语解释
 
 ## 参考文献
 
-* [从零搭建Sentry](https://blog.csdn.net/maomaolaoshi/article/details/128203552)
+* [从零搭建 Sentry](https://blog.csdn.net/maomaolaoshi/article/details/128203552)
 
-* [sentry 官网VUE集成教程](https://docs.sentry.io/platforms/javascript/guides/vue/)
+* [sentry 官网 VUE 集成教程](https://docs.sentry.io/platforms/javascript/guides/vue/)
 
 * [vuejs 官网推荐](https://cn.vuejs.org/guide/best-practices/production-deployment.html#tracking-runtime-errors)
