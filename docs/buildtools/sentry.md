@@ -183,7 +183,12 @@ const sentryConfig: ViteSentryPluginOptions = {
     sourceMaps: {
         include: ['./dist/assets'],
         ignore: ['node_modules'],
-        urlPrefix: '~/assets'
+        /**
+         * This sets an URL prefix at the beginning of all files.
+         * This defaults to `~/` but you might want to set this to the full URL.
+         * This is also useful if your files are stored in a sub folder. eg: url-prefix `~/static/js`.
+         */
+        urlPrefix: '~/assets' // url前缀：该参数应设置为源码映射文件的url前缀。可参考下面注意事项
     }
 }
 
@@ -196,6 +201,25 @@ export default defineConfig({
     }
 })
 ```
+
+上传成功后，可在sentry平台 Project -> settings -> Source Maps 中查看SourceMap是否上传成功
+
+![sourcemap](../assets/sentry_3.png)
+
+当看到soucemap确实上传成功后，并不代表源码映射已完成，可能此时看到的错误仍然无法准确的映射到源码。
+
+此处需要几个方面来排查，sentry也提供了一些工具来帮助我们验证和检查源码映射。[Sentry Validating Files](https://docs.sentry.io/platforms/javascript/guides/vue/sourcemaps/validating/)
+
+::: warning 注意事项
+其实最有可能出现映射异常的问题就是 `urlPrefix` 参数设置失败，下面用举例的方式来说明该参数如何配置：
+
+比如我们的js文件访问地址为：http://www.pipef.top/vue3admin/assets/index.73cac8e8.js
+
+那么此处 `urlPrefix` 应该设置为 `~/vue3admin/assets`
+
+:::
+
+TODO: 配置ssl, 并解决User. IP不能正常展示问题
 
 ## 参考文献
 
