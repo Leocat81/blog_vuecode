@@ -1,10 +1,10 @@
 # 设计模式
 
-主要阅读[(图灵原创) 曾探 - JavaScript 设计模式与开发实践-人民邮电出版社 (2015)](/pdf/designpattern.pdf),其后将一些重点笔记记录如下
+主要阅读[(图灵原创) 曾探 - JavaScript 设计模式与开发实践-人民邮电出版社 (2015)](/pdf/designpattern.pdf), 其后将一些重点笔记记录如下
 
 ## 单例模式
 
-## 通用的惰性单例
+### 通用的惰性单例
 
 函数定义：
 
@@ -35,3 +35,5 @@ document.getElementById('loginBtn').onclick = function() {
     loginLayer.style.display = 'block';
 };
 ```
+
+## 迭代器模式
