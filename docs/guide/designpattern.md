@@ -49,7 +49,7 @@ func(); // 打印 1 2 3
 ## 单例模式
 
 单例模式作用：比如每次都保证最多一个弹窗打开出现在页面中。例如 `Vant Toast组件` 即被设计为了单例模式。
-[Vant Toast组件](https://vant-contrib.gitee.io/vant/v2/#/zh-CN/toast)
+[Vant Toast 组件](https://vant-contrib.gitee.io/vant/v2/#/zh-CN/toast)
 
 ### 通用的惰性单例
 
@@ -60,7 +60,7 @@ let getSingle = function(fn) {
     let result;
     return function() {
         return result || (result = fn.apply(this, arguments));
-    }
+    };
 };
 ```
 
@@ -68,18 +68,18 @@ let getSingle = function(fn) {
 
 ```js
 let createLoginLayer = function() {
-    let div = document.createElement('div');
-    div.innerHTML = '我是登陆浮窗';
-    div.style.display = 'none';
+    let div = document.createElement("div");
+    div.innerHTML = "我是登陆浮窗";
+    div.style.display = "none";
     document.body.appendChild(div);
     return div;
-}
+};
 
 let createSingleLoginLayer = getSingle(createLoginLayer);
 
-document.getElementById('loginBtn').onclick = function() {
+document.getElementById("loginBtn").onclick = function() {
     let loginLayer = createSingleLoginLayer();
-    loginLayer.style.display = 'block';
+    loginLayer.style.display = "block";
 };
 ```
 
@@ -90,6 +90,51 @@ document.getElementById('loginBtn').onclick = function() {
 > 职责链模式的最大优点就是解耦了请求发送者和 N 个接收者之间的复杂关 系，由于不知道链中的哪个节点可以处理你发出的请求，所以你只需把请求传递给第一个节点即可
 
 职责链模式我觉得最大优势在于改造系统中维护一个充斥着条件分支语句的巨大的函数。
+
+举例：
+公司针对支付过定金的用户有一定的优惠政策。在正式够买后，已经支付过 500 元定金的用户会收到 100 元的商城优惠券，200 元定金的用户可以收到 50 元的优惠券，而之前没有支付定金的用户只能进入普通购买模式，也就是没有优优惠券，且在库存有限的情况下不一定保证能买到。
+我们的订单页面是 PHP 吐出的模版，在页面加载之初，PHP 会传递给页面几个字段。
+
+* orderType: 表示订单类型(定金用户或者普通购买用户)，code 的值为 1 的时候是 500 元 定金用户，为 2 的时候是 200 元定金用户，为 3 的时候是普通够买用户。
+* pay: 表示用户是否已经支付定金，值为 true 或者 false, 虽然用户已经下过 500 元定金的定单，但如果他一直没有支付定金，现在只能降级进入普通够买模式。
+* stock: 表示当前用于普通够买的手机库存数量，已经支付过 500 元或者 200 元定金的用户，不受此限制。
+
+```js
+const order = (orderType, pay, stock) => {
+    if (orderType === 1) {
+        // 500元定金用户
+        if (pay === true) {
+            // 支付过定金
+            console.log("500元定金预约,得到100元优惠券");
+        } else {
+            if (stock > 0) {
+                console.log("普通购买。无优惠券");
+            } else {
+                console.log("手机库存不足");
+            }
+        }
+    } else if (orderType === 2) {
+        // 200元定金用户
+        if (pay === true) {
+            // 支付过定金
+            console.log("200元定金预约,得到50元优惠券");
+        } else {
+            if (stock > 0) {
+                console.log("普通购买。无优惠券");
+            } else {
+                console.log("手机库存不足");
+            }
+        }
+    } else if (orderType === 3) {
+        // 普通用户
+        if (stock > 0) {
+            console.log("普通购买。无优惠券");
+        } else {
+            console.log("手机库存不足");
+        }
+    }
+};
+```
 
 ## 中介者模式
 
