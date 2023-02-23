@@ -167,7 +167,7 @@ const order = (orderType, pay, stock) => {
 };
 ```
 
-可以看出，以上代码虽实现了基本功能，但是谈不上可读性和复用性，接下来让我们使用指责链模式重构此代码。
+可以看出，以上代码虽实现了基本功能，但是谈不上可读性和复用性，接下来让我们使用(AOP)职责链模式重构此代码。
 
 ```js
 var order500 = function(orderType, pay, stock) {
