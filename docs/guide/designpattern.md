@@ -82,8 +82,7 @@ Vant Toast组件` 即被设计为了单例模式。
 
 函数定义：
 
-```
-js
+```js
 let getSingle = function(fn) {
 
     let result;
@@ -91,8 +90,7 @@ let getSingle = function(fn) {
         return result || (result = fn.apply(this, arguments));
     };
 
-}; 
-
+};
 ```
 
 使用：
