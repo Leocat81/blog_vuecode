@@ -46,22 +46,53 @@ func = func
 func(); // 打印 1 2 3
 ```
 
+### 使用AOP动态改变函数的参数
+
+```js
+// @ts-ignore
+Function.prototype.before = function(beforefn) {
+    var __self = this;
+    return function(params) {
+        beforefn.apply(this, arguments); // arguments一开始为{a:'a'},但是执行beforefn方法后，beforefn修改了arguments的值，故此时arguments={a:'a',b:'b'}
+        return __self.apply(this, arguments); // 这里返回是因为：如果原函数有返回值，这里执行完原函数后，将返回值返回出去。避免原函数无法返回值。
+    };
+};
+
+var func = function(param) {
+    console.log(param); // 输出: {a: "a", b: "b"}
+};
+
+// @ts-ignore
+func = func.before(function(param) {
+    param.b = "b";
+});
+
+func({
+    a: "a"
+});
+```
+
 ## 单例模式
 
-单例模式作用：比如每次都保证最多一个弹窗打开出现在页面中。例如 `Vant Toast组件` 即被设计为了单例模式。
+单例模式作用：比如每次都保证最多一个弹窗打开出现在页面中。例如 `
+Vant Toast组件` 即被设计为了单例模式。
 [Vant Toast 组件](https://vant-contrib.gitee.io/vant/v2/#/zh-CN/toast)
 
 ### 通用的惰性单例
 
 函数定义：
 
-```js
+```
+js
 let getSingle = function(fn) {
+
     let result;
     return function() {
         return result || (result = fn.apply(this, arguments));
     };
-};
+
+}; 
+
 ```
 
 使用：
@@ -134,6 +165,50 @@ const order = (orderType, pay, stock) => {
         }
     }
 };
+```
+
+可以看出，以上代码虽实现了基本功能，但是谈不上可读性和复用性，接下来让我们使用指责链模式重构此代码。
+
+```js
+var order500 = function(orderType, pay, stock) {
+    if (orderType === 1 && pay === true) {
+        console.log("500元定金预约,得到100元优惠券");
+    } else {
+        return 'nextFunction'
+    }
+}
+var order200 = function(orderType, pay, stock) {
+    if (orderType === 2 && pay === true) {
+        console.log("200元定金预约,得到50元优惠券");
+    } else {
+        return 'nextFunction'
+    }
+}
+var orderNormal = function(orderType, pay, stock) {
+    if (stock > 0) {
+        console.log("普通购买。无优惠券");
+    } else {
+        console.log("手机库存不足");
+    }
+}
+
+// @ts-ignore
+Function.prototype.after = function(afterfn) {
+    var __self = this;
+    return function() {
+        var ret = __self.apply(this, arguments); // 此处_self是对 打印1，打印2 函数在此处的引用，并在此处最终被执行
+        if (ret === "nextFunction") {
+            console.log(ret);
+            return afterfn.apply(this, arguments); // 打印 3
+        }
+        return ret;
+    };
+};
+
+/* order500.after(order200)返回一个函数，其后又可以调用after函数，从而实现了链式调用的效果 */
+// @ts-ignore
+const order = order500.after(order200).after(orderNormal)
+order(3, true, 500);
 ```
 
 ## 中介者模式
