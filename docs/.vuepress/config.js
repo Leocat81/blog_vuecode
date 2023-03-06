@@ -99,12 +99,12 @@ module.exports = {
       {
         title: "序言",
         collapsable: false,
-        path: 'home/',
+        path: "home/",
       },
       {
         title: "Funny",
         collapsable: true,
-        children: ["funny/book", "funny/google", "funny/curl", "funny/npmlink", "funny/npmscripts", "funny/nginx", "funny/crawler"],
+        children: ["funny/book", "funny/google", "funny/curl", "funny/npmlink", "funny/npmscripts", "funny/nginx", "funny/crawler", "funny/macos"],
       },
       {
         title: "ES",
@@ -129,12 +129,12 @@ module.exports = {
           "guide/ClassDesc",
           "guide/BitOperation",
           "guide/module",
-          "guide/designpattern"
+          "guide/designpattern",
         ],
       },
       {
         title: "Build",
-        children: ["buildtools/", "buildtools/jenkins", "buildtools/deploy","buildtools/sentry"],
+        children: ["buildtools/", "buildtools/jenkins", "buildtools/deploy", "buildtools/sentry"],
       },
       {
         title: "VUE",
@@ -153,7 +153,7 @@ module.exports = {
       },
       {
         title: "CSS3",
-        children: ["css3guide/", "css3guide/BFC", "css3guide/flex", "css3guide/margin", "css3guide/WaterFall", "css3guide/BEM","css3guide/ResponsiveImages"],
+        children: ["css3guide/", "css3guide/BFC", "css3guide/flex", "css3guide/margin", "css3guide/WaterFall", "css3guide/BEM", "css3guide/ResponsiveImages"],
       },
       {
         title: "HTTP",
