@@ -104,7 +104,7 @@ module.exports = {
       {
         title: "Funny",
         collapsable: true,
-        children: ["funny/book", "funny/google", "funny/curl", "funny/npmlink", "funny/npmscripts", "funny/nginx", "funny/crawler", "funny/macos","funny/linux","funny/regexp"],
+        children: ["funny/book", "funny/codesnippet","funny/google", "funny/curl", "funny/npmlink", "funny/npmscripts", "funny/nginx", "funny/crawler", "funny/macos","funny/linux","funny/regexp"],
       },
       {
         title: "ES",
