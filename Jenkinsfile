@@ -28,7 +28,7 @@ pipeline {
         }
         stage('删除之前的依赖包'){
             steps {
-            sshPublisher(publishers: [sshPublisherDesc(configName: '180.76.109.184',
+            sshPublisher(publishers: [sshPublisherDesc(configName: '113.125.114.186',
              transfers: [sshTransfer(cleanRemote: false, excludes: '', execCommand: 
              '''
              rm -rf /home/project/blog/**
@@ -42,7 +42,7 @@ pipeline {
         stage('上传构建包') {
             steps {
                 sshPublisher(publishers:
-                [sshPublisherDesc(configName: '180.76.109.184', 
+                [sshPublisherDesc(configName: '113.125.114.186', 
                 transfers: [sshTransfer(cleanRemote: false, excludes: '',
                 execCommand: 
                 '''
