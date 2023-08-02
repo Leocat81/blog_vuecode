@@ -104,7 +104,20 @@ module.exports = {
       {
         title: "Funny",
         collapsable: true,
-        children: ["funny/book", "funny/codesnippet","funny/google", "funny/curl", "funny/npmlink", "funny/npmscripts", "funny/nginx", "funny/crawler", "funny/macos","funny/linux","funny/regexp"],
+        children: [
+          "funny/book",
+          "funny/codesnippet",
+          "funny/google",
+          "funny/curl",
+          "funny/npmlink",
+          "funny/npmscripts",
+          "funny/nginx",
+          "funny/crawler",
+          "funny/macos",
+          "funny/linux",
+          "funny/regexp",
+          "funny/license"
+        ],
       },
       {
         title: "ES",
@@ -153,7 +166,15 @@ module.exports = {
       },
       {
         title: "CSS3",
-        children: ["css3guide/", "css3guide/BFC", "css3guide/flex", "css3guide/margin", "css3guide/WaterFall", "css3guide/BEM", "css3guide/ResponsiveImages"],
+        children: [
+          "css3guide/",
+          "css3guide/BFC",
+          "css3guide/flex",
+          "css3guide/margin",
+          "css3guide/WaterFall",
+          "css3guide/BEM",
+          "css3guide/ResponsiveImages",
+        ],
       },
       {
         title: "HTTP",
@@ -161,7 +182,15 @@ module.exports = {
       },
       {
         title: "GIT",
-        children: ["gitguide/base", "gitguide/clone", "gitguide/fetch", "gitguide/branch", "gitguide/merge", "gitguide/reset", "gitguide/history"],
+        children: [
+          "gitguide/base",
+          "gitguide/clone",
+          "gitguide/fetch",
+          "gitguide/branch",
+          "gitguide/merge",
+          "gitguide/reset",
+          "gitguide/history",
+        ],
       },
       {
         title: "HTML",
