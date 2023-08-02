@@ -174,6 +174,7 @@ module.exports = {
           "css3guide/WaterFall",
           "css3guide/BEM",
           "css3guide/ResponsiveImages",
+          "css3guide/clearfix"
         ],
       },
       {
