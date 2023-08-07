@@ -25,6 +25,8 @@ module.exports = {
       "script",
       {
         src: "https://cdn.jsdelivr.net/npm/pixi.js@6.1.2/dist/browser/pixi.min.js", // html头添加script标签
+        async: true,
+        low: true,
       },
     ],
   ],
@@ -116,7 +118,7 @@ module.exports = {
           "funny/macos",
           "funny/linux",
           "funny/regexp",
-          "funny/license"
+          "funny/license",
         ],
       },
       {
@@ -174,7 +176,7 @@ module.exports = {
           "css3guide/WaterFall",
           "css3guide/BEM",
           "css3guide/ResponsiveImages",
-          "css3guide/clearfix"
+          "css3guide/clearfix",
         ],
       },
       {
