@@ -41,7 +41,6 @@ module.exports = {
         locale: "zh",
         owner: "Leocat81",
         repo: "blog_vuecode",
-        // 获取本地gitee clientId和clientSecret
         clientId: process.env.clientId,
         clientSecret: process.env.clientSecret,
       },
