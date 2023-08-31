@@ -6,8 +6,8 @@
   "scripts": {
     "start": "npm run docs:dev",
     "build": "npm run docs:build",
-    "docs:dev": "vuepress dev docs --temp .temp",
-    "docs:build": "vuepress build docs"
+    "docs:dev": "NODE_OPTIONS=--openssl-legacy-provider vuepress dev docs --temp .temp",
+    "docs:build": "NODE_OPTIONS=--openssl-legacy-provider vuepress build docs"
   },
   "author": "pipe",
   "license": "ISC",
