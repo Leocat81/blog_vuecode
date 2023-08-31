@@ -37,11 +37,9 @@ module.exports = {
     [
       "@vssue/vuepress-plugin-vssue",
       {
-        // 设置 `platform` 而不是 `api`
-        platform: "gitee",
+        platform: "github",
         locale: "zh",
-        // 其他的 Vssue 配置
-        owner: "pipepandafeng",
+        owner: "Leocat81",
         repo: "blog_vuecode",
         // 获取本地gitee clientId和clientSecret
         clientId: process.env.clientId,
