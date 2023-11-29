@@ -2,6 +2,10 @@
 
 主要总结linux上一些基本使用方法
 
+## 学习
+
+[快乐的 Linux 命令行](https://github.com/billie66/TLCL)
+
 ## vim 
 
 ![vim](../assets/vim.jpeg)
