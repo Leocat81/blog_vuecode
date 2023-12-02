@@ -117,6 +117,7 @@ module.exports = {
           "funny/regexp",
           "funny/license",
           "funny/proxy-pool",
+          "funny/search"
         ],
       },
       {
