@@ -61,3 +61,28 @@ unset https_proxy // 取消https代理
 # 或者直接全部取消
 unset ALL_PROXY
 ```
+
+## 终端快捷键
+
+```bash
+# 光标移动开头位置
+Control + A
+# 光标移动末尾位置
+Control + E
+# 光标向左移动一个字符
+Control + B
+# 光标向右移动一个字符
+Control + F
+# 删除光标所在的字符
+Control + D
+# 删除光标后面的字符
+Control + K
+# 删除整行
+Control + U
+# 搜索命令的历史记录
+Control + R
+# 清屏
+Control + L
+# 退出
+Control + C
+```
