@@ -86,3 +86,13 @@ Control + L
 # 退出
 Control + C
 ```
+
+## mdfind
+
+> mdfind: macOS Spotlight的命令行界面
+
+[https://metaredux.com/posts/2019/12/22/mdfind.html](https://metaredux.com/posts/2019/12/22/mdfind.html)
+
+## Apple macOS命令行(macOS bash)的A-Z索引。
+
+[https://ss64.com/osx/](https://ss64.com/osx/)
