@@ -96,3 +96,7 @@ Control + C
 ## Apple macOS命令行(macOS bash)的A-Z索引。
 
 [https://ss64.com/osx/](https://ss64.com/osx/)
+
+## macos 帮助命令插件 cheatsheet
+
+[https://macmenubar.com/cheatsheet/](https://macmenubar.com/cheatsheet/)
