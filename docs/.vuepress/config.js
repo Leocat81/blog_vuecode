@@ -192,6 +192,7 @@ module.exports = {
           "gitguide/merge",
           "gitguide/reset",
           "gitguide/history",
+          "gitguide/stash"
         ],
       },
       {
