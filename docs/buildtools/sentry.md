@@ -1,5 +1,7 @@
 # sentry
 
+> [https://develop.sentry.dev/self-hosted/](https://develop.sentry.dev/self-hosted/)
+
 Sentry 是一个流行的错误监控平台，帮助开发者分析，修复问题，优化代码的性能。可以进行错误捕获，问题追踪，并提供问题详情，适用于多个平台，多种语言。
 
 本章主要介绍如何私有化部署 sentry, 以及搭建 sentry 环境，实现前端监控平台的搭建。
@@ -41,6 +43,8 @@ yum install git python3
 ```
 
 ### 项目准备
+
+此处已 `sentry 22.11.0` 版本为示例，可以根据自身需求安装最新版本，具体版本查看 [https://develop.sentry.dev/self-hosted/](https://develop.sentry.dev/self-hosted/)
 
 ```bash
 /* 克隆项目 */
