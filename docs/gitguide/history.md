@@ -10,6 +10,17 @@
 $ git commit --amend
 ```
 
+这条命令相当于：
+
+```bash
+# HEAD^ 表示当前分支的上一个提交
+$ git reset --soft HEAD^ 
+$ ... do something else to come up with the right tree ...
+# ORIG_HEAD 是一个临时性的引用，用于在某些操作中保存先前 HEAD 的位置，以便稍后可能需要时能够恢复到该位置,
+$ git commit -c ORIG_HEAD
+# 在执行 git reset --soft HEAD^ 操作之后，之前的 HEAD 的位置将存储在 ORIG_HEAD 中。这样，如果你意识到你不想进行这个重置，你可以使用 git reset --hard ORIG_HEAD 将 HEAD 恢复到之前的位置
+```
+
 上面这条命令会将最后一次的提交信息载入到编辑器中供你修改。 当保存并关闭编辑器后，编辑器会将更新后的提交信息写入新提交中，它会成为新的最后一次提交。
 
 ::: danger 注意
@@ -24,18 +35,16 @@ $ git commit --amend
 对最近的一次提交修改比较友好，如果是对历史很久的commit进行拆分，需要自己辨别改文件的变化。
 :::
 
-
 ```bash
 $ git reset --soft HEAD^
 ```
 
-此命令会将`最近的一次提交退回到暂存区中`，此时可自行此操作文件，其后再次提交。
-
-
+此命令会将 `最近的一次提交退回到暂存区中` ，此时可自行此操作文件，其后再次提交。
 
 比如：
 
 ```bash
 git reset HEAD --filename 
 ```
-此命令会将名为`filename`的文件退回在`changed`状态，此时可自行此操作文件，其后再次提交到暂存区。
+
+此命令会将名为 `filename` 的文件退回在 `changed` 状态，此时可自行此操作文件，其后再次提交到暂存区。

@@ -1,12 +1,12 @@
 # 回滚
 
-`git reset`和`git revert`都可用于代码版本回滚
+`git reset` 和 `git revert` 都可用于代码版本回滚
 
 <h3> 🧽 git reset </h3>
 
-- `git reset --merge` 回退到 merge 以前，用于不想解决冲突的时候
+* `git reset --merge` 回退到 merge 以前，用于不想解决冲突的时候
 
-`git reset`是回退到某个 commit ID 版本位置
+`git reset` 是回退到某个 commit ID 版本位置
 
 ```bash
 # 查询commitID
@@ -17,11 +17,16 @@ $ git reset --hard [commitID]
 $ git push -f
 ```
 
+::: tip 注意
+* 当执行 `git reset --hard [commitID]` 后不想进行回滚操作了，你可以使用 `git reset --hard ORIG_HEAD` 将 HEAD 恢复到之前的位置
+* [GIT 官网ORIG_HEAD解释](https://git-scm.com/docs/gitrevisions#_specifying_revisions)
+:::
+
 <h3> 🧽 git revert </h3>
 
-`git revert`是撤销某个 commit ID 版本，会撤销某个 commitID 的提交。
+`git revert` 是撤销某个 commit ID 版本，会撤销某个 commitID 的提交。
 
-- revert 适合需要回退的历史提交不多，且无合并冲突的情景。
+* revert 适合需要回退的历史提交不多，且无合并冲突的情景。
 
 ```bash
 # 查询commitID
@@ -38,8 +43,8 @@ $ git push
 
 ::: warning
 
-- `git reset`是回退到某个 commitID 版本历史，`git revert`是撤销某个 commitID 得提交。
+* `git reset`是回退到某个 commitID 版本历史，`git revert`是撤销某个 commitID 得提交。
 
-- `git reset`不会保留 commitID 之后的提交记录，`git revert`不会对 commitID 之前和之后的 commit 产生影响，但会生成一个新的 commit。
+* `git reset`不会保留 commitID 之后的提交记录，`git revert`不会对 commitID 之前和之后的 commit 产生影响，但会生成一个新的 commit。
 
 :::
