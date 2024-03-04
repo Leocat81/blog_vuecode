@@ -14,23 +14,23 @@ Sentry 是一个流行的错误监控平台，帮助开发者分析，修复问�
 
 ### 环境需要:
 
-* Docker 19.03.6+
-* Compose 1.28.0+
-* 4 CPU Cores
-* 8 GB RAM
-* 20 GB Free Disk Space
-* git 1.8.0.0+
-* python 3
+- Docker 19.03.6+
+- Compose 1.28.0+
+- 4 CPU Cores
+- 8 GB RAM
+- 20 GB Free Disk Space
+- git 1.8.0.0+
+- python 3
 
 ---
 
 1. `docker` `docker compose` 安装
 
-* [docker 安装](/buildtools/jenkins.html#安装-docker)
+- [docker 安装](/buildtools/jenkins.html#安装-docker)
 
-* [docker compose 安装](https://www.runoob.com/docker/docker-compose.html)
+- [docker compose 安装](https://www.runoob.com/docker/docker-compose.html)
 
-> `docker`  `docker compose` 安装完成后启动 docker!。
+> `docker` `docker compose` 安装完成后启动 docker!。
 
 ```bash
 sudo systemctl start docker
@@ -102,9 +102,9 @@ docker-compose up -d
 
 ### 下载依赖
 
-* @sentry/vue
-* @sentry/tracing
-* vite-plugin-sentry
+- @sentry/vue
+- @sentry/tracing
+- vite-plugin-sentry
 
 ```bash
 yarn add @sentry/vue @sentry/tracing
@@ -115,37 +115,31 @@ yarn add @sentry/vue @sentry/tracing
 在 `/src/mian.ts` 中引入依赖包，此处可查看[sentry 官方教程](https://docs.sentry.io/platforms/javascript/guides/vue/#vue-3)
 
 ```js
-import {
-    createApp
-} from "vue";
-import {
-    createRouter
-} from "vue-router";
+import { createApp } from "vue";
+import { createRouter } from "vue-router";
 import * as Sentry from "@sentry/vue";
-import {
-    BrowserTracing
-} from "@sentry/tracing";
+import { BrowserTracing } from "@sentry/tracing";
 
 const app = createApp({
-    // ...
+  // ...
 });
 const router = createRouter({
-    // ...
+  // ...
 });
 
 Sentry.init({
-    app,
-    dsn: "https://84e093ad22194ca8ab6eaf7a8a0d9087@o4504565504999424.ingest.sentry.io/4504565506441216",
-    integrations: [
-        new BrowserTracing({
-            routingInstrumentation: Sentry.vueRouterInstrumentation(router),
-            tracePropagationTargets: ["localhost", "my-site-url.com", /^\//],
-        }),
-    ],
-    // Set tracesSampleRate to 1.0 to capture 100%
-    // of transactions for performance monitoring.
-    // We recommend adjusting this value in production
-    tracesSampleRate: 1.0,
+  app,
+  dsn: "https://84e093ad22194ca8ab6eaf7a8a0d9087@o4504565504999424.ingest.sentry.io/4504565506441216",
+  integrations: [
+    new BrowserTracing({
+      routingInstrumentation: Sentry.vueRouterInstrumentation(router),
+      tracePropagationTargets: ["localhost", "my-site-url.com", /^\//],
+    }),
+  ],
+  // Set tracesSampleRate to 1.0 to capture 100%
+  // of transactions for performance monitoring.
+  // We recommend adjusting this value in production
+  tracesSampleRate: 1.0,
 });
 
 app.use(router);
@@ -164,45 +158,43 @@ yarn add vite-plugin-sentry
 ```js
 // vite.config.ts
 // other declarations
-import type {
-    ViteSentryPluginOptions
-} from "vite-plugin-sentry";
+import type { ViteSentryPluginOptions } from "vite-plugin-sentry";
 import viteSentry from "vite-plugin-sentry";
 
 /*
   Configure sentry plugin
 */
 const sentryConfig: ViteSentryPluginOptions = {
-    url: "https://sentry.io",
-    authToken: "<SECRET_TOKEN_HERE>",
-    org: "my_org",
-    project: "my_project",
-    release: "1.0",
-    deploy: {
-        env: "production",
-    },
-    setCommits: {
-        auto: true,
-    },
-    sourceMaps: {
-        include: ["./dist/assets"],
-        ignore: ["node_modules"],
-        /**
-         * This sets an URL prefix at the beginning of all files.
-         * This defaults to `~/` but you might want to set this to the full URL.
-         * This is also useful if your files are stored in a sub folder. eg: url-prefix `~/static/js`.
-         */
-        urlPrefix: "~/assets", // url前缀：该参数应设置为源码映射文件的url前缀。可参考下面注意事项
-    },
+  url: "https://sentry.io",
+  authToken: "<SECRET_TOKEN_HERE>",
+  org: "my_org",
+  project: "my_project",
+  release: "1.0",
+  deploy: {
+    env: "production",
+  },
+  setCommits: {
+    auto: true,
+  },
+  sourceMaps: {
+    include: ["./dist/assets"],
+    ignore: ["node_modules"],
+    /**
+     * This sets an URL prefix at the beginning of all files.
+     * This defaults to `~/` but you might want to set this to the full URL.
+     * This is also useful if your files are stored in a sub folder. eg: url-prefix `~/static/js`.
+     */
+    urlPrefix: "~/assets", // url前缀：该参数应设置为源码映射文件的url前缀。可参考下面注意事项
+  },
 };
 
 export default defineConfig({
-    // other options
-    plugins: [viteSentry(sentryConfig)],
-    build: {
-        // required: tells vite to create source maps
-        sourcemap: true,
-    },
+  // other options
+  plugins: [viteSentry(sentryConfig)],
+  build: {
+    // required: tells vite to create source maps
+    sourcemap: true,
+  },
 });
 ```
 
@@ -214,8 +206,7 @@ export default defineConfig({
 
 此处需要几个方面来排查，sentry 也提供了一些工具来帮助我们验证和检查源码映射。[Sentry Validating Files](https://docs.sentry.io/platforms/javascript/guides/vue/sourcemaps/validating/)
 
-::: warning 注意事项
-其实最有可能出现映射异常的问题就是 `urlPrefix` 参数设置失败，下面用举例的方式来说明该参数如何配置：
+::: warning 注意事项其实最有可能出现映射异常的问题就是 `urlPrefix` 参数设置失败，下面用举例的方式来说明该参数如何配置：
 
 比如我们的 js 文件访问地址为：http://www.pipef.top/vue3admin/assets/index.73cac8e8.js
 
@@ -225,13 +216,15 @@ export default defineConfig({
 
 TODO:
 
-* 配置 ssl, 并解决 User. IP 不能正常展示问题
-* 性能指标的一些专业术语解释
+- 配置 ssl, 并解决 User. IP 不能正常展示问题
+- 性能指标的一些专业术语解释
 
 ## 参考文献
 
-* [从零搭建 Sentry](https://blog.csdn.net/maomaolaoshi/article/details/128203552)
+- [从零搭建 Sentry](https://blog.csdn.net/maomaolaoshi/article/details/128203552)
 
-* [sentry 官网 VUE 集成教程](https://docs.sentry.io/platforms/javascript/guides/vue/)
+- [sentry 官网 VUE 集成教程](https://docs.sentry.io/platforms/javascript/guides/vue/)
 
-* [vuejs 官网推荐](https://cn.vuejs.org/guide/best-practices/production-deployment.html#tracking-runtime-errors)
+- [vuejs 官网推荐](https://cn.vuejs.org/guide/best-practices/production-deployment.html#tracking-runtime-errors)
+
+- [sentry 部署与数据清理指南](https://github.com/yangpeng14/DevOps/blob/master/ops/sentry9.1.2%E9%83%A8%E7%BD%B2.md)
