@@ -149,7 +149,7 @@ module.exports = {
       },
       {
         title: "Build",
-        children: ["buildtools/", "buildtools/jenkins", "buildtools/deploy", "buildtools/sentry"],
+        children: ["buildtools/", "buildtools/jenkins", "buildtools/deploy", "buildtools/sentry","buildtools/docker"],
       },
       {
         title: "VUE",
