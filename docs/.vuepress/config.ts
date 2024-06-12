@@ -1,22 +1,15 @@
-require("dotenv").config({ path: ".env" });
-const autometa_options = {
-  site: {
-    name: "pipepandafeng",
-    twitter: "pipe",
-  },
-  author: {
-    name: "司俊峰",
-    twitter: "pipe",
-  },
-  canonical_base: "http://pipepandafeng.gitee.io",
-};
-module.exports = {
+import { defineConfig } from "vuepress/config";
+import 'dotenv/config'
+
+export default defineConfig({
   locales: {
     "/zh/": {
       lang: "zh-CN",
+      title: "",
+      description: "",
     },
   },
-  base: "/",
+  // base: "",
   title: "pipe的笔记", // 设置网站标题
   description: "欢迎来到我的博客",
   head: [
@@ -45,8 +38,23 @@ module.exports = {
         clientSecret: process.env.clientSecret,
       },
     ],
-    ["autometa", autometa_options],
-    "vuepress-plugin-baidu-autopush",
+    ["vuepress-plugin-gotop-plus", {}],
+    [
+      "vuepress-plugin-autometa",
+      {
+        site: {
+          name: "pipepandafeng",
+          twitter: "pipe",
+        },
+        author: {
+          name: "司俊峰",
+          twitter: "pipe",
+        },
+        canonical_base: "http://pipepandafeng.gitee.io",
+      },
+    ],
+    ["vuepress-plugin-baidu-autopush", {}],
+    ["vuepress-plugin-gotop-plus", {}],
     /* 两个插件只能选一个 */
     // [
     //   "vuepress-plugin-helper-live2d",
@@ -75,7 +83,6 @@ module.exports = {
     //     },
     //   },
     // ],
-    ["vuepress-plugin-gotop-plus"],
   ],
   themeConfig: {
     lastUpdated: "Last Updated",
@@ -153,4 +160,4 @@ module.exports = {
     ],
     sidebarDepth: 3,
   },
-};
+});
