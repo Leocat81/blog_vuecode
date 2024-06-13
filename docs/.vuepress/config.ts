@@ -122,6 +122,12 @@ export default defineConfig({
         children: ["guide/", "guide/a", "guide/prototype", "guide/ArrowDifNomal", "guide/reduce", "guide/DataHijacking", "guide/lowcopyAnddeepCopy", "guide/VariableAndFunction", "guide/transmitParams", "guide/bibao", "guide/debounceAndThrottle", "guide/es6new", "guide/ArrayLike", "guide/ImplementationMechanism", "guide/ExtendObject", "guide/appy", "guide/ClassDesc", "guide/BitOperation", "guide/module", "guide/designpattern"],
       },
       {
+        title: "Node Server",
+        collapsable: false,
+        children: ["node/"],
+        sidebarDepth: 1,
+      },
+      {
         title: "CSS3",
         children: ["css3guide/", "css3guide/BFC", "css3guide/flex", "css3guide/margin", "css3guide/WaterFall", "css3guide/BEM", "css3guide/ResponsiveImages", "css3guide/clearfix"],
       },
