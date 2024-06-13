@@ -109,7 +109,6 @@ export default defineConfig({
       },
       {
         title: "Funny",
-        collapsable: true,
         children: ["funny/book", "funny/codesnippet", "funny/google", "funny/curl", "funny/npmlink", "funny/npmscripts", "funny/nginx", "funny/crawler", "funny/macos", "funny/linux", "funny/regexp", "funny/license", "funny/proxy-pool", "funny/search", "funny/penetration-test", "funny/pixi"],
       },
       {
@@ -118,12 +117,10 @@ export default defineConfig({
       },
       {
         title: "ES",
-        collapsable: true,
         children: ["guide/", "guide/a", "guide/prototype", "guide/ArrowDifNomal", "guide/reduce", "guide/DataHijacking", "guide/lowcopyAnddeepCopy", "guide/VariableAndFunction", "guide/transmitParams", "guide/bibao", "guide/debounceAndThrottle", "guide/es6new", "guide/ArrayLike", "guide/ImplementationMechanism", "guide/ExtendObject", "guide/appy", "guide/ClassDesc", "guide/BitOperation", "guide/module", "guide/designpattern"],
       },
       {
         title: "Node Server",
-        collapsable: false,
         children: ["node/"],
         sidebarDepth: 1,
       },
