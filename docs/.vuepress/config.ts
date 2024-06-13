@@ -1,5 +1,5 @@
 import { defineConfig } from "vuepress/config";
-import 'dotenv/config'
+import "dotenv/config";
 
 export default defineConfig({
   locales: {
@@ -110,7 +110,11 @@ export default defineConfig({
       {
         title: "Funny",
         collapsable: true,
-        children: ["funny/book", "funny/codesnippet", "funny/google", "funny/curl", "funny/npmlink", "funny/npmscripts", "funny/nginx", "funny/crawler", "funny/macos", "funny/linux", "funny/regexp", "funny/license", "funny/proxy-pool", "funny/search", "funny/penetration-test"],
+        children: ["funny/book", "funny/codesnippet", "funny/google", "funny/curl", "funny/npmlink", "funny/npmscripts", "funny/nginx", "funny/crawler", "funny/macos", "funny/linux", "funny/regexp", "funny/license", "funny/proxy-pool", "funny/search", "funny/penetration-test", "funny/pixi"],
+      },
+      {
+        title: "GIT",
+        children: ["gitguide/base", "gitguide/clone", "gitguide/fetch", "gitguide/branch", "gitguide/merge", "gitguide/reset", "gitguide/history", "gitguide/stash"],
       },
       {
         title: "ES",
@@ -118,45 +122,25 @@ export default defineConfig({
         children: ["guide/", "guide/a", "guide/prototype", "guide/ArrowDifNomal", "guide/reduce", "guide/DataHijacking", "guide/lowcopyAnddeepCopy", "guide/VariableAndFunction", "guide/transmitParams", "guide/bibao", "guide/debounceAndThrottle", "guide/es6new", "guide/ArrayLike", "guide/ImplementationMechanism", "guide/ExtendObject", "guide/appy", "guide/ClassDesc", "guide/BitOperation", "guide/module", "guide/designpattern"],
       },
       {
-        title: "Build",
-        children: ["buildtools/", "buildtools/jenkins", "buildtools/deploy", "buildtools/sentry", "buildtools/docker", "buildtools/Clash"],
+        title: "CSS3",
+        children: ["css3guide/", "css3guide/BFC", "css3guide/flex", "css3guide/margin", "css3guide/WaterFall", "css3guide/BEM", "css3guide/ResponsiveImages", "css3guide/clearfix"],
       },
       {
         title: "VUE",
         children: ["vueguide/", "vueguide/rendermechanism", "vueguide/ComputedDifWatch", "vueguide/vue3", "vueguide/tabbar", "vueguide/EventBus", "vueguide/scrollthrough", "vueguide/MultiPage", "vueguide/key", "vueguide/element"],
       },
       {
-        title: "CSS3",
-        children: ["css3guide/", "css3guide/BFC", "css3guide/flex", "css3guide/margin", "css3guide/WaterFall", "css3guide/BEM", "css3guide/ResponsiveImages", "css3guide/clearfix"],
+        title: "HTML",
+        children: ["htmlguide/"],
+      },
+      {
+        title: "Build",
+        children: ["buildtools/", "buildtools/jenkins", "buildtools/deploy", "buildtools/sentry", "buildtools/docker", "buildtools/Clash", "buildtools/shell", "buildtools/cdn"],
       },
       {
         title: "HTTP",
         children: ["httpguide/", "httpguide/cors", "httpguide/httpcode"],
       },
-      {
-        title: "GIT",
-        children: ["gitguide/base", "gitguide/clone", "gitguide/fetch", "gitguide/branch", "gitguide/merge", "gitguide/reset", "gitguide/history", "gitguide/stash"],
-      },
-      {
-        title: "HTML",
-        children: ["htmlguide/"],
-      },
-      {
-        title: "CDN",
-        children: ["cdn/"],
-      },
-      {
-        title: "pixi",
-        children: ["pixi/"],
-      },
-      {
-        title: "shell",
-        children: ["shell/"],
-      },
-      // {
-      //   title: "http协议",
-      //   children: ["/httpguide/"],
-      // },
     ],
     sidebarDepth: 3,
   },
