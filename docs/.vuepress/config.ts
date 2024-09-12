@@ -109,7 +109,7 @@ export default defineConfig({
       },
       {
         title: "Funny",
-        children: ["funny/book", "funny/codesnippet", "funny/google", "funny/curl", "funny/npmlink", "funny/npmscripts", "funny/nginx", "funny/crawler", "funny/macos", "funny/linux", "funny/regexp", "funny/license", "funny/proxy-pool", "funny/search", "funny/penetration-test", "funny/pixi"],
+        children: ["funny/book", "funny/codesnippet", "funny/google", "funny/curl", "funny/npmlink", "funny/npmscripts", "funny/nginx", "funny/crawler", "funny/macos", "funny/linux", "funny/regexp", "funny/license", "funny/proxy-pool", "funny/search", "funny/penetration-test", "funny/pixi","funny/download"],
       },
       {
         title: "GIT",
