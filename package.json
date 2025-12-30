@@ -12,7 +12,7 @@
   "author": "pipe",
   "license": "ISC",
   "devDependencies": {
-    "vuepress": "^1.9.10",
+    "vuepress": "1.9.10",
     "vuepress-plugin-autometa": "~0.1.13",
     "vuepress-plugin-baidu-autopush": "~1.0.1"
   },
