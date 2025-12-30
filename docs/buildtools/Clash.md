@@ -1,5 +1,7 @@
 # Clash
 
+[clash-for-linux-install 一键安装](https://github.com/nelvko/clash-for-linux-install)
+
 [clash 各个平台软件包](https://www.clash.la/releases/)
 
 [clash for linux 安装教程](https://github.com/ghostxu97/clash-for-linux?tab=readme-ov-file)
