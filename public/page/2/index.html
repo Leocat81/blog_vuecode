@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto" data-theme="auto">
+
+<head>
+	<meta name="generator" content="Hugo 0.155.0"><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>pipe的笔记</title>
+
+<meta name="description" content="欢迎来到我的博客">
+<meta name="author" content="">
+<link rel="canonical" href="//localhost:1313/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.da3211e5ef867bf2b75fd5a6515cfed7195c011e8ab735694e203810a827097b.css" integrity="sha256-2jIR5e&#43;Ge/K3X9WmUVz&#43;1xlcAR6KtzVpTiA4EKgnCXs=" rel="preload stylesheet" as="style">
+<link rel="icon" href="//localhost:1313/img/logo2.webp">
+<link rel="icon" type="image/png" sizes="16x16" href="//localhost:1313/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="//localhost:1313/favicon-32x32.png">
+<link rel="apple-touch-icon" href="//localhost:1313/apple-touch-icon.png">
+<link rel="mask-icon" href="//localhost:1313/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" type="application/rss+xml" href="//localhost:1313/index.xml" title="rss">
+<link rel="alternate" type="application/json" href="//localhost:1313/index.json" title="json">
+<link rel="alternate" hreflang="en" href="//localhost:1313/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script><meta property="og:url" content="//localhost:1313/">
+  <meta property="og:site_name" content="pipe的笔记">
+  <meta property="og:title" content="Hi, 我是 pipe">
+  <meta property="og:description" content="欢迎来到我的博客">
+  <meta property="og:locale" content="zh-cn">
+  <meta property="og:type" content="website">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Hi, 我是 pipe">
+<meta name="twitter:description" content="欢迎来到我的博客">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "pipe的笔记",
+  "url": "//localhost:1313/",
+  "description": "",
+  "logo": "//localhost:1313/img/logo2.webp",
+  "sameAs": [
+      
+  ]
+}
+</script>
+</head>
+<body class="list" id="top">
+    <header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="//localhost:1313/" accesskey="h" title="pipe的笔记 (Alt + H)">pipe的笔记</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="//localhost:1313/" title="首页">
+                    <span class="active">首页</span>
+                </a>
+            </li>
+            <li>
+                <a href="//localhost:1313/search/" title="搜索">
+                    <span>搜索</span>
+                </a>
+            </li>
+            <li>
+                <a href="//localhost:1313/archives/" title="归档">
+                    <span>归档</span>
+                </a>
+            </li>
+            <li>
+                <a href="//localhost:1313/tags/" title="标签">
+                    <span>标签</span>
+                </a>
+            </li>
+            <li>
+                <a href="//localhost:1313/categories/" title="分类">
+                    <span>分类</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main"> 
+<div class="post-content"><p>这里是我的技术笔记与日常记录。</p>
+<ul>
+<li>文章按主题分区，首页会汇总最新内容</li>
+<li>使用站内搜索快速定位内容</li>
+</ul>
+
+
+</div>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Docker
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p> docker 官网
+docker 官网文档使用指南
+安装 docker 安装
+docker compose 安装
+docker docker compose 安装完成后启动 docker!。
+docker-compose 使用 https://docs.docker.com/compose/reference/
+常用命令 docker compose up
+docker compose down
+</p>
+  </div>
+  <footer class="entry-footer"><span>1 min</span></footer>
+  <a class="entry-link" aria-label="post link to Docker" href="//localhost:1313/buildtools/docker/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">download
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>文件下载 设置相应头Content-Disposition，以实现浏览器的附件下载功能，让浏览器自己异步下载文件，不阻塞系统其他操作
+使用 nodejs 实现文件下载功能
+import Koa from &#34;koa&#34;; import path from &#34;path&#34;; import fs from &#34;fs&#34;; const app = new Koa(); app.use(async (ctx) =&gt; { const filePath = path.join(process.cwd(), &#34;src/伦理道德.mp4&#34;); const fileName = path.basename(filePath); // 设置相应头 ctx.set(&#34;Content-Disposition&#34;, `attachment; filename=${encodeURIComponent(&#34;伦理道德.mp4&#34;)}`); ctx.body = fs.createReadStream(filePath); }); app.listen(3000, () =&gt; { console.log(&#34;服务启动成功&#34;); }); </p>
+  </div>
+  <footer class="entry-footer"><span>1 min</span></footer>
+  <a class="entry-link" aria-label="post link to download" href="//localhost:1313/funny/download/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">element 使用总结
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>自定义组件结合 Form 表单验证 比如自己封装了一个上传图片的组件，如果要将fileList交给form表单校验，需要以下几步
+&lt;el-form label-position=&#34;right&#34; ref=&#34;ruleForm&#34; :rules=&#34;rules&#34; :model=&#34;formLabelAlign&#34; label-width=&#34;100px&#34; &gt; &lt;el-form-item label=&#34;banner图:&#34; prop=&#34;fileList&#34;&gt; &lt;UploadImage :limit=&#34;1&#34; v-model=&#34;formLabelAlign.fileList&#34;&gt;&lt;/UploadImage&gt; &lt;/el-form-item&gt; &lt;/el-form&gt; /* 本案例采用vue2,typescript编写 */ &lt;script lang=&#34;ts&#34;&gt; @Component export default class add extends Vue { rules = { fileList: [ { required: true, message: &#39;请上传banner图&#39;, trigger: &#39;change&#39; } ], } &lt;/script&gt; 第一步：混入 element-ui 的方法 import emitter from &#39;element-ui/lib/mixins/emitter&#39; @Component({ minxs:[emitter] }) 第一步：调用混入的方法 当你的组件fileList发生改变时，调用dispatch方法。 例如：
+&lt;template&gt; &lt;el-upload :limit=&#34;limit&#34; :on-exceed=&#34;handleExceed&#34; :file-list=&#34;fileList&#34; :action=&#34;$Api.wholefileUpload&#34; list-type=&#34;picture-card&#34; :on-preview=&#34;handlePictureCardPreview&#34; :on-change=&#34;handleChange&#34; :on-remove=&#34;handleRemove&#34; :on-success=&#34;handleSuccess&#34; &gt; &lt;i class=&#34;el-icon-plus&#34;&gt;&lt;/i&gt; &lt;/el-upload&gt; &lt;/template&gt; &lt;script lang=&#34;ts&#34;&gt; import emitter from &#34;element-ui/lib/mixins/emitter&#34;; @Component({ minxs: [emitter], }) export default class upload extends Vue { handleChange(file: FileListItem, fileList: FileListItem[]) { /* 全局混入的方法：主要处理自定义组件的表单验证 */ (this as any).dispatch(&#34;ElFormItem&#34;, &#34;el.form.change&#34;, fileList); } } &lt;/script&gt; ::: warning 调用 dispatch 方法时，一定要注意 this 的指向问题，需满足当前 this 指向(所在 vue 组件实例)必须是ElFormItem组件的子组件或孙子组件，因为dispatch会一直从当前组件向上查找到ElFormItem组件，并触发其ElFormItem组件上的el.form.change事件，通知表单重新校验。 :::
+</p>
+  </div>
+  <footer class="entry-footer"><span>1 min</span></footer>
+  <a class="entry-link" aria-label="post link to element 使用总结" href="//localhost:1313/vueguide/element/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">es6新特性
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p> let和const解决块级作用域和变量提升 变量的解构赋值 字符串的模板字符串 includes(),startsWith() endsWith()返回布尔类型 函数参数的默认值，rest剩余参数收集符，箭头函数解决this问题，利于封装函数。 数组 includes(),Keys(),Values(),扩展运算符 对象的 Object.is()判断值是否相等，与严格模式下===大致相同，区别还是两处：Object.is(&#43;0,-0) false Object.is(NaN,NaN) true。Keys(),Values()，扩展运算符。 set和map数据结构 proxy promise 解决回调地狱 async和await(es7) class module TODO:继续补充
+</p>
+  </div>
+  <footer class="entry-footer"><span>1 min</span></footer>
+  <a class="entry-link" aria-label="post link to es6新特性" href="//localhost:1313/guide/es6new/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">EventBus
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>TODO:
+相关文档和配套生态 Vue组件通信中eventBus的使用 </p>
+  </div>
+  <footer class="entry-footer"><span>1 min</span></footer>
+  <a class="entry-link" aria-label="post link to EventBus" href="//localhost:1313/vueguide/event-bus/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Flex
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>语法篇 👍➡️阮一峰：Flex 布局教程：语法篇⬅️ 实例篇 👍➡️ :arrow_right: 阮一峰：Flex 布局教程：实例篇⬅️ </p>
+  </div>
+  <footer class="entry-footer"><span>1 min</span></footer>
+  <a class="entry-link" aria-label="post link to Flex" href="//localhost:1313/css3guide/flex/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Git
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p> git 版本回滚有两种方式，其一为Git Reset,其二为Git Revert。下面来看这种具体操作及实现。文末对两种方式进行总结和比较。
+克隆 git clone用于拉取远程仓库到本地
+/* git clone 远程仓库地址 本地目录 */ $ git clone https://gitee.com/pipepandafeng/blog_vuecode.git blog_vuecode_local 拉取 git fetch 和git pull 都用于代码和分支的更新。
+git fetch 一旦远程主机的版本库有了更新（Git 术语叫做 commit），需要将这些更新取回本地，这时就要用到 git fetch 命令。
+/* * git fetch 主机名 远程分支:本地分支（创建一个新分支） * 特别注意:不建议本地分支写本地已有分支，否则拉取当有冲突时可能会有问题 */ ##1：拉取更新到本地新建tmp分支 $ git fetch origin master:tmp ##2：合并更新 $ git merge tmp ##3: 当有冲突时，手动解决冲突 然后git add .| git commit -m &#34;&#34;。无冲突时 最后直接push $ git push origin master git pull /* * git pull 主机名 远程分支:本地分支（无则创建一个新分支） */ ##1：取回origin主机的master分支，与本地的dev分支合并 ## || 如果远程分支是与当前分支合并，则冒号后面的部分可以省略。 $ git pull origin master:dev || git pull origin master ##2: 当有冲突时，手动解决冲突 然后git add .| git commit -m &#34;&#34;。无冲突时 最后直接push $ git push origin master ::: tip 结论 git fetch 是从远程获取最新版本到本地，但不会自动 merge。 而 git pull 则是会获取所有远程索引并合并到本地分支中来。效果相同时 git pull 将更为快捷。 :::
+...</p>
+  </div>
+  <footer class="entry-footer"><span>3 min</span></footer>
+  <a class="entry-link" aria-label="post link to Git" href="//localhost:1313/gitguide/readme/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">glob模式
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>glob 是一种文件匹配模式，全称 global，它起源于 Unix 的 bash shell 中，比如在 linux 中常用的 mv .txt tmp/ 中，.txt 就使用到了这种模式。
+TODO:完成后续补充
+</p>
+  </div>
+  <footer class="entry-footer"><span>1 min</span></footer>
+  <a class="entry-link" aria-label="post link to glob模式" href="//localhost:1313/buildtools/shell/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">html5 新特性
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>(1) DOCTYPE声明 &lt;!Doctype html&gt; (2)字符编码声明 &lt;meta charset=&#34;UTF-8&#34;&gt; //不写的话HTML5默认也是UTF-8 (3)新增的语义/结构化标签 Semantic 标签 标签 标签 heade(头部) nav（导航） main （主要内容） aside （侧边内容） section （在文档中定义部分） article （文章） figure（img和figcaption组合放在figure里） footer （尾部，可多个） (4)HTML5Shiv垫片包 是一个针对 IE 浏览器的 HTML5 JavaScript 补丁，目的是让 IE 识别并支持 HTML5 元素。 HTML5Shiv包裹在&lt;head&gt;元素里， 是一个js外部文件 在使用HTML5新元素就可以引入它了
+&lt;head&gt; // 下面是HTML的条件注释判断。只给懂的人...呸、浏览器看 &lt;!--[if lt IE 9]&gt; &lt;script src=&#34;/js/html5shiv.js&#34;&gt;&lt;/script&gt; &lt;![endif]--&gt; &lt;/head&gt; &lt;body&gt; &lt;!-- HTML5标签--&gt; &lt;section&gt; &lt;h1&gt;Famous Cities&lt;/h1&gt; &lt;article&gt; &lt;h2&gt;London&lt;/h2&gt; &lt;p&gt;London is the capital city of England. It is the most populous city in the United Kingdom, with a metropolitan area of over 13 million inhabitants.&lt;/p&gt; &lt;/article&gt; &lt;/section&gt; &lt;/body&gt; （5）新增8个的语义化标签都为块级元素 语义元素转换为块元素 如果像确保新老浏览器都支持，我们可以手动设置CSS样式 header, section, footer, aside, nav, main, article, figure { display: block; } （6）新的图形标签 SVG和canvas （7） 新的多媒体标签 audio和video （8）新的HTML5的API HTML Geolocation 地理位置 HTML Drag &amp; Drop拖放 HTML Local Storage 本地存储 HTML Web Workers web工作者 </p>
+  </div>
+  <footer class="entry-footer"><span>1 min</span></footer>
+  <a class="entry-link" aria-label="post link to html5 新特性" href="//localhost:1313/htmlguide/readme/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">ip 池的搭建
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>当使用爬虫时，需要服务 ip 池来转发请求，避免单一 ip 地址被封。本节主要介绍如何tinyprox使用服务器搭建一个简单的 ip 代理服务器。
+环境 centos 7 安装 yum -y install tinyproxy 如在运行中提示 没有可用的软件包 ，需要安装 epel-release .
+epel-release : EPEL 是由 Fedora 社区打造，为 RHEL 及衍生发行版如 CentOS、Scientific Linux 等提供高质量软件包的项目。装上了 EPEL 之后，就相当于添加了一个第三方源。官方的 rpm repository 提供的 rpm 包也不够丰富，很多时候需要自己编译那太辛苦了，而 EPEL 恰恰可以解决这两方面的问题。
+EPEL 安装方法：yum -y install epel-release
+修改配置 /etc/tinyproxy/tinyproxy.conf 修改端口号，配置文件第 23 行，内容如下： Port 8888 修改允许访问的 IP，配置文件第 211 行，内容如下： Allow 127.0.0.1 将 127.0.0.1 修改为使用这个代理的客户机的 IP，如果你想任何人都可以访问，把这行前面加个#注释掉就可以了
+检查端口是否开放
+启动 tinyproxy 服务
+启动 ：systemctl start tinyproxy.service 停止 ：systemctl stop tinyproxy.service 重新启动 ：systemctl restart tinyproxy.service 开机启动 ：systemctl enable tinyproxy.service 查看状态 ：systemctl status tinyproxy.service 取消开机启动 ：systemctl disable tinyproxy.service 使用(以nodejs 为例) import axios from &#34;axios&#34;; import { HttpsProxyAgent } from &#34;https-proxy-agent&#34;; /* 该接口目前有IP限制，需要采取一些防范措施 */ async function query(carNo) { const config = { method: &#34;get&#34;, url: `https://csh.lzznbc.com/parking_orders/wx_get_car_orders?car_no=${carNo}`, proxy: false, httpsAgent: new HttpsProxyAgent(`http://113.125.114.186:8888`), }; let res = await axios(config); console.log(res.data); } query(&#34;冀A39BK1&#34;); export default query; </p>
+  </div>
+  <footer class="entry-footer"><span>1 min</span></footer>
+  <a class="entry-link" aria-label="post link to ip 池的搭建" href="//localhost:1313/funny/proxy-pool/"></a>
+</article>
+<footer class="page-footer">
+  <nav class="pagination">
+    <a class="prev" href="//localhost:1313/">
+      «&nbsp;Prev&nbsp;
+    </a>
+    <a class="next" href="//localhost:1313/page/3/">Next&nbsp;&nbsp;»
+    </a>
+  </nav>
+</footer>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="//localhost:1313/">pipe的笔记</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

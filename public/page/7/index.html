@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto" data-theme="auto">
+
+<head>
+	<meta name="generator" content="Hugo 0.155.0"><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>pipe的笔记</title>
+
+<meta name="description" content="欢迎来到我的博客">
+<meta name="author" content="">
+<link rel="canonical" href="//localhost:1313/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.da3211e5ef867bf2b75fd5a6515cfed7195c011e8ab735694e203810a827097b.css" integrity="sha256-2jIR5e&#43;Ge/K3X9WmUVz&#43;1xlcAR6KtzVpTiA4EKgnCXs=" rel="preload stylesheet" as="style">
+<link rel="icon" href="//localhost:1313/img/logo2.webp">
+<link rel="icon" type="image/png" sizes="16x16" href="//localhost:1313/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="//localhost:1313/favicon-32x32.png">
+<link rel="apple-touch-icon" href="//localhost:1313/apple-touch-icon.png">
+<link rel="mask-icon" href="//localhost:1313/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" type="application/rss+xml" href="//localhost:1313/index.xml" title="rss">
+<link rel="alternate" type="application/json" href="//localhost:1313/index.json" title="json">
+<link rel="alternate" hreflang="en" href="//localhost:1313/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script><meta property="og:url" content="//localhost:1313/">
+  <meta property="og:site_name" content="pipe的笔记">
+  <meta property="og:title" content="Hi, 我是 pipe">
+  <meta property="og:description" content="欢迎来到我的博客">
+  <meta property="og:locale" content="zh-cn">
+  <meta property="og:type" content="website">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Hi, 我是 pipe">
+<meta name="twitter:description" content="欢迎来到我的博客">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "pipe的笔记",
+  "url": "//localhost:1313/",
+  "description": "",
+  "logo": "//localhost:1313/img/logo2.webp",
+  "sameAs": [
+      
+  ]
+}
+</script>
+</head>
+<body class="list" id="top">
+    <header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="//localhost:1313/" accesskey="h" title="pipe的笔记 (Alt + H)">pipe的笔记</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="//localhost:1313/" title="首页">
+                    <span class="active">首页</span>
+                </a>
+            </li>
+            <li>
+                <a href="//localhost:1313/search/" title="搜索">
+                    <span>搜索</span>
+                </a>
+            </li>
+            <li>
+                <a href="//localhost:1313/archives/" title="归档">
+                    <span>归档</span>
+                </a>
+            </li>
+            <li>
+                <a href="//localhost:1313/tags/" title="标签">
+                    <span>标签</span>
+                </a>
+            </li>
+            <li>
+                <a href="//localhost:1313/categories/" title="分类">
+                    <span>分类</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main"> 
+<div class="post-content"><p>这里是我的技术笔记与日常记录。</p>
+<ul>
+<li>文章按主题分区，首页会汇总最新内容</li>
+<li>使用站内搜索快速定位内容</li>
+</ul>
+
+
+</div>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">水平垂直居中
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>CSS实现水平垂直居中的五种方式
+margin 垂直居中原理 margin:auto 是具有强烈计算意味的关键字，用来计算元素对应方向应该获得的剩余空间大小
+填充规则 如果一侧定值，一侧auto，则auto为剩余空间大小 如果两侧均是auto，则平分剩余空间 垂直居中方案 (1）css 绝对定位同时设置 top bottom left right 会拉伸元素 。top bottom 会把元素拉伸到100%。
+(2）故垂直水平居中方案 height: 120px; width: 120px;position: absolute;left: 0;right: 0; top: 0;bottom: 0;margin: auto
+第一设置 position: absolute;left: 0;right: 0; top: 0;bottom: 0 拉伸元素填充至整个父元素的宽高
+第二 设置子元素自己的宽高 height: 120px; width: 120px，
+第三 margin: auto ; 自动计算属性(利用上面57的特性分析)。
+</p>
+  </div>
+  <footer class="entry-footer"><span>1 min</span></footer>
+  <a class="entry-link" aria-label="post link to 水平垂直居中" href="//localhost:1313/css3guide/margin/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">清除浮动
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>什么是 CSS 清除浮动？ 在非 IE 浏览器（如 Firefox）下，当容器的高度为 auto，且容器的内容中有浮动（float 为 left 或 right）的元素，在这种情况下，容器的高度不能自动伸长以适应内容的高度，使得内容溢出到容器外面而影响（甚至破坏）布局的现象。这个现象叫浮动溢出，为了防止这个现象的出现而进行的 CSS 处理，就叫 CSS 清除浮动。
+举例如下：
+&lt;!-- 清除浮动 --&gt; &lt;template&gt; &lt;div class=&#34;container&#34;&gt; &lt;div class=&#34;left&#34;&gt;left&lt;/div&gt; &lt;div class=&#34;right&#34;&gt;right&lt;/div&gt; &lt;/div&gt; &lt;/template&gt; &lt;style scoped&gt; .container { border: 1px solid #333; padding: 1px; } .left { height: 40px; width: 30%; float: left; background-color: red; } .right { height: 40px; width: 40%; float: left; background-color: blue; } &lt;/style&gt; 可以看到容器（container）并没有将 left 和 right 元素包裹着，并且使得内容溢出到容器外面而影响（甚至破坏）布局，此时就需要清除浮动处理。
+解决方案 使用带 clear 属性的空元素 &lt;!-- 清除浮动 --&gt; &lt;template&gt; &lt;div class=&#34;container&#34;&gt; &lt;div class=&#34;left&#34;&gt;left&lt;/div&gt; &lt;div class=&#34;right&#34;&gt;right&lt;/div&gt; &lt;div class=&#34;clear&#34;&gt;&lt;/div&gt; &lt;/div&gt; &lt;/template&gt; &lt;style scoped&gt; .container { border: 1px solid #333; padding: 1px; } .container .left { height: 40px; width: 30%; float: left; background-color: red; } .container .right { height: 40px; width: 40%; float: left; background-color: blue; } /* 添加带 clear 属性的空元素 */ .clear { clear: both; } &lt;/style&gt; 实现效果：
+...</p>
+  </div>
+  <footer class="entry-footer"><span>2 min</span></footer>
+  <a class="entry-link" aria-label="post link to 清除浮动" href="//localhost:1313/css3guide/clearfix/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">渗透测试
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>微信小程序逆向 macos 逆向微信小程序非常简单， mac版本的微信小程序是没有做加密的，可以直接反编译
+找到微信小程序文件位置
+mac 版微信小程序的位置： /Users/xxx/Library/Containers/com.tencent.xinWeChat/Data/.wxapplet/packages/ ，其中 xxx 表示你的电脑用户名称
+根据 AppId 找到对应小程序的包__APP__.wxapkg
+将包复制一份儿到待操作的文件夹
+直接使用wxappUnpacker解包
+https://github.com/Leocat81/wxappUnpacker
+下载源码，安装 node 环境，下载 npm 包，执行命令
+node wuWxapkg.js /Users/sijunfeng/Desktop/__APP__.wxapkg 🏅️ 即可看到反编译后的源码包
+</p>
+  </div>
+  <footer class="entry-footer"><span>1 min</span></footer>
+  <a class="entry-link" aria-label="post link to 渗透测试" href="//localhost:1313/funny/penetration-test/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">渲染函数 &amp; JSX 使用
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Vue 推荐在绝大多数情况下使用模板来创建你的 HTML。然而在一些场景中，你真的需要 JavaScript 的完全编程的能力。这时你可以用渲染函数，它比模板更接近编译器。
+render 使用 createElement 函数 vue 可以使用 createElement 函数来创建虚拟 DOM。看下面一段代码，我们创建了一个简单的 &lt;h1&gt; 标签。
+&lt;script&gt; export default { name: &#34;BaseComponent&#34;, props: { test: Number, }, methods: { handleClick() { this.$emit(&#34;customize-click&#34;); }, }, render() { const h = this.$createElement return h(&#39;div&#39;,{ &#39;class&#39;: { box: true }, style: { fontSize: &#39;14px&#39; } },[ &#39;我是字符串&#39;, h(&#39;p&#39;,{ &#39;class&#39;: { p: true } },&#39;我是p标签&#39;), h(&#39;a&#39;,{ &#39;class&#39;: { a: true } },&#39;我是a标签呀&#39;), h(&#39;p&#39;,{ on: { click: this.handleClick } },&#39;点我!!!&#39;) ]) }, }; &lt;/script&gt; &lt;style scoped&gt; .box { background: rgba(0, 0, 0, 0.5); } .a { color: blue; text-decoration: underline; } .p { color: firebrick; } &lt;/style&gt; 子组件
+...</p>
+  </div>
+  <footer class="entry-footer"><span>1 min</span></footer>
+  <a class="entry-link" aria-label="post link to 渲染函数 & JSX 使用" href="//localhost:1313/vueguide/readme/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">滑动穿透问题
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>问题描述 设置弹窗以 fixed 定位显示后，弹窗内有滚动条，当弹窗内滚动到最底部时，此时滑动弹窗外，再次切回滑动弹窗内，弹窗内的内容不能正常滑动。以下示例请在手机端查看：
+解决方案 采用 BetterScroll npm 包来解决 /* 第一步：引入better-scroll */ import BScroll from &#34;better-scroll&#34;; /* 第二部: 初始化 此处需注意初始的节点必须存在，要注意节点上是否有v-if,否则会提示节点找不到 */ new BScroll(&#34;.dialog_body&#34;, { pullUpLoad: true, scrollbar: true, click: true, pullDownRefresh: true, scrollY: true, }); 参考文献 滑动穿透六种解决方案
+</p>
+  </div>
+  <footer class="entry-footer"><span>1 min</span></footer>
+  <a class="entry-link" aria-label="post link to 滑动穿透问题" href="//localhost:1313/vueguide/scrollthrough/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">瀑布流布局
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p> 瀑布流布局 </p>
+  </div>
+  <footer class="entry-footer"><span>1 min</span></footer>
+  <a class="entry-link" aria-label="post link to 瀑布流布局" href="//localhost:1313/css3guide/water-fall/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">爬虫
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p> https://gitee.com/pipepandafeng/node-crawler </p>
+  </div>
+  <footer class="entry-footer"><span>1 min</span></footer>
+  <a class="entry-link" aria-label="post link to 爬虫" href="//localhost:1313/funny/crawler/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">状态码 401 和 403 区别
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p> 状态码 状态码英文名称 描述 401 Unauthorized 请求要求用户的身份认证 403 Forbidden 服务器理解请求客户端的请求，但是拒绝执行此请求 总结：401 未过服务端身份认证，403 过了身份认证，但是用户无权限操作。</p>
+  </div>
+  <footer class="entry-footer"><span>1 min</span></footer>
+  <a class="entry-link" aria-label="post link to 状态码 401 和 403 区别" href="//localhost:1313/httpguide/httpcode/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">理解原型对象
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>1.介绍理解原型对象之前，让我们先看一段代码。 function Person(name, age, job) { Person.prototype.name = &#34;somebody&#34;; Person.prototype.age = 29; Person.prototype.job = &#34;tyloo&#34;; Person.prototype.sayName = function() { console.log(this.name); }; } let person1 = new Person(); person1.sayName(); //somebody let person2 = new Person(); person2.sayName(); //somebody console.log(person1.sayName === person2.sayName); //true 此函数创建是遵循了 js 中原型模式而创建的函数，我们将 sayName()方法和所有属性直接添加到了 Person 的 prototype 属性中。即使如此，我们任然可以通过调用构造函数来创建对象，而且新对象还会具有相同的属性和方法。如果不理解上面代码也没关系，只需记住两点：
+Person.prototype 即为原型对象 实例（person1 或 person2）可以访问原型对象上的方法和属性。 图 6-1 展示了 Person 构造函数，Person 的原型属性以及现有的两个实例之间的关系。
+function Person() { this.color = &#34;yellow&#34;; this.showColor = function() { return this.color; }; } var person1 = new Person(); console.log(Person.prototype.constructor === Person); // 构造函数Person的默认对象的constructor // 属性 console.log(person1.constructor === Person); //person1实例通过__proto__指向了Person的原型，所以具有了 // person1实例可以访问到constructor Person.prototype = {}; //把Person构造函数的原型进行了重新赋值 // Person.prototype.constructor = Person; var person2 = new Person(); // person2实例通过__proto__指向了Person的原型，此时Person的原型是{}，这个空对象的 // constructor 的值不是Person了，而是Object console.log(&#34;person2.constructor: &#34; &#43; person2.constructor === Person); // false ::: tip 结论
+...</p>
+  </div>
+  <footer class="entry-footer"><span>2 min</span></footer>
+  <a class="entry-link" aria-label="post link to 理解原型对象" href="//localhost:1313/guide/prototype/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">盒子模型
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p> 参考文献 MDN-盒子模型 </p>
+  </div>
+  <footer class="entry-footer"><span>1 min</span></footer>
+  <a class="entry-link" aria-label="post link to 盒子模型" href="//localhost:1313/css3guide/box/"></a>
+</article>
+<footer class="page-footer">
+  <nav class="pagination">
+    <a class="prev" href="//localhost:1313/page/6/">
+      «&nbsp;Prev&nbsp;
+    </a>
+    <a class="next" href="//localhost:1313/page/8/">Next&nbsp;&nbsp;»
+    </a>
+  </nav>
+</footer>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="//localhost:1313/">pipe的笔记</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

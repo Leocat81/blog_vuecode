@@ -1,0 +1,297 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Gitguides on pipe的笔记</title>
+    <link>//localhost:1313/gitguide/</link>
+    <description>Recent content in Gitguides on pipe的笔记</description>
+    <generator>Hugo -- 0.155.0</generator>
+    <language>zh-cn</language>
+    <atom:link href="//localhost:1313/gitguide/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Git</title>
+      <link>//localhost:1313/gitguide/readme/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/gitguide/readme/</guid>
+      <description>&lt;p&gt;   git 版本回滚有两种方式，其一为&lt;code&gt;Git Reset&lt;/code&gt;,其二为&lt;code&gt;Git Revert&lt;/code&gt;。下面来看这种具体操作及实现。文末对两种方式进行总结和比较。&lt;/p&gt;
+&lt;h2 id=&#34;克隆&#34;&gt;克隆&lt;/h2&gt;
+&lt;p&gt;&lt;code&gt;git clone&lt;/code&gt;用于拉取远程仓库到本地&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;/* git clone 远程仓库地址 本地目录 */
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ git clone https://gitee.com/pipepandafeng/blog_vuecode.git blog_vuecode_local
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;拉取&#34;&gt;拉取&lt;/h2&gt;
+&lt;p&gt;&lt;code&gt;git fetch&lt;/code&gt; 和&lt;code&gt;git pull&lt;/code&gt; 都用于代码和分支的更新。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;h3&gt;git fetch&lt;/h3&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;一旦远程主机的版本库有了更新（Git 术语叫做 commit），需要将这些更新取回本地，这时就要用到 git fetch 命令。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;/*
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt; * git fetch 主机名 远程分支:本地分支（创建一个新分支）
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt; * 特别注意:不建议本地分支写本地已有分支，否则拉取当有冲突时可能会有问题
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;*/
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;##1：拉取更新到本地新建tmp分支&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ git fetch origin master:tmp
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;##2：合并更新&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ git merge tmp
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;##3: 当有冲突时，手动解决冲突 然后git add .| git commit -m &amp;#34;&amp;#34;。无冲突时 最后直接push&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ git push origin master
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ul&gt;
+&lt;li&gt;
+&lt;h3&gt;git pull&lt;/h3&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;/*
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt; * git pull 主机名 远程分支:本地分支（无则创建一个新分支）
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;*/
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;##1：取回origin主机的master分支，与本地的dev分支合并&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;## || 如果远程分支是与当前分支合并，则冒号后面的部分可以省略。&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ git pull origin master:dev &lt;span style=&#34;color:#f92672&#34;&gt;||&lt;/span&gt; git pull origin master
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;##2: 当有冲突时，手动解决冲突 然后git add .| git commit -m &amp;#34;&amp;#34;。无冲突时 最后直接push&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ git push origin master
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;::: tip 结论
+git fetch 是从远程获取最新版本到本地，但不会自动 merge。
+而 git pull 则是会获取所有远程索引并合并到本地分支中来。效果相同时 git pull 将更为快捷。
+:::&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>克隆</title>
+      <link>//localhost:1313/gitguide/clone/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/gitguide/clone/</guid>
+      <description>&lt;p&gt;&lt;code&gt;git clone&lt;/code&gt;用于拉取远程仓库到本地&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;/* git clone 远程仓库地址 本地目录 */
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ git clone https://gitee.com/pipepandafeng/blog_vuecode.git blog_vuecode_local
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
+    </item>
+    <item>
+      <title>分支</title>
+      <link>//localhost:1313/gitguide/branch/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/gitguide/branch/</guid>
+      <description>&lt;ul&gt;
+&lt;li&gt;
+&lt;h3&gt;基础操作&lt;/h3&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;git branch&lt;/code&gt;用于查看本地分支&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;git branch -a&lt;/code&gt;查看所有分支（包括远程分支）&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;git branch XXX&lt;/code&gt;新建一个分支&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;git checkout master&lt;/code&gt; 切换分支&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;git checkout -t orgin/master&lt;/code&gt; 本地创建一个 master 并建立一个追踪关系，自动追踪远程分支（origin/master)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;h3&gt;同步本地与线上分支&lt;/h3&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;🔔 将线上新增分支更新到本地&lt;/p&gt;
+&lt;p&gt;第一种方式：拉取分支不创建本地分支, 其后一步完成创建分支与建立追踪关系&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;##1：拉取远程分支(不创建本地分支)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ git pull &lt;span style=&#34;color:#f92672&#34;&gt;||&lt;/span&gt; git fetch
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;##2：建立本地分支与远程分支的追踪关系&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ git checkout -t orgin/XXX
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;第二种方式 拉取分支就创建本地分支，但此时追踪关系未创建，其后手动建立追踪关系&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;##1：拉取远程分支（本地没有的话，创建与远程分支同名的本地分支）&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;git pull origin XXX &lt;span style=&#34;color:#f92672&#34;&gt;||&lt;/span&gt; git fetch origin XXX:XXX
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;##2：手动指定本地分支与远程分支的追踪关系&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ git branch --set-upstream-to&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;origin/master master
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;🔔 删除线上分支&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;git push origin --delete XXXXX&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;分支名&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;🔔 将线上删除分支更新到本地&lt;/p&gt;
+&lt;p&gt;如果远程主机删除了某个分支，默认情况下，git pull 不会在拉取远程分支的时候，删除对应的本地分支。这是为了防止，由于其他人操作了远程主机，导致 git pull 不知不觉删除了本地分支。&lt;/p&gt;
+&lt;p&gt;但是，你可以改变这个行为，加上参数 -p 就会在本地删除远程已经删除的分支。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>合并</title>
+      <link>//localhost:1313/gitguide/merge/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/gitguide/merge/</guid>
+      <description>&lt;h2 id=&#34;cherry-pick&#34;&gt;Cherry-pick&lt;/h2&gt;
+&lt;p&gt;对于多分支的代码库，将代码从一个分支转移到另一个分支是常见需求。&lt;/p&gt;
+&lt;p&gt;这时分两种情况。一种情况是，你需要另一个分支的所有代码变动，那么就采用合并 &lt;code&gt;git merge&lt;/code&gt; 。另一种情况是，你只需要部分代码变动（某几个提交），这时可以采用 &lt;strong&gt;Cherry pick&lt;/strong&gt;。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;code&gt;cherry-pick&lt;/code&gt; 可以选择性的合并某些commit到当前分支&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ git cherry-pick &amp;lt;commitHash&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;上面命令就会将指定的提交commitHash，应用于当前分支。这会在当前分支产生一个新的提交，当然它们的哈希值会不一样。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;详细用法可参照 &lt;code&gt;git 使用手册&lt;/code&gt; 和 &lt;a href=&#34;http://www.ruanyifeng.com/blog/2020/04/git-cherry-pick.html&#34; target=&#34;_blank&#34;&gt;阮一峰-git cherry-pick 教程&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;解决冲突&#34;&gt;解决冲突&lt;/h2&gt;
+&lt;p&gt;&lt;code&gt;git merge&lt;/code&gt; 和 &lt;code&gt;git rebase&lt;/code&gt; 都用于解决冲突&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;git log --oneline --graph --decorate --all&lt;/code&gt; 以树形式查看 git 提交历史记录&lt;/li&gt;
+&lt;li&gt;vscode 中 &lt;code&gt;Git Graph&lt;/code&gt; 也可以以树形式查看 git 提交历史记录&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;其下所有例子均假设有两个分支 &lt;code&gt;master，dev&lt;/code&gt; 。 &lt;code&gt;master&lt;/code&gt; 分支和 &lt;code&gt;dev&lt;/code&gt; 有无冲突两种情况，现需要将 &lt;code&gt;dev&lt;/code&gt; 分支合并到 &lt;code&gt;master&lt;/code&gt; 上。&lt;/p&gt;
+&lt;h3&gt;🧯 git merge&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;无冲突&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ git checkout master
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ git merge dev
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ git push origin master
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ul&gt;
+&lt;li&gt;有冲突&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ git checkout master
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ git merge dev
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;## 手动解决冲突&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ git add .
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ git commit -m &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;dev merge to master&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ git push origin master
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img alt=&#34;RUNOOB 图标&#34; loading=&#34;lazy&#34; src=&#34;//localhost:1313/assets/git_merge.png&#34;&gt;&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>回滚</title>
+      <link>//localhost:1313/gitguide/reset/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/gitguide/reset/</guid>
+      <description>&lt;p&gt;&lt;code&gt;git reset&lt;/code&gt; 和 &lt;code&gt;git revert&lt;/code&gt; 都可用于代码版本回滚&lt;/p&gt;
+&lt;h3&gt; 🧽 git reset &lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;git reset --merge&lt;/code&gt; 回退到 merge 以前，用于不想解决冲突的时候&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;code&gt;git reset&lt;/code&gt; 是回退到某个 commit ID 版本位置&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# 查询commitID&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ git log
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# 执行版本回退&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ git reset --hard &lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;commitID&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# 强制push代码到远程仓库&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ git push -f
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;::: tip 注意&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;当执行 &lt;code&gt;git reset --hard [commitID]&lt;/code&gt; 后不想进行回滚操作了，你可以使用 &lt;code&gt;git reset --hard ORIG_HEAD&lt;/code&gt; 将 HEAD 恢复到之前的位置&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://git-scm.com/docs/gitrevisions#_specifying_revisions&#34;&gt;GIT 官网ORIG_HEAD解释&lt;/a&gt;
+:::&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt; 🧽 git revert &lt;/h3&gt;
+&lt;p&gt;&lt;code&gt;git revert&lt;/code&gt; 是撤销某个 commit ID 版本，会撤销某个 commitID 的提交。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>基础</title>
+      <link>//localhost:1313/gitguide/base/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/gitguide/base/</guid>
+      <description>&lt;h2 id=&#34;三种状态&#34;&gt;三种状态&lt;/h2&gt;
+&lt;p&gt;现在请注意，如果你希望后面的学习更顺利，请记住下面这些关于 Git 的概念。 Git 有三种状态，你的文件可能处于其中之一： &lt;strong&gt;已提交（committed)&lt;/strong&gt;、&lt;strong&gt;已修改（modified）&lt;/strong&gt; 和 &lt;strong&gt;已暂存（staged）&lt;/strong&gt;。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;已修改表示修改了文件，但还没保存到数据库中&lt;/li&gt;
+&lt;li&gt;已暂存表示对一个已修改的文件的当前版本做了标记，使之包含在下次提交的快照中&lt;/li&gt;
+&lt;li&gt;已提交表示数据已安全地保存在本地数据库中。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;这会让我们的 Git 项目拥有三个阶段：工作区、暂存区以及 Git 目录。&lt;/p&gt;
+&lt;p&gt;&lt;img alt=&#34;RUNOOB 图标&#34; loading=&#34;lazy&#34; src=&#34;//localhost:1313/assets/git_file_status.png&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;基本设置&#34;&gt;基本设置&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;git config --global user.email &amp;quot;你的邮箱&amp;quot;&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;git config --global user.name &amp;quot;你的github用户名&amp;quot;&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;参考文献：&lt;a href=&#34;https://git-scm.com/book/zh/v2/%E8%B5%B7%E6%AD%A5-Git-%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F&#34; target=&#34;_blank&#34;&gt; Git 是什么？&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;</description>
+    </item>
+    <item>
+      <title>拉取</title>
+      <link>//localhost:1313/gitguide/fetch/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/gitguide/fetch/</guid>
+      <description>&lt;p&gt;&lt;code&gt;git fetch&lt;/code&gt; 和&lt;code&gt;git pull&lt;/code&gt; 都用于代码和分支的更新。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;h3&gt;🔥 git fetch&lt;/h3&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;一旦远程主机的版本库有了更新（Git 术语叫做 commit），需要将这些更新取回本地，这时就要用到 git fetch 命令。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;/*
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt; * git fetch 主机名 远程分支:本地分支（创建一个新分支）
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt; * 特别注意:不建议本地分支写本地已有分支，否则拉取当有冲突时可能会有问题
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;*/
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;##1：拉取更新到本地新建tmp分支&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ git fetch origin master:tmp
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;##2：合并更新&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ git merge tmp
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;##3: 当有冲突时，手动解决冲突 然后git add .| git commit -m &amp;#34;&amp;#34;。无冲突时 最后直接push&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ git push origin master
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ul&gt;
+&lt;li&gt;
+&lt;h3&gt;🔥 git pull&lt;/h3&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;/*
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt; * git pull 主机名 远程分支:本地分支（无则创建一个新分支）
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;*/
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;##1：取回origin主机的master分支，与本地的dev分支合并&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;## || 如果远程分支是与当前分支合并，则冒号后面的部分可以省略。&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ git pull origin master:dev &lt;span style=&#34;color:#f92672&#34;&gt;||&lt;/span&gt; git pull origin master
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;##2: 当有冲突时，手动解决冲突 然后git add .| git commit -m &amp;#34;&amp;#34;。无冲突时 最后直接push&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ git push origin master
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;::: tip 结论
+git fetch 是从远程获取最新版本到本地，但不会自动 merge。
+而 git pull 则是会获取所有远程索引并合并到本地分支中来。效果相同时 git pull 将更为快捷。
+:::&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>贮藏</title>
+      <link>//localhost:1313/gitguide/stash/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/gitguide/stash/</guid>
+      <description>&lt;p&gt;有时，当你在项目的一部分上已经工作一段时间后，所有东西都进入了混乱的状态， 而这时你想要切换到另一个分支做一点别的事情。 问题是，你不想仅仅因为过会儿回到这一点而为做了一半的工作创建一次提交。 针对这个问题的答案是 &lt;code&gt;git stash&lt;/code&gt; 命令&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;git stash&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;现在想要切换分支，但是还不想要提交之前的工作，想要贮藏修改。 将新的贮藏推送到栈上，运行 &lt;code&gt;git stash&lt;/code&gt; 或 &lt;code&gt;git stash push&lt;/code&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ git stash 或 git stash push
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ul&gt;
+&lt;li&gt;git stash list&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;要查看所有贮藏，运行 &lt;code&gt;git stash list&lt;/code&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ git stash list
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ul&gt;
+&lt;li&gt;git stash apply&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;要应用（恢复但并不从栈上移除）一个贮藏，运行 &lt;code&gt;git stash apply&lt;/code&gt; 加上要应用的贮藏的名字&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;git stash drop&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;要从栈上移除一个贮藏，运行 &lt;code&gt;git stash drop&lt;/code&gt; 加上要移除的贮藏的名字&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;git stash pop&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;要应用（恢复）并从栈上移除一个贮藏，运行 &lt;code&gt;git stash pop&lt;/code&gt; , 是 &lt;code&gt;git stash apply&lt;/code&gt; 和 &lt;code&gt;git stash drop&lt;/code&gt; 的简写。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>重写历史</title>
+      <link>//localhost:1313/gitguide/history/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/gitguide/history/</guid>
+      <description>&lt;blockquote&gt;
+&lt;p&gt;本文摘录自 &lt;code&gt;GIT BOOK&lt;/code&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;许多时候，在使用 Git 时，你可能想要修订提交历史。 Git 很棒的一点是它允许你在最后时刻做决定。 你可以在将暂存区内容提交前决定哪些文件进入提交，可以通过 git stash 来决定不与某些内容工作， 也可以重写已经发生的提交就像它们以另一种方式发生的一样。 这可能涉及改变提交的顺序，改变提交中的信息或修改文件，将提交压缩或是拆分， 或完全地移除提交——在将你的工作成果与他人共享之前。&lt;/p&gt;
+&lt;h2 id=&#34;修改最后一次提交&#34;&gt;修改最后一次提交&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ git commit --amend
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;这条命令相当于：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# HEAD^ 表示当前分支的上一个提交&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ git reset --soft HEAD^ 
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ ... &lt;span style=&#34;color:#66d9ef&#34;&gt;do&lt;/span&gt; something &lt;span style=&#34;color:#66d9ef&#34;&gt;else&lt;/span&gt; to come up with the right tree ...
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# ORIG_HEAD 是一个临时性的引用，用于在某些操作中保存先前 HEAD 的位置，以便稍后可能需要时能够恢复到该位置,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ git commit -c ORIG_HEAD
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# 在执行 git reset --soft HEAD^ 操作之后，之前的 HEAD 的位置将存储在 ORIG_HEAD 中。这样，如果你意识到你不想进行这个重置，你可以使用 git reset --hard ORIG_HEAD 将 HEAD 恢复到之前的位置&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;上面这条命令会将最后一次的提交信息载入到编辑器中供你修改。 当保存并关闭编辑器后，编辑器会将更新后的提交信息写入新提交中，它会成为新的最后一次提交。&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

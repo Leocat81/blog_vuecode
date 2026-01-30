@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto" data-theme="auto">
+
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Css3guide | pipe的笔记</title>
+<meta name="keywords" content="">
+<meta name="description" content="">
+<meta name="author" content="">
+<link rel="canonical" href="//localhost:1313/categories/css3guide/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.da3211e5ef867bf2b75fd5a6515cfed7195c011e8ab735694e203810a827097b.css" integrity="sha256-2jIR5e&#43;Ge/K3X9WmUVz&#43;1xlcAR6KtzVpTiA4EKgnCXs=" rel="preload stylesheet" as="style">
+<link rel="icon" href="//localhost:1313/img/logo2.webp">
+<link rel="icon" type="image/png" sizes="16x16" href="//localhost:1313/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="//localhost:1313/favicon-32x32.png">
+<link rel="apple-touch-icon" href="//localhost:1313/apple-touch-icon.png">
+<link rel="mask-icon" href="//localhost:1313/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" type="application/rss+xml" href="//localhost:1313/categories/css3guide/index.xml" title="rss">
+<link rel="alternate" hreflang="en" href="//localhost:1313/categories/css3guide/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script><meta property="og:url" content="//localhost:1313/categories/css3guide/">
+  <meta property="og:site_name" content="pipe的笔记">
+  <meta property="og:title" content="Css3guide">
+  <meta property="og:locale" content="zh-cn">
+  <meta property="og:type" content="website">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Css3guide">
+<meta name="twitter:description" content="">
+
+</head>
+<body class="list" id="top">
+    <header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="//localhost:1313/" accesskey="h" title="pipe的笔记 (Alt + H)">pipe的笔记</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="//localhost:1313/" title="首页">
+                    <span>首页</span>
+                </a>
+            </li>
+            <li>
+                <a href="//localhost:1313/search/" title="搜索">
+                    <span>搜索</span>
+                </a>
+            </li>
+            <li>
+                <a href="//localhost:1313/archives/" title="归档">
+                    <span>归档</span>
+                </a>
+            </li>
+            <li>
+                <a href="//localhost:1313/tags/" title="标签">
+                    <span>标签</span>
+                </a>
+            </li>
+            <li>
+                <a href="//localhost:1313/categories/" title="分类">
+                    <span>分类</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main"> 
+<header class="page-header"><div class="breadcrumbs"><a href="//localhost:1313/">Home</a>&nbsp;»&nbsp;<a href="//localhost:1313/categories/">Categories</a></div>
+  <h1>
+    Css3guide
+  </h1>
+</header>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">BEM(Block-Element-Modifier)
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>BEM是Block（块）、Element（元素）、Modifier（修饰符）的简写，是一种组件化的 CSS 命名方法和规范，由俄罗斯 Yandex 团队所提出。使用BEM主要是为了将用户界面划分成独立的块，使开发更为简单和快速，有利于团队协作，方便维护。
+参考文献 CSS之BEM命名规范 http://www.ayqy.net/blog/bem-block-element-modifier 官网文档 </p>
+  </div>
+  <footer class="entry-footer"><span>1 min</span></footer>
+  <a class="entry-link" aria-label="post link to BEM(Block-Element-Modifier)" href="//localhost:1313/css3guide/bem/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">BFC
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>简介 在解释 BFC 之前，先说一下文档流。我们常说的文档流其实分为普通流、定位流、浮动流、定位流三种。
+普通流 元素按照其在 HTML 中的先后位置至上而下布局 行内元素水平排列，直到当行被占满然后换行块级元素则会被渲染为完整的一行 所有元素默认都为普通流 浮动流 -元素首先按照普通流的位置出现，然后根据浮动的方向，尽可能的向左或向右偏移。
+绝对定位 元素会整体脱离普通流，因此绝对定位元素不会对其兄弟元素造成影响。 </p>
+  </div>
+  <footer class="entry-footer"><span>1 min</span></footer>
+  <a class="entry-link" aria-label="post link to BFC" href="//localhost:1313/css3guide/bfc/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">box-shadow
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p> box-shadow: offset-x offset-y blur spread color inset; box-shadow: X轴偏移量 Y轴偏移量 [阴影模糊半径] [阴影扩展] [阴影颜色] [投影方式];
+.desc { border: 5px solid LightCoral; box-shadow: 0 0 15px 5px; margin-bottom: 20px; } 单词解释：blur:模糊 spread:伸展 inset:内凹
+阴影和布局 阴影不影响布局， 但是可能会覆盖其他 box 或者其他 box 的阴影。 阴影不触发滚动条，也不增加滚动区域的大小。 所以布局时可忽略阴影。 </p>
+  </div>
+  <footer class="entry-footer"><span>1 min</span></footer>
+  <a class="entry-link" aria-label="post link to box-shadow" href="//localhost:1313/css3guide/readme/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Flex
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>语法篇 👍➡️阮一峰：Flex 布局教程：语法篇⬅️ 实例篇 👍➡️ :arrow_right: 阮一峰：Flex 布局教程：实例篇⬅️ </p>
+  </div>
+  <footer class="entry-footer"><span>1 min</span></footer>
+  <a class="entry-link" aria-label="post link to Flex" href="//localhost:1313/css3guide/flex/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">响应式图片
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>响应式图片
+</p>
+  </div>
+  <footer class="entry-footer"><span>1 min</span></footer>
+  <a class="entry-link" aria-label="post link to 响应式图片" href="//localhost:1313/css3guide/responsive-images/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">水平垂直居中
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>CSS实现水平垂直居中的五种方式
+margin 垂直居中原理 margin:auto 是具有强烈计算意味的关键字，用来计算元素对应方向应该获得的剩余空间大小
+填充规则 如果一侧定值，一侧auto，则auto为剩余空间大小 如果两侧均是auto，则平分剩余空间 垂直居中方案 (1）css 绝对定位同时设置 top bottom left right 会拉伸元素 。top bottom 会把元素拉伸到100%。
+(2）故垂直水平居中方案 height: 120px; width: 120px;position: absolute;left: 0;right: 0; top: 0;bottom: 0;margin: auto
+第一设置 position: absolute;left: 0;right: 0; top: 0;bottom: 0 拉伸元素填充至整个父元素的宽高
+第二 设置子元素自己的宽高 height: 120px; width: 120px，
+第三 margin: auto ; 自动计算属性(利用上面57的特性分析)。
+</p>
+  </div>
+  <footer class="entry-footer"><span>1 min</span></footer>
+  <a class="entry-link" aria-label="post link to 水平垂直居中" href="//localhost:1313/css3guide/margin/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">清除浮动
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>什么是 CSS 清除浮动？ 在非 IE 浏览器（如 Firefox）下，当容器的高度为 auto，且容器的内容中有浮动（float 为 left 或 right）的元素，在这种情况下，容器的高度不能自动伸长以适应内容的高度，使得内容溢出到容器外面而影响（甚至破坏）布局的现象。这个现象叫浮动溢出，为了防止这个现象的出现而进行的 CSS 处理，就叫 CSS 清除浮动。
+举例如下：
+&lt;!-- 清除浮动 --&gt; &lt;template&gt; &lt;div class=&#34;container&#34;&gt; &lt;div class=&#34;left&#34;&gt;left&lt;/div&gt; &lt;div class=&#34;right&#34;&gt;right&lt;/div&gt; &lt;/div&gt; &lt;/template&gt; &lt;style scoped&gt; .container { border: 1px solid #333; padding: 1px; } .left { height: 40px; width: 30%; float: left; background-color: red; } .right { height: 40px; width: 40%; float: left; background-color: blue; } &lt;/style&gt; 可以看到容器（container）并没有将 left 和 right 元素包裹着，并且使得内容溢出到容器外面而影响（甚至破坏）布局，此时就需要清除浮动处理。
+解决方案 使用带 clear 属性的空元素 &lt;!-- 清除浮动 --&gt; &lt;template&gt; &lt;div class=&#34;container&#34;&gt; &lt;div class=&#34;left&#34;&gt;left&lt;/div&gt; &lt;div class=&#34;right&#34;&gt;right&lt;/div&gt; &lt;div class=&#34;clear&#34;&gt;&lt;/div&gt; &lt;/div&gt; &lt;/template&gt; &lt;style scoped&gt; .container { border: 1px solid #333; padding: 1px; } .container .left { height: 40px; width: 30%; float: left; background-color: red; } .container .right { height: 40px; width: 40%; float: left; background-color: blue; } /* 添加带 clear 属性的空元素 */ .clear { clear: both; } &lt;/style&gt; 实现效果：
+...</p>
+  </div>
+  <footer class="entry-footer"><span>2 min</span></footer>
+  <a class="entry-link" aria-label="post link to 清除浮动" href="//localhost:1313/css3guide/clearfix/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">瀑布流布局
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p> 瀑布流布局 </p>
+  </div>
+  <footer class="entry-footer"><span>1 min</span></footer>
+  <a class="entry-link" aria-label="post link to 瀑布流布局" href="//localhost:1313/css3guide/water-fall/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">盒子模型
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p> 参考文献 MDN-盒子模型 </p>
+  </div>
+  <footer class="entry-footer"><span>1 min</span></footer>
+  <a class="entry-link" aria-label="post link to 盒子模型" href="//localhost:1313/css3guide/box/"></a>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="//localhost:1313/">pipe的笔记</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

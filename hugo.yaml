@@ -1,0 +1,95 @@
+baseURL: "/"
+languageCode: "zh-cn"
+title: "pipe的笔记"
+
+theme: "PaperMod"
+
+# 统计（可替换为你的 GA4 ID）
+googleAnalytics: ""
+
+
+# 输出 JSON 以支持主题自带搜索
+outputs:
+  home:
+    - HTML
+    - RSS
+    - JSON
+
+sitemap:
+  changefreq: "weekly"
+  filename: "sitemap.xml"
+  priority: 0.5
+
+taxonomies:
+  tag: tags
+  category: categories
+
+menu:
+  main:
+    - name: "首页"
+      url: "/"
+      weight: 1
+    - name: "搜索"
+      url: "/search/"
+      weight: 2
+    - name: "归档"
+      url: "/archives/"
+      weight: 3
+    - name: "标签"
+      url: "/tags/"
+      weight: 4
+    - name: "分类"
+      url: "/categories/"
+      weight: 5
+
+params:
+  env: "production"
+  defaultTheme: "auto"
+  disableThemeToggle: false
+  ShowReadingTime: true
+  ShowToc: true
+  TocOpen: true
+  ShowPostNavLinks: true
+  ShowBreadCrumbs: true
+  ShowCodeCopyButtons: true
+  ShowShareButtons: true
+  comments: true
+
+  homeInfoParams:
+    Title: "Hi, 我是 pipe"
+    Content: "欢迎来到我的博客。"
+
+  # Fuse.js 搜索配置
+  fuseOpts:
+    isCaseSensitive: false
+    shouldSort: true
+    location: 0
+    distance: 1000
+    threshold: 0.4
+    minMatchCharLength: 0
+    keys: ["title", "permalink", "summary", "content"]
+
+  # Giscus 评论，替换为你的仓库信息
+  giscus:
+    repo: ""
+    repoId: ""
+    category: ""
+    categoryId: ""
+    mapping: "pathname"
+    reactionsEnabled: "1"
+    emitMetadata: "0"
+    inputPosition: "bottom"
+    theme: "preferred_color_scheme"
+    lang: "zh-CN"
+
+  # 站点图标
+  assets:
+    favicon: "/img/logo2.webp"
+
+markup:
+  goldmark:
+    renderer:
+      unsafe: true
+
+# 文章主区（用于首页聚合）
+mainSections: ["guide", "vueguide", "gitguide", "css3guide", "htmlguide", "httpguide", "buildtools", "funny", "node", "home"]

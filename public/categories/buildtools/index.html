@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto" data-theme="auto">
+
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Buildtools | pipe的笔记</title>
+<meta name="keywords" content="">
+<meta name="description" content="">
+<meta name="author" content="">
+<link rel="canonical" href="//localhost:1313/categories/buildtools/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.da3211e5ef867bf2b75fd5a6515cfed7195c011e8ab735694e203810a827097b.css" integrity="sha256-2jIR5e&#43;Ge/K3X9WmUVz&#43;1xlcAR6KtzVpTiA4EKgnCXs=" rel="preload stylesheet" as="style">
+<link rel="icon" href="//localhost:1313/img/logo2.webp">
+<link rel="icon" type="image/png" sizes="16x16" href="//localhost:1313/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="//localhost:1313/favicon-32x32.png">
+<link rel="apple-touch-icon" href="//localhost:1313/apple-touch-icon.png">
+<link rel="mask-icon" href="//localhost:1313/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" type="application/rss+xml" href="//localhost:1313/categories/buildtools/index.xml" title="rss">
+<link rel="alternate" hreflang="en" href="//localhost:1313/categories/buildtools/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script><meta property="og:url" content="//localhost:1313/categories/buildtools/">
+  <meta property="og:site_name" content="pipe的笔记">
+  <meta property="og:title" content="Buildtools">
+  <meta property="og:locale" content="zh-cn">
+  <meta property="og:type" content="website">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Buildtools">
+<meta name="twitter:description" content="">
+
+</head>
+<body class="list" id="top">
+    <header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="//localhost:1313/" accesskey="h" title="pipe的笔记 (Alt + H)">pipe的笔记</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="//localhost:1313/" title="首页">
+                    <span>首页</span>
+                </a>
+            </li>
+            <li>
+                <a href="//localhost:1313/search/" title="搜索">
+                    <span>搜索</span>
+                </a>
+            </li>
+            <li>
+                <a href="//localhost:1313/archives/" title="归档">
+                    <span>归档</span>
+                </a>
+            </li>
+            <li>
+                <a href="//localhost:1313/tags/" title="标签">
+                    <span>标签</span>
+                </a>
+            </li>
+            <li>
+                <a href="//localhost:1313/categories/" title="分类">
+                    <span>分类</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main"> 
+<header class="page-header"><div class="breadcrumbs"><a href="//localhost:1313/">Home</a>&nbsp;»&nbsp;<a href="//localhost:1313/categories/">Categories</a></div>
+  <h1>
+    Buildtools
+  </h1>
+</header>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">CI/CD
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>centos 7,docker,jenkins
+安装 docker 下载
+curl -fsSL https://get.docker.com | bash -s docker --mirror Aliyun
+验证
+docker -v
+启动
+systemctl start docker
+安装jenkins https://www.jenkins.io/zh/doc/book/installing/
+下载镜像
+docker pull jenkinsci/blueocean
+验证镜像
+docker images
+创建容器并运行
+docker run -u root --rm -d -p 8080:8080 -p 50000:50000 -v jenkins-data:/var/jenkins_home -v /var/run/docker.sock:/var/run/docker.sock jenkinsci/blueocean
+验证容器
+docker ps
+打开页面
+http://localhost:8080
+初始化jenkins 登录
+进入容器查看密码，并输入密码
+$ docker exec -it containerID /bin/bash $ cd /var/jenkins_home/secrets $ vi initialAdminPassword 设置密码
+安装推荐插件
+安装Nodejs
+...</p>
+  </div>
+  <footer class="entry-footer"><span>1 min</span></footer>
+  <a class="entry-link" aria-label="post link to CI/CD" href="//localhost:1313/buildtools/jenkins/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Clash
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>推荐使用clash-for-linux-install实现一键安装
+修改配置文件 clashmixin -e 修改后保存服务会自动重启生效
+例如修改lan = true 使用局域网代理
+参考资料 clash-for-linux-install 一键安装
+clash 各个平台软件包
+clash for linux 安装教程
+:small_airplane: 优质机场导航
+</p>
+  </div>
+  <footer class="entry-footer"><span>1 min</span></footer>
+  <a class="entry-link" aria-label="post link to Clash" href="//localhost:1313/buildtools/clash/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Docker
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p> docker 官网
+docker 官网文档使用指南
+安装 docker 安装
+docker compose 安装
+docker docker compose 安装完成后启动 docker!。
+docker-compose 使用 https://docs.docker.com/compose/reference/
+常用命令 docker compose up
+docker compose down
+</p>
+  </div>
+  <footer class="entry-footer"><span>1 min</span></footer>
+  <a class="entry-link" aria-label="post link to Docker" href="//localhost:1313/buildtools/docker/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">glob模式
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>glob 是一种文件匹配模式，全称 global，它起源于 Unix 的 bash shell 中，比如在 linux 中常用的 mv .txt tmp/ 中，.txt 就使用到了这种模式。
+TODO:完成后续补充
+</p>
+  </div>
+  <footer class="entry-footer"><span>1 min</span></footer>
+  <a class="entry-link" aria-label="post link to glob模式" href="//localhost:1313/buildtools/shell/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">sentry
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p> https://develop.sentry.dev/self-hosted/
+Sentry 是一个流行的错误监控平台，帮助开发者分析，修复问题，优化代码的性能。可以进行错误捕获，问题追踪，并提供问题详情，适用于多个平台，多种语言。
+本章主要介绍如何私有化部署 sentry, 以及搭建 sentry 环境，实现前端监控平台的搭建。
+私有化部署 sentry 项目地址
+主要采用 docker 实现部署。
+环境需要: Docker 19.03.6&#43; Compose 1.28.0&#43; 4 CPU Cores 8 GB RAM 20 GB Free Disk Space git 1.8.0.0&#43; python 3 docker docker compose 安装 docker 安装
+docker compose 安装
+docker docker compose 安装完成后启动 docker!。
+sudo systemctl start docker git,python3安装 yum install git python3 项目准备 此处已 sentry 22.11.0 版本为示例，可以根据自身需求安装最新版本，具体版本查看 https://develop.sentry.dev/self-hosted/
+/* 克隆项目 */ git clone https://github.com/getsentry/self-hosted /* 切换分支(此处貌似不切换分支会出现问题) */ cd self-hosted git checkout 22.11.0 配置 docker 镜像加速 此处尽量配置 docker 镜像加速，不然拉取资源速度很慢
+...</p>
+  </div>
+  <footer class="entry-footer"><span>2 min</span></footer>
+  <a class="entry-link" aria-label="post link to sentry" href="//localhost:1313/buildtools/sentry/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">前端部署优化策略总结
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p> 总要针对 SPA 应用
+项目优化层面
+部分依赖包不打入构建包中，采用 CDN 引入 采用一些打包工具对代码进行压缩 如（TerserWebpackPlugin,ImageMinimizerWebpackPlugin）等 路由懒加载 开启 GZip 压缩（需配合 web 服务器结合使用） 使用 SSR 一些其他增强型优化
+同域名请求数量限制优化
+网络面板关于网络请求的一些优化同域名请求数量限制（HTTP/1.0 或 HTTP/1.1）如果网络请求出现排队的情况，那么说明是在单个域上提出了太多请求。在 HTTP/1.0 或 HTTP/1.1 连接上，Chrome 每个主机最多允许六个同步 TCP 连接。想要优化这一点，可以将关键请求提前，不关键请求延后。如果都是关键请求，那么可以尝试使用 HTTP 2。（在 Network 面板可以展示 Protocol 显示）如果条件有限，可以将这些请求放在不同的域名上，然后用 nginx 指向同一个源头，这样同样可以解决这个问题
+使用阿里云 OSS 托管静态网页
+https://help.aliyun.com/document_detail/31872.html
+增加服务器的带宽
+CDN加速
+https://www.aliyun.com/product/cdn?spm=5176.21213303.J_3207526240.68.485f53c9ryCm8k
+</p>
+  </div>
+  <footer class="entry-footer"><span>1 min</span></footer>
+  <a class="entry-link" aria-label="post link to 前端部署优化策略总结" href="//localhost:1313/buildtools/deploy/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">常用免费CDN网站
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p> 360-CDN jsdelivr-CDN unpkg-CDN cdnjs-CDN </p>
+  </div>
+  <footer class="entry-footer"><span>1 min</span></footer>
+  <a class="entry-link" aria-label="post link to 常用免费CDN网站" href="//localhost:1313/buildtools/cdn/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">自动化构建工具
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p> 自动化构建工具就是用来让我们不再做机械重复的事情，解放我们的双手的。
+webpack学习代码地址
+webpack优化学习代码地址
+gulp学习代码地址
+</p>
+  </div>
+  <footer class="entry-footer"><span>1 min</span></footer>
+  <a class="entry-link" aria-label="post link to 自动化构建工具" href="//localhost:1313/buildtools/readme/"></a>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="//localhost:1313/">pipe的笔记</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

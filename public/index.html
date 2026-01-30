@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto" data-theme="auto">
+
+<head>
+	<meta name="generator" content="Hugo 0.155.0"><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>pipe的笔记</title>
+
+<meta name="description" content="欢迎来到我的博客">
+<meta name="author" content="">
+<link rel="canonical" href="//localhost:1313/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.da3211e5ef867bf2b75fd5a6515cfed7195c011e8ab735694e203810a827097b.css" integrity="sha256-2jIR5e&#43;Ge/K3X9WmUVz&#43;1xlcAR6KtzVpTiA4EKgnCXs=" rel="preload stylesheet" as="style">
+<link rel="icon" href="//localhost:1313/img/logo2.webp">
+<link rel="icon" type="image/png" sizes="16x16" href="//localhost:1313/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="//localhost:1313/favicon-32x32.png">
+<link rel="apple-touch-icon" href="//localhost:1313/apple-touch-icon.png">
+<link rel="mask-icon" href="//localhost:1313/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" type="application/rss+xml" href="//localhost:1313/index.xml" title="rss">
+<link rel="alternate" type="application/json" href="//localhost:1313/index.json" title="json">
+<link rel="alternate" hreflang="en" href="//localhost:1313/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script><meta property="og:url" content="//localhost:1313/">
+  <meta property="og:site_name" content="pipe的笔记">
+  <meta property="og:title" content="Hi, 我是 pipe">
+  <meta property="og:description" content="欢迎来到我的博客">
+  <meta property="og:locale" content="zh-cn">
+  <meta property="og:type" content="website">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Hi, 我是 pipe">
+<meta name="twitter:description" content="欢迎来到我的博客">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "pipe的笔记",
+  "url": "//localhost:1313/",
+  "description": "",
+  "logo": "//localhost:1313/img/logo2.webp",
+  "sameAs": [
+      
+  ]
+}
+</script>
+</head>
+<body class="list" id="top">
+    <header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="//localhost:1313/" accesskey="h" title="pipe的笔记 (Alt + H)">pipe的笔记</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="//localhost:1313/" title="首页">
+                    <span class="active">首页</span>
+                </a>
+            </li>
+            <li>
+                <a href="//localhost:1313/search/" title="搜索">
+                    <span>搜索</span>
+                </a>
+            </li>
+            <li>
+                <a href="//localhost:1313/archives/" title="归档">
+                    <span>归档</span>
+                </a>
+            </li>
+            <li>
+                <a href="//localhost:1313/tags/" title="标签">
+                    <span>标签</span>
+                </a>
+            </li>
+            <li>
+                <a href="//localhost:1313/categories/" title="分类">
+                    <span>分类</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main"> 
+<div class="post-content"><p>这里是我的技术笔记与日常记录。</p>
+<ul>
+<li>文章按主题分区，首页会汇总最新内容</li>
+<li>使用站内搜索快速定位内容</li>
+</ul>
+
+
+</div>
+<article class="first-entry home-info">
+    <header class="entry-header">
+        <h1>Hi, 我是 pipe</h1>
+    </header>
+    <div class="entry-content">
+        欢迎来到我的博客。
+    </div>
+    <footer class="entry-footer">
+        <div class="social-icons" >
+</div>
+
+    </footer>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">apply | bind | call
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>apply 介绍 👍➡️MDN官网apply介绍⬅️
+Function.apply(obj, args) 方法能接收两个参数 obj： 这个对象将代替Function类里this对象 args： 这个是数组， 它将作为参数传给Function（ args-- &gt; arguments） 使用 实现继承效果 function Person(name, age) { this.name = name; this.age = age; } /*定义一个学生类*/ function Student(name, age, grade) { Person.apply(this, arguments); this.grade = grade; } //创建一个学生类 let student = new Student(&#34;zhangsan&#34;, 21, &#34;一年级&#34;); //测试 alert( &#34;name:&#34; &#43; student.name &#43; &#34;\n&#34; &#43; &#34;age:&#34; &#43; student.age &#43; &#34;\n&#34; &#43; &#34;grade:&#34; &#43; student.grade ); /* name:zhangsan age:21 grade:一年级 */ ::: tip 解释 apply是应用的意思，即为把Person应用到Student的this上。或者理解为Student的this去调用Person方法， this.Person(arguments) ，因为是Student的this去调用的Person函数，故Person函数中this指向了Student中的this（此处重要：得出一个结论，函数的调用方式决定了 this 的值（运行时绑定）。详见箭头函数和普通函数的区别），会把Person当中的属性添加到Student的this上。 :::
+Student 实现了继承于 Person 构造函数
+用 apply 将数组各项添加到另一个数组 我们可以使用 push 将元素追加到数组中。由于 push 接受可变数量的参数，所以也可以一次追加多个元素。
+但是，如果 push 的参数是数组，它会将该数组作为单个元素添加，而不是将这个数组内的每个元素添加进去，因此我们最终会得到一个数组内的数组。如果不想这样呢？concat 符合我们的需求，但它并不是将元素添加到现有数组，而是创建并返回一个新数组。 然而我们需要将元素追加到现有数组…… 那么怎么做好？难道要写一个循环吗？别当然不是！
+apply 正派上用场！
+...</p>
+  </div>
+  <footer class="entry-footer"><span>2 min</span></footer>
+  <a class="entry-link" aria-label="post link to apply | bind | call" href="//localhost:1313/guide/appy/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">BEM(Block-Element-Modifier)
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>BEM是Block（块）、Element（元素）、Modifier（修饰符）的简写，是一种组件化的 CSS 命名方法和规范，由俄罗斯 Yandex 团队所提出。使用BEM主要是为了将用户界面划分成独立的块，使开发更为简单和快速，有利于团队协作，方便维护。
+参考文献 CSS之BEM命名规范 http://www.ayqy.net/blog/bem-block-element-modifier 官网文档 </p>
+  </div>
+  <footer class="entry-footer"><span>1 min</span></footer>
+  <a class="entry-link" aria-label="post link to BEM(Block-Element-Modifier)" href="//localhost:1313/css3guide/bem/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">BFC
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>简介 在解释 BFC 之前，先说一下文档流。我们常说的文档流其实分为普通流、定位流、浮动流、定位流三种。
+普通流 元素按照其在 HTML 中的先后位置至上而下布局 行内元素水平排列，直到当行被占满然后换行块级元素则会被渲染为完整的一行 所有元素默认都为普通流 浮动流 -元素首先按照普通流的位置出现，然后根据浮动的方向，尽可能的向左或向右偏移。
+绝对定位 元素会整体脱离普通流，因此绝对定位元素不会对其兄弟元素造成影响。 </p>
+  </div>
+  <footer class="entry-footer"><span>1 min</span></footer>
+  <a class="entry-link" aria-label="post link to BFC" href="//localhost:1313/css3guide/bfc/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">box-shadow
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p> box-shadow: offset-x offset-y blur spread color inset; box-shadow: X轴偏移量 Y轴偏移量 [阴影模糊半径] [阴影扩展] [阴影颜色] [投影方式];
+.desc { border: 5px solid LightCoral; box-shadow: 0 0 15px 5px; margin-bottom: 20px; } 单词解释：blur:模糊 spread:伸展 inset:内凹
+阴影和布局 阴影不影响布局， 但是可能会覆盖其他 box 或者其他 box 的阴影。 阴影不触发滚动条，也不增加滚动区域的大小。 所以布局时可忽略阴影。 </p>
+  </div>
+  <footer class="entry-footer"><span>1 min</span></footer>
+  <a class="entry-link" aria-label="post link to box-shadow" href="//localhost:1313/css3guide/readme/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Chrome
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>谷歌开发者工具文档 谷歌开发者工具文档
+谷歌官方web优化指南 https://web.dev/?hl=zh-cn
+我们希望帮助您构建美观、易于访问、快速且安全的网站，从而能跨浏览器并为您的所有用户提供服务。本网站提供各种内容，由 Chrome 团队成员及外部专家撰写，可协助您顺利踏上这一旅程。
+chrome浏览器中的timing详解 chrome浏览器中的timing详解
+chrome浏览器中使用 dom 断点 调试。 Pause your code with breakpoints Dom BreakPoints Chrome DOM断点之实现源码追溯 使用 Dom BreakPoints 结合函数调用栈可以快速定位，改变该元素的所涉及的代码片段。
+</p>
+  </div>
+  <footer class="entry-footer"><span>1 min</span></footer>
+  <a class="entry-link" aria-label="post link to Chrome" href="//localhost:1313/funny/google/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">CI/CD
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>centos 7,docker,jenkins
+安装 docker 下载
+curl -fsSL https://get.docker.com | bash -s docker --mirror Aliyun
+验证
+docker -v
+启动
+systemctl start docker
+安装jenkins https://www.jenkins.io/zh/doc/book/installing/
+下载镜像
+docker pull jenkinsci/blueocean
+验证镜像
+docker images
+创建容器并运行
+docker run -u root --rm -d -p 8080:8080 -p 50000:50000 -v jenkins-data:/var/jenkins_home -v /var/run/docker.sock:/var/run/docker.sock jenkinsci/blueocean
+验证容器
+docker ps
+打开页面
+http://localhost:8080
+初始化jenkins 登录
+进入容器查看密码，并输入密码
+$ docker exec -it containerID /bin/bash $ cd /var/jenkins_home/secrets $ vi initialAdminPassword 设置密码
+安装推荐插件
+安装Nodejs
+...</p>
+  </div>
+  <footer class="entry-footer"><span>1 min</span></footer>
+  <a class="entry-link" aria-label="post link to CI/CD" href="//localhost:1313/buildtools/jenkins/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Clash
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>推荐使用clash-for-linux-install实现一键安装
+修改配置文件 clashmixin -e 修改后保存服务会自动重启生效
+例如修改lan = true 使用局域网代理
+参考资料 clash-for-linux-install 一键安装
+clash 各个平台软件包
+clash for linux 安装教程
+:small_airplane: 优质机场导航
+</p>
+  </div>
+  <footer class="entry-footer"><span>1 min</span></footer>
+  <a class="entry-link" aria-label="post link to Clash" href="//localhost:1313/buildtools/clash/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Class
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>要点 class Example { constructor() { this.name = &#34;simple&#34;; const proto = Object.getPrototypeOf(this); console.log(Object.getOwnPropertyNames(proto)); } first() {} second() {} static third() {} } let e = new Example(); // [&#39;constructor&#39;, &#39;first&#39;, &#39;second&#39;] console.log(e.hasOwnProperty(&#34;name&#34;)); 上面代码中，name 是实例对象 e 自身的属性（因为定义在 this 对象上），所以 hasOwnProperty()方法返回 true，所以 hasOwnProperty()方法返回 false。这些都与 ES5 的行为保持一致。 而 first()|second()|third()是添加到 this 的原型中 静态方法不是 this 的属性，它们只是类自身的属性。 </p>
+  </div>
+  <footer class="entry-footer"><span>1 min</span></footer>
+  <a class="entry-link" aria-label="post link to Class" href="//localhost:1313/guide/class-desc/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">computed 和 watch 比较
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p> 计算属性定义必须和data中定义不一样。watch则必须一样。 计算属性是基于响应式依赖进行缓存的。watch则只要值变化就触发，不管值一样不一样。 不支持异步，当computed内有异步操作时无效，无法监听数据的变化。watch支持异步。 computed是一个属性由其他属性计算而来的，这个属性依赖其他属性，是一个多对一或者一对一，一般用computed。而watch为当一个属性发生变化时，需要执行对应的操作；一对多； watch支持深度监听(deep),和组件加载立即触发回调函数执行(immediate) </p>
+  </div>
+  <footer class="entry-footer"><span>1 min</span></footer>
+  <a class="entry-link" aria-label="post link to computed 和 watch 比较" href="//localhost:1313/vueguide/computed-dif-watch/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">curl 的用法指南
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p> 阮一峰 - curl 的用法指南 </p>
+  </div>
+  <footer class="entry-footer"><span>1 min</span></footer>
+  <a class="entry-link" aria-label="post link to curl 的用法指南" href="//localhost:1313/funny/curl/"></a>
+</article>
+<footer class="page-footer">
+  <nav class="pagination">
+    <a class="next" href="//localhost:1313/page/2/">Next&nbsp;&nbsp;»
+    </a>
+  </nav>
+</footer>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="//localhost:1313/">pipe的笔记</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

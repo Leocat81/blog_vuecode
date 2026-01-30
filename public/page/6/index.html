@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto" data-theme="auto">
+
+<head>
+	<meta name="generator" content="Hugo 0.155.0"><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>pipe的笔记</title>
+
+<meta name="description" content="欢迎来到我的博客">
+<meta name="author" content="">
+<link rel="canonical" href="//localhost:1313/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.da3211e5ef867bf2b75fd5a6515cfed7195c011e8ab735694e203810a827097b.css" integrity="sha256-2jIR5e&#43;Ge/K3X9WmUVz&#43;1xlcAR6KtzVpTiA4EKgnCXs=" rel="preload stylesheet" as="style">
+<link rel="icon" href="//localhost:1313/img/logo2.webp">
+<link rel="icon" type="image/png" sizes="16x16" href="//localhost:1313/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="//localhost:1313/favicon-32x32.png">
+<link rel="apple-touch-icon" href="//localhost:1313/apple-touch-icon.png">
+<link rel="mask-icon" href="//localhost:1313/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" type="application/rss+xml" href="//localhost:1313/index.xml" title="rss">
+<link rel="alternate" type="application/json" href="//localhost:1313/index.json" title="json">
+<link rel="alternate" hreflang="en" href="//localhost:1313/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script><meta property="og:url" content="//localhost:1313/">
+  <meta property="og:site_name" content="pipe的笔记">
+  <meta property="og:title" content="Hi, 我是 pipe">
+  <meta property="og:description" content="欢迎来到我的博客">
+  <meta property="og:locale" content="zh-cn">
+  <meta property="og:type" content="website">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Hi, 我是 pipe">
+<meta name="twitter:description" content="欢迎来到我的博客">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "pipe的笔记",
+  "url": "//localhost:1313/",
+  "description": "",
+  "logo": "//localhost:1313/img/logo2.webp",
+  "sameAs": [
+      
+  ]
+}
+</script>
+</head>
+<body class="list" id="top">
+    <header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="//localhost:1313/" accesskey="h" title="pipe的笔记 (Alt + H)">pipe的笔记</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="//localhost:1313/" title="首页">
+                    <span class="active">首页</span>
+                </a>
+            </li>
+            <li>
+                <a href="//localhost:1313/search/" title="搜索">
+                    <span>搜索</span>
+                </a>
+            </li>
+            <li>
+                <a href="//localhost:1313/archives/" title="归档">
+                    <span>归档</span>
+                </a>
+            </li>
+            <li>
+                <a href="//localhost:1313/tags/" title="标签">
+                    <span>标签</span>
+                </a>
+            </li>
+            <li>
+                <a href="//localhost:1313/categories/" title="分类">
+                    <span>分类</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main"> 
+<div class="post-content"><p>这里是我的技术笔记与日常记录。</p>
+<ul>
+<li>文章按主题分区，首页会汇总最新内容</li>
+<li>使用站内搜索快速定位内容</li>
+</ul>
+
+
+</div>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">多页应用
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>当系统项目越来越复杂化，需要根据类似渠道来区分系统（例如：OA系统，CRM系统），这个时候需要考虑采用多页配置来架构。
+项目地址 vue_multi_pages
+参考文献 VUE多入口多项目项目架构 VueCli官网-构建一个多页应用 </p>
+  </div>
+  <footer class="entry-footer"><span>1 min</span></footer>
+  <a class="entry-link" aria-label="post link to 多页应用" href="//localhost:1313/vueguide/multi-page/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">如何通俗易懂的给你讲明白 HTTPS？
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>
+👍➡️xieyezi：如何通俗易懂的给你讲明白HTTPS?⬅️
+</p>
+  </div>
+  <footer class="entry-footer"><span>1 min</span></footer>
+  <a class="entry-link" aria-label="post link to 如何通俗易懂的给你讲明白 HTTPS？" href="//localhost:1313/httpguide/readme/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">巧用 JS 位运算
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>取整 可以采用 &gt;&gt; 0或 | 来进行取整操作 console.log(1.01 &gt;&gt; 0) // 1 console.log(1.01 | 0) // 1 console.log(-1.01 &gt;&gt; 0) // -1 console.log(-1.01 | 0) // -1 console.log(2.23123 &gt;&gt; 0) // 2 console.log(2.23123 | 0) // 2 console.log(-2.23123 &gt;&gt; 0 ) // -2 console.log(-2.23123 | 0 ) // -2 移位0有什么意义 查过一些资料，其中stackoverflow里面有一个高票回答，里面有这么一句话
+::: tip 回答 It doesn’t just convert non-Numbers to Number, it converts them to Numbers that can be expressed as 32-bit unsigned ints. :::
+原来移位操作符在移位前做了两种转换，第一将不是number类型的数据转换为number，第二将number转换为无符号的32bit数据，也就是Uint32类型。这些与移位的位数无关，移位0位主要就是用了js的内部特性做了前两种转换。
+Uint32类型是如何转换的 1 . 如果不能转换为Number，那就为0 2 . 如果为非整数，先转换为整数，参考公式sign(n) ⋅ floor(abs(n))
+function ToInteger(x) { x = Number(x); return x &lt; 0 ? Math.ceil(x) : Math.floor(x); } 3 . 如果是正数，返回正数，如果是负数，返回负数 &#43; 2的32次方
+...</p>
+  </div>
+  <footer class="entry-footer"><span>1 min</span></footer>
+  <a class="entry-link" aria-label="post link to 巧用 JS 位运算" href="//localhost:1313/guide/bit-operation/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">常用免费CDN网站
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p> 360-CDN jsdelivr-CDN unpkg-CDN cdnjs-CDN </p>
+  </div>
+  <footer class="entry-footer"><span>1 min</span></footer>
+  <a class="entry-link" aria-label="post link to 常用免费CDN网站" href="//localhost:1313/buildtools/cdn/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">开源许可证
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>
+</p>
+  </div>
+  <footer class="entry-footer"><span>0 min</span></footer>
+  <a class="entry-link" aria-label="post link to 开源许可证" href="//localhost:1313/funny/license/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">手写 Promise
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>简易版 Promise const PENDING = &#34;pending&#34;; const FULFILLED = &#34;fulfilled&#34;; const REJECTED = &#34;rejected&#34;; function Promise1(executor) { var _this = this; this.state = PENDING; //状态 this.value = undefined; //成功结果 this.reason = undefined; //失败原因 this.onFulfilled = []; //成功的回调 this.onRejected = []; //失败的回调 function resolve(value) { if (_this.state === PENDING) { _this.state = FULFILLED; _this.value = value; _this.onFulfilled.forEach((fn) =&gt; { console.log(fn); return fn(value); }); } } function reject(reason) { if (_this.state === PENDING) { _this.state = REJECTED; _this.reason = reason; _this.onRejected.forEach((fn) =&gt; { console.log(fn); return fn(reason); }); } } try { executor(resolve, reject); } catch (e) { reject(e); } } Promise1.prototype.then = function(onFulfilled, onRejected) { if (this.state === FULFILLED) { typeof onFulfilled === &#34;function&#34; &amp;&amp; onFulfilled(this.value); } if (this.state === REJECTED) { typeof onRejected === &#34;function&#34; &amp;&amp; onRejected(this.reason); } if (this.state === PENDING) { typeof onFulfilled === &#34;function&#34; &amp;&amp; this.onFulfilled.push(onFulfilled); typeof onRejected === &#34;function&#34; &amp;&amp; this.onRejected.push(onRejected); } }; TODO: 完成链式调用 </p>
+  </div>
+  <footer class="entry-footer"><span>1 min</span></footer>
+  <a class="entry-link" aria-label="post link to 手写 Promise" href="//localhost:1313/guide/readme/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">拉取
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>git fetch 和git pull 都用于代码和分支的更新。
+🔥 git fetch 一旦远程主机的版本库有了更新（Git 术语叫做 commit），需要将这些更新取回本地，这时就要用到 git fetch 命令。
+/* * git fetch 主机名 远程分支:本地分支（创建一个新分支） * 特别注意:不建议本地分支写本地已有分支，否则拉取当有冲突时可能会有问题 */ ##1：拉取更新到本地新建tmp分支 $ git fetch origin master:tmp ##2：合并更新 $ git merge tmp ##3: 当有冲突时，手动解决冲突 然后git add .| git commit -m &#34;&#34;。无冲突时 最后直接push $ git push origin master 🔥 git pull /* * git pull 主机名 远程分支:本地分支（无则创建一个新分支） */ ##1：取回origin主机的master分支，与本地的dev分支合并 ## || 如果远程分支是与当前分支合并，则冒号后面的部分可以省略。 $ git pull origin master:dev || git pull origin master ##2: 当有冲突时，手动解决冲突 然后git add .| git commit -m &#34;&#34;。无冲突时 最后直接push $ git push origin master ::: tip 结论 git fetch 是从远程获取最新版本到本地，但不会自动 merge。 而 git pull 则是会获取所有远程索引并合并到本地分支中来。效果相同时 git pull 将更为快捷。 :::
+</p>
+  </div>
+  <footer class="entry-footer"><span>1 min</span></footer>
+  <a class="entry-link" aria-label="post link to 拉取" href="//localhost:1313/gitguide/fetch/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">搜索技巧
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>简述：谷歌 &gt; 公众号 &gt; 短视频 &gt; 百度
+Google “”限定关键词 作用：保证搜索结果一定包含关键词，限定关键词一定完整连续出现
+用法：加双引号 “易阳千喜”
+intitle 限定标题 作用：保证搜索结果的标题包含关键词
+用法：intitle: 关键词
+allintitle 限定标题包含多个关键字
+作用：限定标题包含多个关键字 用法：allintitle: 关键词
+inurl 限定网页地址必须包含关键词
+作用：保证搜索结果的网页地址包含关键词 用法：inurl: cctv
+size 限定搜索结果的网站来源
+作用：保证搜索结果来自此网站 用法：site: cctv.com (可以不加二级域名)
+imagesize 限定图片尺寸
+作用：限定图片尺寸 用法：imagesize: 1000x1000
+filetype 限定搜索结果的文件类型
+作用：保证搜索结果的文件类型为指定类型 用法：filetype:pdf
+</p>
+  </div>
+  <footer class="entry-footer"><span>1 min</span></footer>
+  <a class="entry-link" aria-label="post link to 搜索技巧" href="//localhost:1313/funny/search/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">数组的深拷贝和浅拷贝
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>基本概念 javascript 分原始类型与引用类型。Array 是引用类型，直接用“=”号赋值的话，只是把源数组的地址(或叫指针)赋值给目的数组，并没有实现数组的数据的拷贝。这种方式的实现属于浅拷贝。
+深拷贝是开辟新的储存空间，两个对象对应两个不同的地址，修改一个对象的属性，不会改变另一个对象的属性。
+区别 介绍完基本概念，让我们尝试举例来说明两者的不同。
+浅拷贝 var arr1 = [1, 2, 3, 4]; var arr2 = arr1; arr1[0] = 6; //数组是用堆去保存的，相等的时候只是把存放的地址拷贝过去了，两个指向了同一个地址，所以在改变其中一个的值，其他的也跟着改变了 console.log(arr2[0]); //输出结果为6 console.log(arr[1]); //[6, 2, 3, 4] console.log(arr[2]); //[6, 2, 3, 4] 深拷贝 slice() concat() map() ES6扩展运算符 var arr1 = [1, 2, 3, 4]; var arr2 = arr1.slice(0); //从0开始到末尾截取数组，然后返回一个新的数组 arr1[0] = 6; console.log(arr2[0]); //输出结果为1 console.log(arr[1]); //[6, 2, 3, 4] console.log(arr[2]); //[1, 2, 3, 4] 🟢 slice() 🟢
+var arr1 = [1, 2, 3, 4]; var arr2 = arr1.concat(); //连接数组，如果连接的是一个空，那么也是返回了新的本身的数组 arr1[0] = 6; console.log(arr2[0]); //输出结果为1 console.log(arr1); //[6, 2, 3, 4] console.log(arr2); //[1, 2, 3, 4] 🟢 concat() 🟢
+var arr1 = [1, 2, 3, 4]; var arr2 = arr1.map(function(value){ return value; }) //使用map方法遍历数组然后返回新的数组，里面的值不变 arr1[0] = 6; console.log(arr2[0]) //输出结果为1 console.log(arr1); //[6, 2, 3, 4] console.log(arr2); //[1, 2, 3, 4] 🟢 map() 🟢
+...</p>
+  </div>
+  <footer class="entry-footer"><span>1 min</span></footer>
+  <a class="entry-link" aria-label="post link to 数组的深拷贝和浅拷贝" href="//localhost:1313/guide/lowcopy-anddeep-copy/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">普通函数和构造函数区别
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p> 构造函数也是一个普通函数，创建方式和普通函数一样，但构造函数习惯上首字母大写
+构造函数和普通函数的区别在于：调用方式不一样。作用也不一样（构造函数用来新建实例对象）
+function Person(name, age, job) { this.name = name; this.age = age; this.job = job; this.sayName = function() { console.log(this.name); }; } let person = new Person(&#34;somebody&#34;, 29, &#34;tyloo&#34;); //构造函数调用 person.sayName(); Person(&#34;niko&#34;, 30, &#34;faze&#34;); //普通函数调用 global.sayName(); //this此时代指global(在浏览器是window) 当在全局作用域调用一个函数是,this对象始终指向Global(在浏览器是window)
+</p>
+  </div>
+  <footer class="entry-footer"><span>1 min</span></footer>
+  <a class="entry-link" aria-label="post link to 普通函数和构造函数区别" href="//localhost:1313/guide/a/"></a>
+</article>
+<footer class="page-footer">
+  <nav class="pagination">
+    <a class="prev" href="//localhost:1313/page/5/">
+      «&nbsp;Prev&nbsp;
+    </a>
+    <a class="next" href="//localhost:1313/page/7/">Next&nbsp;&nbsp;»
+    </a>
+  </nav>
+</footer>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="//localhost:1313/">pipe的笔记</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto" data-theme="auto">
+
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Guide | pipe的笔记</title>
+<meta name="keywords" content="">
+<meta name="description" content="">
+<meta name="author" content="">
+<link rel="canonical" href="//localhost:1313/categories/guide/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.da3211e5ef867bf2b75fd5a6515cfed7195c011e8ab735694e203810a827097b.css" integrity="sha256-2jIR5e&#43;Ge/K3X9WmUVz&#43;1xlcAR6KtzVpTiA4EKgnCXs=" rel="preload stylesheet" as="style">
+<link rel="icon" href="//localhost:1313/img/logo2.webp">
+<link rel="icon" type="image/png" sizes="16x16" href="//localhost:1313/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="//localhost:1313/favicon-32x32.png">
+<link rel="apple-touch-icon" href="//localhost:1313/apple-touch-icon.png">
+<link rel="mask-icon" href="//localhost:1313/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" type="application/rss+xml" href="//localhost:1313/categories/guide/index.xml" title="rss">
+<link rel="alternate" hreflang="en" href="//localhost:1313/categories/guide/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script><meta property="og:url" content="//localhost:1313/categories/guide/">
+  <meta property="og:site_name" content="pipe的笔记">
+  <meta property="og:title" content="Guide">
+  <meta property="og:locale" content="zh-cn">
+  <meta property="og:type" content="website">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Guide">
+<meta name="twitter:description" content="">
+
+</head>
+<body class="list" id="top">
+    <header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="//localhost:1313/" accesskey="h" title="pipe的笔记 (Alt + H)">pipe的笔记</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="//localhost:1313/" title="首页">
+                    <span>首页</span>
+                </a>
+            </li>
+            <li>
+                <a href="//localhost:1313/search/" title="搜索">
+                    <span>搜索</span>
+                </a>
+            </li>
+            <li>
+                <a href="//localhost:1313/archives/" title="归档">
+                    <span>归档</span>
+                </a>
+            </li>
+            <li>
+                <a href="//localhost:1313/tags/" title="标签">
+                    <span>标签</span>
+                </a>
+            </li>
+            <li>
+                <a href="//localhost:1313/categories/" title="分类">
+                    <span>分类</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main"> 
+<header class="page-header"><div class="breadcrumbs"><a href="//localhost:1313/">Home</a>&nbsp;»&nbsp;<a href="//localhost:1313/categories/">Categories</a></div>
+  <h1>
+    Guide
+  </h1>
+</header>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">手写 Promise
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>简易版 Promise const PENDING = &#34;pending&#34;; const FULFILLED = &#34;fulfilled&#34;; const REJECTED = &#34;rejected&#34;; function Promise1(executor) { var _this = this; this.state = PENDING; //状态 this.value = undefined; //成功结果 this.reason = undefined; //失败原因 this.onFulfilled = []; //成功的回调 this.onRejected = []; //失败的回调 function resolve(value) { if (_this.state === PENDING) { _this.state = FULFILLED; _this.value = value; _this.onFulfilled.forEach((fn) =&gt; { console.log(fn); return fn(value); }); } } function reject(reason) { if (_this.state === PENDING) { _this.state = REJECTED; _this.reason = reason; _this.onRejected.forEach((fn) =&gt; { console.log(fn); return fn(reason); }); } } try { executor(resolve, reject); } catch (e) { reject(e); } } Promise1.prototype.then = function(onFulfilled, onRejected) { if (this.state === FULFILLED) { typeof onFulfilled === &#34;function&#34; &amp;&amp; onFulfilled(this.value); } if (this.state === REJECTED) { typeof onRejected === &#34;function&#34; &amp;&amp; onRejected(this.reason); } if (this.state === PENDING) { typeof onFulfilled === &#34;function&#34; &amp;&amp; this.onFulfilled.push(onFulfilled); typeof onRejected === &#34;function&#34; &amp;&amp; this.onRejected.push(onRejected); } }; TODO: 完成链式调用 </p>
+  </div>
+  <footer class="entry-footer"><span>1 min</span></footer>
+  <a class="entry-link" aria-label="post link to 手写 Promise" href="//localhost:1313/guide/readme/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">数组的深拷贝和浅拷贝
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>基本概念 javascript 分原始类型与引用类型。Array 是引用类型，直接用“=”号赋值的话，只是把源数组的地址(或叫指针)赋值给目的数组，并没有实现数组的数据的拷贝。这种方式的实现属于浅拷贝。
+深拷贝是开辟新的储存空间，两个对象对应两个不同的地址，修改一个对象的属性，不会改变另一个对象的属性。
+区别 介绍完基本概念，让我们尝试举例来说明两者的不同。
+浅拷贝 var arr1 = [1, 2, 3, 4]; var arr2 = arr1; arr1[0] = 6; //数组是用堆去保存的，相等的时候只是把存放的地址拷贝过去了，两个指向了同一个地址，所以在改变其中一个的值，其他的也跟着改变了 console.log(arr2[0]); //输出结果为6 console.log(arr[1]); //[6, 2, 3, 4] console.log(arr[2]); //[6, 2, 3, 4] 深拷贝 slice() concat() map() ES6扩展运算符 var arr1 = [1, 2, 3, 4]; var arr2 = arr1.slice(0); //从0开始到末尾截取数组，然后返回一个新的数组 arr1[0] = 6; console.log(arr2[0]); //输出结果为1 console.log(arr[1]); //[6, 2, 3, 4] console.log(arr[2]); //[1, 2, 3, 4] 🟢 slice() 🟢
+var arr1 = [1, 2, 3, 4]; var arr2 = arr1.concat(); //连接数组，如果连接的是一个空，那么也是返回了新的本身的数组 arr1[0] = 6; console.log(arr2[0]); //输出结果为1 console.log(arr1); //[6, 2, 3, 4] console.log(arr2); //[1, 2, 3, 4] 🟢 concat() 🟢
+var arr1 = [1, 2, 3, 4]; var arr2 = arr1.map(function(value){ return value; }) //使用map方法遍历数组然后返回新的数组，里面的值不变 arr1[0] = 6; console.log(arr2[0]) //输出结果为1 console.log(arr1); //[6, 2, 3, 4] console.log(arr2); //[1, 2, 3, 4] 🟢 map() 🟢
+...</p>
+  </div>
+  <footer class="entry-footer"><span>1 min</span></footer>
+  <a class="entry-link" aria-label="post link to 数组的深拷贝和浅拷贝" href="//localhost:1313/guide/lowcopy-anddeep-copy/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">普通函数和构造函数区别
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p> 构造函数也是一个普通函数，创建方式和普通函数一样，但构造函数习惯上首字母大写
+构造函数和普通函数的区别在于：调用方式不一样。作用也不一样（构造函数用来新建实例对象）
+function Person(name, age, job) { this.name = name; this.age = age; this.job = job; this.sayName = function() { console.log(this.name); }; } let person = new Person(&#34;somebody&#34;, 29, &#34;tyloo&#34;); //构造函数调用 person.sayName(); Person(&#34;niko&#34;, 30, &#34;faze&#34;); //普通函数调用 global.sayName(); //this此时代指global(在浏览器是window) 当在全局作用域调用一个函数是,this对象始终指向Global(在浏览器是window)
+</p>
+  </div>
+  <footer class="entry-footer"><span>1 min</span></footer>
+  <a class="entry-link" aria-label="post link to 普通函数和构造函数区别" href="//localhost:1313/guide/a/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">理解原型对象
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>1.介绍理解原型对象之前，让我们先看一段代码。 function Person(name, age, job) { Person.prototype.name = &#34;somebody&#34;; Person.prototype.age = 29; Person.prototype.job = &#34;tyloo&#34;; Person.prototype.sayName = function() { console.log(this.name); }; } let person1 = new Person(); person1.sayName(); //somebody let person2 = new Person(); person2.sayName(); //somebody console.log(person1.sayName === person2.sayName); //true 此函数创建是遵循了 js 中原型模式而创建的函数，我们将 sayName()方法和所有属性直接添加到了 Person 的 prototype 属性中。即使如此，我们任然可以通过调用构造函数来创建对象，而且新对象还会具有相同的属性和方法。如果不理解上面代码也没关系，只需记住两点：
+Person.prototype 即为原型对象 实例（person1 或 person2）可以访问原型对象上的方法和属性。 图 6-1 展示了 Person 构造函数，Person 的原型属性以及现有的两个实例之间的关系。
+function Person() { this.color = &#34;yellow&#34;; this.showColor = function() { return this.color; }; } var person1 = new Person(); console.log(Person.prototype.constructor === Person); // 构造函数Person的默认对象的constructor // 属性 console.log(person1.constructor === Person); //person1实例通过__proto__指向了Person的原型，所以具有了 // person1实例可以访问到constructor Person.prototype = {}; //把Person构造函数的原型进行了重新赋值 // Person.prototype.constructor = Person; var person2 = new Person(); // person2实例通过__proto__指向了Person的原型，此时Person的原型是{}，这个空对象的 // constructor 的值不是Person了，而是Object console.log(&#34;person2.constructor: &#34; &#43; person2.constructor === Person); // false ::: tip 结论
+...</p>
+  </div>
+  <footer class="entry-footer"><span>2 min</span></footer>
+  <a class="entry-link" aria-label="post link to 理解原型对象" href="//localhost:1313/guide/prototype/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">简单模拟数据劫持
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>在实现简单模拟数据劫持之前，让我们先来了解一下 ECMAScript 对象的属性类型
+对象的属性类型 ECMAScript 中有两种属性：数据属性和访问器属性。
+一 ： 数据属性 数据属性包含一个数据值的位置。在这个位置可以读取和写入值。数据属性有 4 个描述其行为的特性。
+[[Configurable]]：表示能否通过 delete 删除属性从而重新定义属性，能否修改属性的特性，或者能否把属性修改为访问器属性。默认值为 true。 [[Enumberable]]：表示能否通过 for-in 循环返回属性。默认值为 true。 [[Writable]]：表示能否修改属性的值。默认值为 true。 [[Value]]：包含这个属性的数据值。读取属性值的时候，从这个位置读；写入属性值的时候，把新值保存在这个位置。默认值为 undefined。 要修改属性默认的特性，必须使用 ES5 的 Object.defineProperty()方法。
+let person = {} Object.defineProperty(person, &#39;name&#39;, { configurable:false, // 不能删除该属性,不能修改属性的特性，不能访问访问器属性 writable:false, // 不能进行赋值操作 value:&#39;Niko&#39; }) console.log(person.name); // &#39;Niko&#39; delete person.name // 因为configurable为false, 在删除属性操作 非严格模式下不会发生任何操作，在严格模式下报错 console.log(person.name); // &#39;Niko&#39; console.log(person.name); // &#39;Niko&#39; person.name=&#39;Simple&#39; // 因为writable为false, 故赋值操作在非严格模式下不会发生任何操作，在严格模式下报错 console.log(person.name); // &#39;Niko&#39; Object.defineProperty()方法可以被调用多次，但是把 configurable 特性设置为 false 之后就会有限制了。见下面例子：
+let person = {}; Object.defineProperty(person, &#34;name&#34;, { configurable: false, value: &#34;Niko&#34;, }); // 抛出错误 Object.defineProperty(person, &#34;name&#34;, { configurable: true, value: &#34;Niko&#34;, }); 在调用 Object.defineProperty()方法创建一个新的属性时，如果不指定，configurable，Enumberable，Writable 特性的默认值都是 false。
+...</p>
+  </div>
+  <footer class="entry-footer"><span>3 min</span></footer>
+  <a class="entry-link" aria-label="post link to 简单模拟数据劫持" href="//localhost:1313/guide/data-hijacking/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">箭头函数和普通函数的区别
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>主要区别 箭头函数
+let addUser = () =&gt; { console.log(&#34;添加一个用户&#34;) } 普通函数
+function addUser() { console.log(&#34;添加一个用户&#34;) } 区别1: 箭头函数使用箭头命名，普通函数中没有。
+区别2: 箭头函数都为匿名函数，普通函数可以为匿名函数，也可以为具体名函数。
+区别3: 箭头函数不能用于构造函数(不可以使用new) , 普通函数可以。
+let FunConstructor = () =&gt; { console.log(&#39;lll&#39;); } let fc = new FunConstructor(); 区别4：箭头函数不绑定`arguments`，取而代之用rest参数... 解决(`arguments` 是一个对应于传递给函数的参数的类数组对象。)
+function A(a) { console.log(arguments); } A(1, 2, 3, 4, 5, 8); // [1, 2, 3, 4, 5, 8, callee: ƒ, Symbol(Symbol.iterator): ƒ] let B = (b) =&gt; { console.log(arguments); } B(2, 92, 32, 32); // Uncaught ReferenceError: arguments is not defined let C = (...c) =&gt; { console.log(c); } C(3, 82, 32, 11323); // [3, 82, 32, 11323] this 区别5：箭头函数不绑定this，会捕获其所在的上下文的this值，作为自己的this值
+...</p>
+  </div>
+  <footer class="entry-footer"><span>2 min</span></footer>
+  <a class="entry-link" aria-label="post link to 箭头函数和普通函数的区别" href="//localhost:1313/guide/arrow-dif-nomal/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">类数组（ArrayLike）
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>简介 转换</p>
+  </div>
+  <footer class="entry-footer"><span>1 min</span></footer>
+  <a class="entry-link" aria-label="post link to 类数组（ArrayLike）" href="//localhost:1313/guide/array-like/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">设计模式
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>主要阅读(图灵原创) 曾探 - JavaScript 设计模式与开发实践-人民邮电出版社 (2015), 其后将一些重点笔记记录如下:
+高级函数 高阶函数(Higher-order function)是指至少满足下条件之一的函数。
+函数可以作为参数被传递 函数可以作为返回值输出 实现 AOP AOP(面向切面编程)的主要作用是把一些跟核心业务逻辑模块无关的功能抽离出来，这些 跟业务逻辑无关的功能通常包括日志统计、安全控制、异常处理等。把这些功能抽离出来之后， 再通过“动态织入”的方式掺入业务逻辑模块中。这样做的好处首先是可以保持业务逻辑模的纯净和高内聚性，其次是可以很方便地复用日志统计等功能模块。
+Function.prototype.before = function(beforefn) { var __self = this; return function() { beforefn.apply(this, arguments); // 打印 1 return __self.apply(this, arguments); // 打印 2 }; }; Function.prototype.after = function(afterfn) { var __self = this; return function() { var ret = __self.apply(this, arguments); // 此处_self是对 打印1，打印2 函数在此处的引用，并在此处最终被执行 afterfn.apply(this, arguments); // 打印 3 return ret; }; }; var func = function() { console.log(2); }; func = func .before(function() { console.log(1); }) .after(function() { console.log(3); }); func(); // 打印 1 2 3 使用AOP动态改变函数的参数 // @ts-ignore Function.prototype.before = function(beforefn) { var __self = this; return function(params) { beforefn.apply(this, arguments); // arguments一开始为{a:&#39;a&#39;},但是执行beforefn方法后，beforefn修改了arguments的值，故此时arguments={a:&#39;a&#39;,b:&#39;b&#39;} return __self.apply(this, arguments); // 这里返回是因为：如果原函数有返回值，这里执行完原函数后，将返回值返回出去。避免原函数无法返回值。 }; }; var func = function(param) { console.log(param); // 输出: {a: &#34;a&#34;, b: &#34;b&#34;} }; // @ts-ignore func = func.before(function(param) { param.b = &#34;b&#34;; }); func({ a: &#34;a&#34; }); 单例模式 单例模式作用：比如每次都保证最多一个弹窗打开出现在页面中。例如 Vant Toast组件 即被设计为了单例模式。 Vant Toast 组件
+...</p>
+  </div>
+  <footer class="entry-footer"><span>3 min</span></footer>
+  <a class="entry-link" aria-label="post link to 设计模式" href="//localhost:1313/guide/designpattern/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">闭包
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>闭包是指有权访问另一个函数作用域中的变量的函数。
+原理 闭包的实现原理，其实是利用了作用域链的特性，我们都知道作用域链就是在当前执行环境下访问某个变量时，如果不存在就一直向外层寻找，最终寻找到最外层也就是全局作用域，这样就形成了一个链条。
+简单实现 function print() { var a = 1; return function() { return &#43;&#43;a; }; } let p = print(); console.log(p()); // 2 console.log(p()); // 3 console.log(p()); // 4 原理解释说明 在上面的例子中 print函数中的匿名函数有作用域链有三层。0:自己，1:print函数,2:全局。尽管匿名函数被return出去，但是他的作用域链在初始化的时候就已经完成了（被保存在了内存的[[Scope]]属性中）。所以尽管匿名函数在全局环境中被调用，但是他还是能获取到print函数中的变量。 ::: warning 提问 可能有的同学会产生疑问，按照js的垃圾回收机制，print()函数调用完成后，就应该回收销毁局部变量，这里为什么匿名函数还能获取到局部变量a的累加值呢? :::
+::: tip 结论 这是因为匿名函数的作用域链任然在引用print函数中的变量，导致垃圾回收机制GC不会回收a变量，所以我们才能得到a变量的累加值。 :::
+::: warning 提问 那我们什么时候能让a变量被垃圾回收呢？ :::
+::: tip 回答 print=null,将p设置为null时，解除了匿名函数对print函数的引用将print设置为null时，解除了匿名函数对a的引用,就等于通知垃圾回收例程将其清除。 :::
+作用 作用1：隐藏变量，避免全局污染
+作用2：可以读取函数内部的变量
+同时闭包使用不当，优点就变成了缺点：
+缺点1：导致变量不会被垃圾回收机制回收，造成内存消耗
+缺点2：不恰当的使用闭包可能会造成内存泄漏的问题
+https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Closures
+推荐文献 闭包:MDN </p>
+  </div>
+  <footer class="entry-footer"><span>1 min</span></footer>
+  <a class="entry-link" aria-label="post link to 闭包" href="//localhost:1313/guide/bibao/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">防抖和节流
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>防抖 介绍 需求 1：在第一次触发事件时，不立即执行函数，而是给出一个期限值比如 200ms，然后：
+如果在 200ms 内没有再次触发滚动事件，那么就执行函数 如果在 200ms 内再次触发滚动事件，那么当前的计时取消，重新开始计时 效果：如果短时间内大量触发同一事件，只会执行一次函数。
+实现：既然前面都提到了计时，那实现的关键就在于 setTimeout 这个函数，由于还需要一个变量来保存计时，考虑维护全局纯净，可以借助闭包来实现：
+// 防抖函数 function debounce(fn) { let timer = null; return function () { if (timer) { clearTimeout(timer); } timer = setTimeout(() =&gt; fn(), 2000); }; } 应用 在vue上应用防抖 /* 定义防抖函数 */ /** * @desc 防抖函数 * @param {需要防抖的函数} fn * @param {延迟时间} delay */ export function debounce(fn: () =&gt; void, delay: number) { let timer: number | null = null; // 借助闭包 return () =&gt; { if (timer) { clearTimeout(timer); } timer = setTimeout(fn, delay); // 简化写法 }; } /* 在vue文件中导入函数 */ import { debounce } from &#34;@/utils/debounce&#34;; export default class gasDetails extends Vue { private fn: any = debounce(this.availableCoupon, 500); // 防抖（定义在此处是采用闭包缓存timer) get something(){ if(...){ // debounce(this.availableCoupon, 500)() ❌ 此处不能打包缓存效果，每次都是执行新函数 fn() ✔ } return true } availableCoupon(){ // your code } } 节流 需求 2：使用上面的防抖方案来处理问题的结果是：
+...</p>
+  </div>
+  <footer class="entry-footer"><span>1 min</span></footer>
+  <a class="entry-link" aria-label="post link to 防抖和节流" href="//localhost:1313/guide/debounce-and-throttle/"></a>
+</article>
+<footer class="page-footer">
+  <nav class="pagination">
+    <a class="prev" href="//localhost:1313/categories/guide/">
+      «&nbsp;Prev&nbsp;
+    </a>
+  </nav>
+</footer>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="//localhost:1313/">pipe的笔记</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

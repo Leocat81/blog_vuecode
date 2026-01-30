@@ -1,0 +1,18 @@
+{{- $g := .Site.Params.giscus -}}
+{{- if and $g $g.repo $g.repoId $g.category $g.categoryId -}}
+<script
+  src="https://giscus.app/client.js"
+  data-repo="{{ $g.repo }}"
+  data-repo-id="{{ $g.repoId }}"
+  data-category="{{ $g.category }}"
+  data-category-id="{{ $g.categoryId }}"
+  data-mapping="{{ $g.mapping | default "pathname" }}"
+  data-reactions-enabled="{{ $g.reactionsEnabled | default "1" }}"
+  data-emit-metadata="{{ $g.emitMetadata | default "0" }}"
+  data-input-position="{{ $g.inputPosition | default "bottom" }}"
+  data-theme="{{ $g.theme | default "preferred_color_scheme" }}"
+  data-lang="{{ $g.lang | default "zh-CN" }}"
+  crossorigin="anonymous"
+  async>
+</script>
+{{- end -}}

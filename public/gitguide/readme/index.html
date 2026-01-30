@@ -1,0 +1,758 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto" data-theme="auto">
+
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Git | pipe的笔记</title>
+<meta name="keywords" content="">
+<meta name="description" content="   git 版本回滚有两种方式，其一为Git Reset,其二为Git Revert。下面来看这种具体操作及实现。文末对两种方式进行总结和比较。
+克隆
+git clone用于拉取远程仓库到本地
+/* git clone 远程仓库地址 本地目录 */
+$ git clone https://gitee.com/pipepandafeng/blog_vuecode.git blog_vuecode_local
+拉取
+git fetch 和git pull 都用于代码和分支的更新。
+
+
+git fetch
+
+
+一旦远程主机的版本库有了更新（Git 术语叫做 commit），需要将这些更新取回本地，这时就要用到 git fetch 命令。
+/*
+ * git fetch 主机名 远程分支:本地分支（创建一个新分支）
+ * 特别注意:不建议本地分支写本地已有分支，否则拉取当有冲突时可能会有问题
+*/
+##1：拉取更新到本地新建tmp分支
+$ git fetch origin master:tmp
+##2：合并更新
+$ git merge tmp
+##3: 当有冲突时，手动解决冲突 然后git add .| git commit -m &#34;&#34;。无冲突时 最后直接push
+$ git push origin master
+
+
+git pull
+
+
+/*
+ * git pull 主机名 远程分支:本地分支（无则创建一个新分支）
+*/
+##1：取回origin主机的master分支，与本地的dev分支合并
+## || 如果远程分支是与当前分支合并，则冒号后面的部分可以省略。
+$ git pull origin master:dev || git pull origin master
+##2: 当有冲突时，手动解决冲突 然后git add .| git commit -m &#34;&#34;。无冲突时 最后直接push
+$ git push origin master
+::: tip 结论
+git fetch 是从远程获取最新版本到本地，但不会自动 merge。
+而 git pull 则是会获取所有远程索引并合并到本地分支中来。效果相同时 git pull 将更为快捷。
+:::">
+<meta name="author" content="">
+<link rel="canonical" href="//localhost:1313/gitguide/readme/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.da3211e5ef867bf2b75fd5a6515cfed7195c011e8ab735694e203810a827097b.css" integrity="sha256-2jIR5e&#43;Ge/K3X9WmUVz&#43;1xlcAR6KtzVpTiA4EKgnCXs=" rel="preload stylesheet" as="style">
+<link rel="icon" href="//localhost:1313/img/logo2.webp">
+<link rel="icon" type="image/png" sizes="16x16" href="//localhost:1313/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="//localhost:1313/favicon-32x32.png">
+<link rel="apple-touch-icon" href="//localhost:1313/apple-touch-icon.png">
+<link rel="mask-icon" href="//localhost:1313/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="//localhost:1313/gitguide/readme/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script><meta property="og:url" content="//localhost:1313/gitguide/readme/">
+  <meta property="og:site_name" content="pipe的笔记">
+  <meta property="og:title" content="Git">
+  <meta property="og:description" content=" git 版本回滚有两种方式，其一为Git Reset,其二为Git Revert。下面来看这种具体操作及实现。文末对两种方式进行总结和比较。
+克隆 git clone用于拉取远程仓库到本地
+/* git clone 远程仓库地址 本地目录 */ $ git clone https://gitee.com/pipepandafeng/blog_vuecode.git blog_vuecode_local 拉取 git fetch 和git pull 都用于代码和分支的更新。
+git fetch 一旦远程主机的版本库有了更新（Git 术语叫做 commit），需要将这些更新取回本地，这时就要用到 git fetch 命令。
+/* * git fetch 主机名 远程分支:本地分支（创建一个新分支） * 特别注意:不建议本地分支写本地已有分支，否则拉取当有冲突时可能会有问题 */ ##1：拉取更新到本地新建tmp分支 $ git fetch origin master:tmp ##2：合并更新 $ git merge tmp ##3: 当有冲突时，手动解决冲突 然后git add .| git commit -m &#34;&#34;。无冲突时 最后直接push $ git push origin master git pull /* * git pull 主机名 远程分支:本地分支（无则创建一个新分支） */ ##1：取回origin主机的master分支，与本地的dev分支合并 ## || 如果远程分支是与当前分支合并，则冒号后面的部分可以省略。 $ git pull origin master:dev || git pull origin master ##2: 当有冲突时，手动解决冲突 然后git add .| git commit -m &#34;&#34;。无冲突时 最后直接push $ git push origin master ::: tip 结论 git fetch 是从远程获取最新版本到本地，但不会自动 merge。 而 git pull 则是会获取所有远程索引并合并到本地分支中来。效果相同时 git pull 将更为快捷。 :::">
+  <meta property="og:locale" content="zh-cn">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="gitguide">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Git">
+<meta name="twitter:description" content="   git 版本回滚有两种方式，其一为Git Reset,其二为Git Revert。下面来看这种具体操作及实现。文末对两种方式进行总结和比较。
+克隆
+git clone用于拉取远程仓库到本地
+/* git clone 远程仓库地址 本地目录 */
+$ git clone https://gitee.com/pipepandafeng/blog_vuecode.git blog_vuecode_local
+拉取
+git fetch 和git pull 都用于代码和分支的更新。
+
+
+git fetch
+
+
+一旦远程主机的版本库有了更新（Git 术语叫做 commit），需要将这些更新取回本地，这时就要用到 git fetch 命令。
+/*
+ * git fetch 主机名 远程分支:本地分支（创建一个新分支）
+ * 特别注意:不建议本地分支写本地已有分支，否则拉取当有冲突时可能会有问题
+*/
+##1：拉取更新到本地新建tmp分支
+$ git fetch origin master:tmp
+##2：合并更新
+$ git merge tmp
+##3: 当有冲突时，手动解决冲突 然后git add .| git commit -m &#34;&#34;。无冲突时 最后直接push
+$ git push origin master
+
+
+git pull
+
+
+/*
+ * git pull 主机名 远程分支:本地分支（无则创建一个新分支）
+*/
+##1：取回origin主机的master分支，与本地的dev分支合并
+## || 如果远程分支是与当前分支合并，则冒号后面的部分可以省略。
+$ git pull origin master:dev || git pull origin master
+##2: 当有冲突时，手动解决冲突 然后git add .| git commit -m &#34;&#34;。无冲突时 最后直接push
+$ git push origin master
+::: tip 结论
+git fetch 是从远程获取最新版本到本地，但不会自动 merge。
+而 git pull 则是会获取所有远程索引并合并到本地分支中来。效果相同时 git pull 将更为快捷。
+:::">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Gitguides",
+      "item": "//localhost:1313/gitguide/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "Git",
+      "item": "//localhost:1313/gitguide/readme/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Git",
+  "name": "Git",
+  "description": " git 版本回滚有两种方式，其一为Git Reset,其二为Git Revert。下面来看这种具体操作及实现。文末对两种方式进行总结和比较。\n克隆 git clone用于拉取远程仓库到本地\n/* git clone 远程仓库地址 本地目录 */ $ git clone https://gitee.com/pipepandafeng/blog_vuecode.git blog_vuecode_local 拉取 git fetch 和git pull 都用于代码和分支的更新。\ngit fetch 一旦远程主机的版本库有了更新（Git 术语叫做 commit），需要将这些更新取回本地，这时就要用到 git fetch 命令。\n/* * git fetch 主机名 远程分支:本地分支（创建一个新分支） * 特别注意:不建议本地分支写本地已有分支，否则拉取当有冲突时可能会有问题 */ ##1：拉取更新到本地新建tmp分支 $ git fetch origin master:tmp ##2：合并更新 $ git merge tmp ##3: 当有冲突时，手动解决冲突 然后git add .| git commit -m \u0026#34;\u0026#34;。无冲突时 最后直接push $ git push origin master git pull /* * git pull 主机名 远程分支:本地分支（无则创建一个新分支） */ ##1：取回origin主机的master分支，与本地的dev分支合并 ## || 如果远程分支是与当前分支合并，则冒号后面的部分可以省略。 $ git pull origin master:dev || git pull origin master ##2: 当有冲突时，手动解决冲突 然后git add .| git commit -m \u0026#34;\u0026#34;。无冲突时 最后直接push $ git push origin master ::: tip 结论 git fetch 是从远程获取最新版本到本地，但不会自动 merge。 而 git pull 则是会获取所有远程索引并合并到本地分支中来。效果相同时 git pull 将更为快捷。 :::\n",
+  "keywords": [
+    
+  ],
+  "articleBody": " git 版本回滚有两种方式，其一为Git Reset,其二为Git Revert。下面来看这种具体操作及实现。文末对两种方式进行总结和比较。\n克隆 git clone用于拉取远程仓库到本地\n/* git clone 远程仓库地址 本地目录 */ $ git clone https://gitee.com/pipepandafeng/blog_vuecode.git blog_vuecode_local 拉取 git fetch 和git pull 都用于代码和分支的更新。\ngit fetch 一旦远程主机的版本库有了更新（Git 术语叫做 commit），需要将这些更新取回本地，这时就要用到 git fetch 命令。\n/* * git fetch 主机名 远程分支:本地分支（创建一个新分支） * 特别注意:不建议本地分支写本地已有分支，否则拉取当有冲突时可能会有问题 */ ##1：拉取更新到本地新建tmp分支 $ git fetch origin master:tmp ##2：合并更新 $ git merge tmp ##3: 当有冲突时，手动解决冲突 然后git add .| git commit -m \"\"。无冲突时 最后直接push $ git push origin master git pull /* * git pull 主机名 远程分支:本地分支（无则创建一个新分支） */ ##1：取回origin主机的master分支，与本地的dev分支合并 ## || 如果远程分支是与当前分支合并，则冒号后面的部分可以省略。 $ git pull origin master:dev || git pull origin master ##2: 当有冲突时，手动解决冲突 然后git add .| git commit -m \"\"。无冲突时 最后直接push $ git push origin master ::: tip 结论 git fetch 是从远程获取最新版本到本地，但不会自动 merge。 而 git pull 则是会获取所有远程索引并合并到本地分支中来。效果相同时 git pull 将更为快捷。 :::\n分支 基础操作 git branch用于查看本地分支\ngit branch -a查看所有分支（包括远程分支）\ngit branch XXX新建一个分支\ngit checkout master 切换分支\ngit checkout -t orgin/master 本地创建一个 master 并建立一个追踪关系，自动追踪远程分支（origin/master)\n同步本地与线上分支 🔔 将线上新增分支更新到本地\n第一种方式：拉取分支不创建本地分支,其后一步完成创建分支与建立追踪关系\n##1：拉取远程分支(不创建本地分支) $ git pull || git fetch ##2：建立本地分支与远程分支的追踪关系 $ git checkout -t orgin/XXX 第二种方式 拉取分支就创建本地分支，但此时追踪关系未创建，其后手动建立追踪关系\n##1：拉取远程分支（本地没有的话，创建与远程分支同名的本地分支） git pull origin XXX || git fetch origin XXX:XXX ##2：手动指定本地分支与远程分支的追踪关系 $ git branch --set-upstream-to=origin/master master 🔔 将线上删除分支更新到本地\n如果远程主机删除了某个分支，默认情况下，git pull 不会在拉取远程分支的时候，删除对应的本地分支。这是为了防止，由于其他人操作了远程主机，导致 git pull 不知不觉删除了本地分支。\n但是，你可以改变这个行为，加上参数 -p 就会在本地删除远程已经删除的分支。\n$ git pull -p # 等同于下面的命令 $ git fetch --prune origin $ git fetch -p 追踪关系（tracking） 查看分支跟踪的远程分支\n$ git branch --vv dev 04c3d8f [origin/dev] update README.md. dev1 6203f67 [origin/dev1] update README.md. * master d672abc [origin/master] update README.md. tmp 219538d update README.md. 在某些场合，Git 会自动在本地分支与远程分支之间，建立一种追踪关系（tracking）。比如，在 git clone 的时候，所有本地分支默认与远程主机的同名分支，建立追踪关系，也就是说，本地的 master 分支自动\"追踪\"origin/master 分支。\nGit 也允许手动建立追踪关系。\n##该命令指定master分支追踪origin/next分支。 $ git branch --set-upstream master origin/next ##该命令创建一个本地 master 并建立一个追踪关系，自动追踪远程分支（origin/master) $ git checkout -t orgin/master 如果当前分支与远程分支存在追踪关系，git pull 就可以省略远程分支名。\n##该命令表示，本地的当前分支自动与对应的origin主机\"追踪分支\"（remote-tracking branch）进行合并。 $ git pull origin 如果当前分支只有一个追踪分支，连远程主机名都可以省略。\n$ git pull 冲突 git merge和git rebase都用于解决冲突\ngit log --oneline --graph --decorate --all 以树形式查看 git 提交历史记录 vscode 中 Git Graph 也可以以树形式查看 git 提交历史记录 其下所有例子均假设有两个分支master，dev。master 分支和 dev 有无冲突两种情况，现需要将 dev 分支合并到 master 上。\n1️⃣ git merge 无冲突 $ git checkout master $ git merge dev $ git push origin master 有冲突 $ git checkout master $ git merge dev ## 手动解决冲突 $ git add . $ git commit -m \"dev merge to master\" $ git push origin master 可以看到当仅仅使用 git merge 处理冲突时，再主分支上会出现一条分叉分支，通过合并冲突后， 分叉的分支再次合并到主分支上，此时会多一条 commit,用于描述合并信息。git merge 操作简单， 但对 git history 提交历史看上去不太友好，接下来我们使用 git rebase 结合 git merge 使用， 以打到优化 git hostory 效果。\n2️⃣ git rebase 结合 git merge 处理冲突 无冲突 $ git checkout dev $ git rebase master $ git checkout master $ git merge dev $ git push origin master 有冲突 $ git checkout dev $ git rebase master ## 手动解决冲突 $ git rebase --continue ## 如还有冲突，继续手动解决冲突 ## 最坏情况，比如提交了三次，每次都有冲突，则需重复此步骤三次 ## 可以使用 git rebase -i 将多个commit 合并为一个commit，从而只解决一次冲突即可 $ git rebase --continue ## 冲突全部解决完成 $ git checkout master $ git merge dev $ git push origin master ::: tip\n用 rebase 解决冲突时，可以随时使用 git rebase –abort 退出，将代码退回 rebase 之前。 可以使用 git rebase -i 将多个 commit 合并为一个 commit，从而只解决一次冲突即可。避免对此执行 git reabse –continue :::\n可以看到当使用 git rebase 结合 git merge 后，我们的 Git History 变为了线性排序，利于我们查看 git 的历史信息。\n3️⃣ git pull –rebase 处理冲突 与上面解决冲突同理 git rebase master\n4️⃣ git rebase -i HEAD~ 修改已经 push 的 commit message 回滚 git reset和git revert都可用于代码版本回滚\n1️⃣ git reset git rese是回退到某个 commit ID 版本位置\n# 查询commitID $ git log # 执行版本回退 $ git reset --hard [commitID] # 强制push代码到远程仓库 $ git push -f 1️⃣ git revert git revert是撤销某个 commit ID 版本，会撤销某个 commitID 的提交。\n# 查询commitID $ git log # 执行版本回退 $ git revert -n [commitID] # 出现冲突就解决冲突，如无冲突 $ git commit -m \"版本名\" # push代码到远程仓库 $ git push ::: warning\ngit reset是回退到某个 commitID 版本历史，git revert是撤销某个 commitID 得提交。\ngit reset不会保留 commitID 之后的提交记录，git revert不会对 commitID 之前和之后的 commit 产生影响，但会生成一个新的 commit。\n:::\n",
+  "wordCount" : "573",
+  "inLanguage": "en",
+  "datePublished": "0001-01-01T00:00:00Z",
+  "dateModified": "0001-01-01T00:00:00Z",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "//localhost:1313/gitguide/readme/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "pipe的笔记",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "//localhost:1313/img/logo2.webp"
+    }
+  }
+}
+</script>
+</head>
+<body id="top">
+    <header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="//localhost:1313/" accesskey="h" title="pipe的笔记 (Alt + H)">pipe的笔记</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="//localhost:1313/" title="首页">
+                    <span>首页</span>
+                </a>
+            </li>
+            <li>
+                <a href="//localhost:1313/search/" title="搜索">
+                    <span>搜索</span>
+                </a>
+            </li>
+            <li>
+                <a href="//localhost:1313/archives/" title="归档">
+                    <span>归档</span>
+                </a>
+            </li>
+            <li>
+                <a href="//localhost:1313/tags/" title="标签">
+                    <span>标签</span>
+                </a>
+            </li>
+            <li>
+                <a href="//localhost:1313/categories/" title="分类">
+                    <span>分类</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <div class="breadcrumbs"><a href="//localhost:1313/">Home</a>&nbsp;»&nbsp;<a href="//localhost:1313/gitguide/">Gitguides</a></div>
+    <h1 class="post-title entry-hint-parent">
+      Git
+    </h1>
+    <div class="post-meta"><span>3 min</span>
+
+</div>
+  </header> <div class="toc">
+    <details  open>
+        <summary accesskey="c" title="(Alt + C)">
+            <span class="details">Table of Contents</span>
+        </summary>
+
+        <div class="inner"><ul>
+                <li>
+                    <a href="#%e5%85%8b%e9%9a%86" aria-label="克隆">克隆</a></li>
+                <li>
+                    <a href="#%e6%8b%89%e5%8f%96" aria-label="拉取">拉取</a><ul>
+                        
+                <li>
+                    <a href="#" aria-label="git fetch">git fetch</a></li>
+                <li>
+                    <a href="#" aria-label="git pull">git pull</a></li></ul>
+                </li>
+                <li>
+                    <a href="#%e5%88%86%e6%94%af" aria-label="分支">分支</a><ul>
+                        
+                <li>
+                    <a href="#" aria-label="基础操作">基础操作</a></li>
+                <li>
+                    <a href="#" aria-label="同步本地与线上分支">同步本地与线上分支</a></li>
+                <li>
+                    <a href="#" aria-label="追踪关系（tracking）">追踪关系（tracking）</a></li></ul>
+                </li>
+                <li>
+                    <a href="#%e5%86%b2%e7%aa%81" aria-label="冲突">冲突</a><ul>
+                        
+                <li>
+                    <a href="#" aria-label="1️⃣ git merge">1️⃣ git merge</a></li>
+                <li>
+                    <a href="#" aria-label="2️⃣ git rebase 结合 git merge 处理冲突">2️⃣ git rebase 结合 git merge 处理冲突</a></li>
+                <li>
+                    <a href="#" aria-label="3️⃣ git pull –rebase 处理冲突">3️⃣ git pull –rebase 处理冲突</a></li>
+                <li>
+                    <a href="#" aria-label="4️⃣ git rebase -i HEAD~">4️⃣ git rebase -i HEAD~</a></li></ul>
+                </li>
+                <li>
+                    <a href="#%e5%9b%9e%e6%bb%9a" aria-label="回滚">回滚</a><ul>
+                        
+                <li>
+                    <a href="#" aria-label=" 1️⃣ git reset "> 1️⃣ git reset </a></li>
+                <li>
+                    <a href="#" aria-label=" 1️⃣ git revert "> 1️⃣ git revert </a>
+                </li>
+            </ul>
+            </li>
+            </ul>
+        </div>
+    </details>
+</div>
+
+  <div class="post-content"><p>   git 版本回滚有两种方式，其一为<code>Git Reset</code>,其二为<code>Git Revert</code>。下面来看这种具体操作及实现。文末对两种方式进行总结和比较。</p>
+<h2 id="克隆">克隆<a hidden class="anchor" aria-hidden="true" href="#克隆">#</a></h2>
+<p><code>git clone</code>用于拉取远程仓库到本地</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>/* git clone 远程仓库地址 本地目录 */
+</span></span><span style="display:flex;"><span>$ git clone https://gitee.com/pipepandafeng/blog_vuecode.git blog_vuecode_local
+</span></span></code></pre></div><h2 id="拉取">拉取<a hidden class="anchor" aria-hidden="true" href="#拉取">#</a></h2>
+<p><code>git fetch</code> 和<code>git pull</code> 都用于代码和分支的更新。</p>
+<ul>
+<li>
+<h3>git fetch</h3>
+</li>
+</ul>
+<p>一旦远程主机的版本库有了更新（Git 术语叫做 commit），需要将这些更新取回本地，这时就要用到 git fetch 命令。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>/*
+</span></span><span style="display:flex;"><span> * git fetch 主机名 远程分支:本地分支（创建一个新分支）
+</span></span><span style="display:flex;"><span> * 特别注意:不建议本地分支写本地已有分支，否则拉取当有冲突时可能会有问题
+</span></span><span style="display:flex;"><span>*/
+</span></span><span style="display:flex;"><span><span style="color:#75715e">##1：拉取更新到本地新建tmp分支</span>
+</span></span><span style="display:flex;"><span>$ git fetch origin master:tmp
+</span></span><span style="display:flex;"><span><span style="color:#75715e">##2：合并更新</span>
+</span></span><span style="display:flex;"><span>$ git merge tmp
+</span></span><span style="display:flex;"><span><span style="color:#75715e">##3: 当有冲突时，手动解决冲突 然后git add .| git commit -m &#34;&#34;。无冲突时 最后直接push</span>
+</span></span><span style="display:flex;"><span>$ git push origin master
+</span></span></code></pre></div><ul>
+<li>
+<h3>git pull</h3>
+</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>/*
+</span></span><span style="display:flex;"><span> * git pull 主机名 远程分支:本地分支（无则创建一个新分支）
+</span></span><span style="display:flex;"><span>*/
+</span></span><span style="display:flex;"><span><span style="color:#75715e">##1：取回origin主机的master分支，与本地的dev分支合并</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">## || 如果远程分支是与当前分支合并，则冒号后面的部分可以省略。</span>
+</span></span><span style="display:flex;"><span>$ git pull origin master:dev <span style="color:#f92672">||</span> git pull origin master
+</span></span><span style="display:flex;"><span><span style="color:#75715e">##2: 当有冲突时，手动解决冲突 然后git add .| git commit -m &#34;&#34;。无冲突时 最后直接push</span>
+</span></span><span style="display:flex;"><span>$ git push origin master
+</span></span></code></pre></div><p>::: tip 结论
+git fetch 是从远程获取最新版本到本地，但不会自动 merge。
+而 git pull 则是会获取所有远程索引并合并到本地分支中来。效果相同时 git pull 将更为快捷。
+:::</p>
+<h2 id="分支">分支<a hidden class="anchor" aria-hidden="true" href="#分支">#</a></h2>
+<ul>
+<li>
+<h3>基础操作</h3>
+</li>
+<li>
+<p><code>git branch</code>用于查看本地分支</p>
+</li>
+<li>
+<p><code>git branch -a</code>查看所有分支（包括远程分支）</p>
+</li>
+<li>
+<p><code>git branch XXX</code>新建一个分支</p>
+</li>
+<li>
+<p><code>git checkout master</code> 切换分支</p>
+</li>
+<li>
+<p><code>git checkout -t orgin/master</code> 本地创建一个 master 并建立一个追踪关系，自动追踪远程分支（origin/master)</p>
+</li>
+<li>
+<h3>同步本地与线上分支</h3>
+</li>
+</ul>
+<p>🔔 将线上新增分支更新到本地</p>
+<p>第一种方式：拉取分支不创建本地分支,其后一步完成创建分支与建立追踪关系</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e">##1：拉取远程分支(不创建本地分支)</span>
+</span></span><span style="display:flex;"><span>$ git pull <span style="color:#f92672">||</span> git fetch
+</span></span><span style="display:flex;"><span><span style="color:#75715e">##2：建立本地分支与远程分支的追踪关系</span>
+</span></span><span style="display:flex;"><span>$ git checkout -t orgin/XXX
+</span></span></code></pre></div><p>第二种方式 拉取分支就创建本地分支，但此时追踪关系未创建，其后手动建立追踪关系</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e">##1：拉取远程分支（本地没有的话，创建与远程分支同名的本地分支）</span>
+</span></span><span style="display:flex;"><span>git pull origin XXX <span style="color:#f92672">||</span> git fetch origin XXX:XXX
+</span></span><span style="display:flex;"><span><span style="color:#75715e">##2：手动指定本地分支与远程分支的追踪关系</span>
+</span></span><span style="display:flex;"><span>$ git branch --set-upstream-to<span style="color:#f92672">=</span>origin/master master
+</span></span></code></pre></div><p>🔔 将线上删除分支更新到本地</p>
+<p>如果远程主机删除了某个分支，默认情况下，git pull 不会在拉取远程分支的时候，删除对应的本地分支。这是为了防止，由于其他人操作了远程主机，导致 git pull 不知不觉删除了本地分支。</p>
+<p>但是，你可以改变这个行为，加上参数 -p 就会在本地删除远程已经删除的分支。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ git pull -p
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 等同于下面的命令</span>
+</span></span><span style="display:flex;"><span>$ git fetch --prune origin
+</span></span><span style="display:flex;"><span>$ git fetch -p
+</span></span></code></pre></div><ul>
+<li>
+<h3>追踪关系（tracking）</h3>
+</li>
+</ul>
+<p>查看分支跟踪的远程分支</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ git branch --vv
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  dev    04c3d8f <span style="color:#f92672">[</span>origin/dev<span style="color:#f92672">]</span> update README.md.
+</span></span><span style="display:flex;"><span>  dev1   6203f67 <span style="color:#f92672">[</span>origin/dev1<span style="color:#f92672">]</span> update README.md.
+</span></span><span style="display:flex;"><span>* master d672abc <span style="color:#f92672">[</span>origin/master<span style="color:#f92672">]</span> update README.md.
+</span></span><span style="display:flex;"><span>  tmp    219538d update README.md.
+</span></span></code></pre></div><p>在某些场合，Git 会自动在本地分支与远程分支之间，建立一种追踪关系（tracking）。比如，在 git clone 的时候，所有本地分支默认与远程主机的同名分支，建立追踪关系，也就是说，本地的 master 分支自动&quot;追踪&quot;origin/master 分支。</p>
+<p>Git 也允许手动建立追踪关系。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e">##该命令指定master分支追踪origin/next分支。</span>
+</span></span><span style="display:flex;"><span>$ git branch --set-upstream master origin/next
+</span></span><span style="display:flex;"><span><span style="color:#75715e">##该命令创建一个本地 master 并建立一个追踪关系，自动追踪远程分支（origin/master)</span>
+</span></span><span style="display:flex;"><span>$ git checkout -t orgin/master
+</span></span></code></pre></div><p>如果<b>当前分支</b>与远程分支存在追踪关系，git pull 就可以省略远程分支名。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e">##该命令表示，本地的当前分支自动与对应的origin主机&#34;追踪分支&#34;（remote-tracking branch）进行合并。</span>
+</span></span><span style="display:flex;"><span>$ git pull origin
+</span></span></code></pre></div><p><b>如果当前分支只有一个追踪分支</b>，连远程主机名都可以省略。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ git pull
+</span></span></code></pre></div><h2 id="冲突">冲突<a hidden class="anchor" aria-hidden="true" href="#冲突">#</a></h2>
+<p><code>git merge</code>和<code>git rebase</code>都用于解决冲突</p>
+<ul>
+<li><code>git log --oneline --graph --decorate --all</code> 以树形式查看 git 提交历史记录</li>
+<li>vscode 中 <code>Git Graph</code> 也可以以树形式查看 git 提交历史记录</li>
+</ul>
+<p>其下所有例子均假设有两个分支<code>master，dev</code>。<code>master</code> 分支和 <code>dev</code> 有无冲突两种情况，现需要将 <code>dev</code> 分支合并到 <code>master</code> 上。</p>
+<h3>1️⃣ git merge</h3>
+<ul>
+<li>无冲突</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ git checkout master
+</span></span><span style="display:flex;"><span>$ git merge dev
+</span></span><span style="display:flex;"><span>$ git push origin master
+</span></span></code></pre></div><ul>
+<li>有冲突</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ git checkout master
+</span></span><span style="display:flex;"><span>$ git merge dev
+</span></span><span style="display:flex;"><span><span style="color:#75715e">## 手动解决冲突</span>
+</span></span><span style="display:flex;"><span>$ git add .
+</span></span><span style="display:flex;"><span>$ git commit -m <span style="color:#e6db74">&#34;dev merge to master&#34;</span>
+</span></span><span style="display:flex;"><span>$ git push origin master
+</span></span></code></pre></div><p><img alt="RUNOOB 图标" loading="lazy" src="/assets/git_merge.png"></p>
+<p>可以看到当仅仅使用 git merge 处理冲突时，再主分支上会出现一条分叉分支，通过合并冲突后，
+分叉的分支再次合并到主分支上，此时会多一条 commit,用于描述合并信息。git merge 操作简单，
+但对 git history 提交历史看上去不太友好，接下来我们使用 git rebase 结合 git merge 使用，
+以打到优化 git hostory 效果。</p>
+<h3>2️⃣ git rebase 结合 git merge 处理冲突</h3>
+<ul>
+<li>无冲突</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ git checkout dev
+</span></span><span style="display:flex;"><span>$ git rebase master
+</span></span><span style="display:flex;"><span>$ git checkout master
+</span></span><span style="display:flex;"><span>$ git merge dev
+</span></span><span style="display:flex;"><span>$ git push origin master
+</span></span></code></pre></div><ul>
+<li>有冲突</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ git checkout dev
+</span></span><span style="display:flex;"><span>$ git rebase master
+</span></span><span style="display:flex;"><span><span style="color:#75715e">## 手动解决冲突</span>
+</span></span><span style="display:flex;"><span>$ git rebase --continue
+</span></span><span style="display:flex;"><span><span style="color:#75715e">## 如还有冲突，继续手动解决冲突</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">## 最坏情况，比如提交了三次，每次都有冲突，则需重复此步骤三次</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">## 可以使用 git rebase -i 将多个commit 合并为一个commit，从而只解决一次冲突即可</span>
+</span></span><span style="display:flex;"><span>$ git rebase --continue
+</span></span><span style="display:flex;"><span><span style="color:#75715e">## 冲突全部解决完成</span>
+</span></span><span style="display:flex;"><span>$ git checkout master
+</span></span><span style="display:flex;"><span>$ git merge dev
+</span></span><span style="display:flex;"><span>$ git push origin master
+</span></span></code></pre></div><p><img alt="RUNOOB 图标" loading="lazy" src="/assets/git_diff.png"></p>
+<p>::: tip</p>
+<ul>
+<li>用 rebase 解决冲突时，可以随时使用 git rebase &ndash;abort 退出，将代码退回 rebase 之前。</li>
+<li>可以使用 git rebase -i 将多个 commit 合并为一个 commit，从而只解决一次冲突即可。避免对此执行 git reabse &ndash;continue</li>
+</ul>
+<p>:::</p>
+<p>可以看到当使用 git rebase 结合 git merge 后，我们的 Git History 变为了线性排序，利于我们查看 git 的历史信息。</p>
+<h3>3️⃣ git pull –rebase 处理冲突</h3>
+<p>与上面解决冲突同理
+git rebase master</p>
+<h3>4️⃣ git rebase -i HEAD~</h3>
+<ul>
+<li><a href="https://www.jianshu.com/p/ec45ce13289f" target="_blank">修改已经 push 的 commit message</a></li>
+</ul>
+<h2 id="回滚">回滚<a hidden class="anchor" aria-hidden="true" href="#回滚">#</a></h2>
+<p><code>git reset</code>和<code>git revert</code>都可用于代码版本回滚</p>
+<h3> 1️⃣ git reset </h3>
+<p><code>git rese</code>是回退到某个 commit ID 版本位置</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># 查询commitID</span>
+</span></span><span style="display:flex;"><span>$ git log
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 执行版本回退</span>
+</span></span><span style="display:flex;"><span>$ git reset --hard <span style="color:#f92672">[</span>commitID<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 强制push代码到远程仓库</span>
+</span></span><span style="display:flex;"><span>$ git push -f
+</span></span></code></pre></div><h3> 1️⃣ git revert </h3>
+<p><code>git revert</code>是撤销某个 commit ID 版本，会撤销某个 commitID 的提交。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># 查询commitID</span>
+</span></span><span style="display:flex;"><span>$ git log
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 执行版本回退</span>
+</span></span><span style="display:flex;"><span>$ git revert -n <span style="color:#f92672">[</span>commitID<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 出现冲突就解决冲突，如无冲突</span>
+</span></span><span style="display:flex;"><span>$ git commit -m <span style="color:#e6db74">&#34;版本名&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># push代码到远程仓库</span>
+</span></span><span style="display:flex;"><span>$ git push
+</span></span></code></pre></div><p><img alt="RUNOOB 图标" loading="lazy" src="/assets/git_revert.png"></p>
+<p>::: warning</p>
+<ul>
+<li>
+<p><code>git reset</code>是回退到某个 commitID 版本历史，<code>git revert</code>是撤销某个 commitID 得提交。</p>
+</li>
+<li>
+<p><code>git reset</code>不会保留 commitID 之后的提交记录，<code>git revert</code>不会对 commitID 之前和之后的 commit 产生影响，但会生成一个新的 commit。</p>
+</li>
+</ul>
+<p>:::</p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+    </ul>
+<nav class="paginav">
+  <a class="prev" href="//localhost:1313/css3guide/flex/">
+    <span class="title">« Prev</span>
+    <br>
+    <span>Flex</span>
+  </a>
+  <a class="next" href="//localhost:1313/buildtools/shell/">
+    <span class="title">Next »</span>
+    <br>
+    <span>glob模式</span>
+  </a>
+</nav>
+
+
+<ul class="share-buttons">
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share Git on x"
+            href="https://x.com/intent/tweet/?text=Git&amp;url=%2f%2flocalhost%3a1313%2fgitguide%2freadme%2f&amp;hashtags=">
+            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M512 62.554 L 512 449.446 C 512 483.97 483.97 512 449.446 512 L 62.554 512 C 28.03 512 0 483.97 0 449.446 L 0 62.554 C 0 28.03 28.029 0 62.554 0 L 449.446 0 C 483.971 0 512 28.03 512 62.554 Z M 269.951 190.75 L 182.567 75.216 L 56 75.216 L 207.216 272.95 L 63.9 436.783 L 125.266 436.783 L 235.9 310.383 L 332.567 436.783 L 456 436.783 L 298.367 228.367 L 432.367 75.216 L 371.033 75.216 Z M 127.633 110 L 164.101 110 L 383.481 400.065 L 349.5 400.065 Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share Git on linkedin"
+            href="https://www.linkedin.com/shareArticle?mini=true&amp;url=%2f%2flocalhost%3a1313%2fgitguide%2freadme%2f&amp;title=Git&amp;summary=Git&amp;source=%2f%2flocalhost%3a1313%2fgitguide%2freadme%2f">
+            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-288.985,423.278l0,-225.717l-75.04,0l0,225.717l75.04,0Zm270.539,0l0,-129.439c0,-69.333 -37.018,-101.586 -86.381,-101.586c-39.804,0 -57.634,21.891 -67.617,37.266l0,-31.958l-75.021,0c0.995,21.181 0,225.717 0,225.717l75.02,0l0,-126.056c0,-6.748 0.486,-13.492 2.474,-18.315c5.414,-13.475 17.767,-27.434 38.494,-27.434c27.135,0 38.007,20.707 38.007,51.037l0,120.768l75.024,0Zm-307.552,-334.556c-25.674,0 -42.448,16.879 -42.448,39.002c0,21.658 16.264,39.002 41.455,39.002l0.484,0c26.165,0 42.452,-17.344 42.452,-39.002c-0.485,-22.092 -16.241,-38.954 -41.943,-39.002Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share Git on reddit"
+            href="https://reddit.com/submit?url=%2f%2flocalhost%3a1313%2fgitguide%2freadme%2f&title=Git">
+            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-3.446,265.638c0,-22.964 -18.616,-41.58 -41.58,-41.58c-11.211,0 -21.361,4.457 -28.841,11.666c-28.424,-20.508 -67.586,-33.757 -111.204,-35.278l18.941,-89.121l61.884,13.157c0.756,15.734 13.642,28.29 29.56,28.29c16.407,0 29.706,-13.299 29.706,-29.701c0,-16.403 -13.299,-29.702 -29.706,-29.702c-11.666,0 -21.657,6.792 -26.515,16.578l-69.105,-14.69c-1.922,-0.418 -3.939,-0.042 -5.585,1.036c-1.658,1.073 -2.811,2.761 -3.224,4.686l-21.152,99.438c-44.258,1.228 -84.046,14.494 -112.837,35.232c-7.468,-7.164 -17.589,-11.591 -28.757,-11.591c-22.965,0 -41.585,18.616 -41.585,41.58c0,16.896 10.095,31.41 24.568,37.918c-0.639,4.135 -0.99,8.328 -0.99,12.576c0,63.977 74.469,115.836 166.33,115.836c91.861,0 166.334,-51.859 166.334,-115.836c0,-4.218 -0.347,-8.387 -0.977,-12.493c14.564,-6.47 24.735,-21.034 24.735,-38.001Zm-119.474,108.193c-20.27,20.241 -59.115,21.816 -70.534,21.816c-11.428,0 -50.277,-1.575 -70.522,-21.82c-3.007,-3.008 -3.007,-7.882 0,-10.889c3.003,-2.999 7.882,-3.003 10.885,0c12.777,12.781 40.11,17.317 59.637,17.317c19.522,0 46.86,-4.536 59.657,-17.321c3.016,-2.999 7.886,-2.995 10.885,0.008c3.008,3.011 3.003,7.882 -0.008,10.889Zm-5.23,-48.781c-16.373,0 -29.701,-13.324 -29.701,-29.698c0,-16.381 13.328,-29.714 29.701,-29.714c16.378,0 29.706,13.333 29.706,29.714c0,16.374 -13.328,29.698 -29.706,29.698Zm-160.386,-29.702c0,-16.381 13.328,-29.71 29.714,-29.71c16.369,0 29.689,13.329 29.689,29.71c0,16.373 -13.32,29.693 -29.689,29.693c-16.386,0 -29.714,-13.32 -29.714,-29.693Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share Git on facebook"
+            href="https://facebook.com/sharer/sharer.php?u=%2f%2flocalhost%3a1313%2fgitguide%2freadme%2f">
+            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-106.468,0l0,-192.915l66.6,0l12.672,-82.621l-79.272,0l0,-53.617c0,-22.603 11.073,-44.636 46.58,-44.636l36.042,0l0,-70.34c0,0 -32.71,-5.582 -63.982,-5.582c-65.288,0 -107.96,39.569 -107.96,111.204l0,62.971l-72.573,0l0,82.621l72.573,0l0,192.915l-191.104,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share Git on whatsapp"
+            href="https://api.whatsapp.com/send?text=Git%20-%20%2f%2flocalhost%3a1313%2fgitguide%2freadme%2f">
+            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-58.673,127.703c-33.842,-33.881 -78.847,-52.548 -126.798,-52.568c-98.799,0 -179.21,80.405 -179.249,179.234c-0.013,31.593 8.241,62.428 23.927,89.612l-25.429,92.884l95.021,-24.925c26.181,14.28 55.659,21.807 85.658,21.816l0.074,0c98.789,0 179.206,-80.413 179.247,-179.243c0.018,-47.895 -18.61,-92.93 -52.451,-126.81Zm-126.797,275.782l-0.06,0c-26.734,-0.01 -52.954,-7.193 -75.828,-20.767l-5.441,-3.229l-56.386,14.792l15.05,-54.977l-3.542,-5.637c-14.913,-23.72 -22.791,-51.136 -22.779,-79.287c0.033,-82.142 66.867,-148.971 149.046,-148.971c39.793,0.014 77.199,15.531 105.329,43.692c28.128,28.16 43.609,65.592 43.594,105.4c-0.034,82.149 -66.866,148.983 -148.983,148.984Zm81.721,-111.581c-4.479,-2.242 -26.499,-13.075 -30.604,-14.571c-4.105,-1.495 -7.091,-2.241 -10.077,2.241c-2.986,4.483 -11.569,14.572 -14.182,17.562c-2.612,2.988 -5.225,3.364 -9.703,1.12c-4.479,-2.241 -18.91,-6.97 -36.017,-22.23c-13.314,-11.876 -22.304,-26.542 -24.916,-31.026c-2.612,-4.484 -0.279,-6.908 1.963,-9.14c2.016,-2.007 4.48,-5.232 6.719,-7.847c2.24,-2.615 2.986,-4.484 4.479,-7.472c1.493,-2.99 0.747,-5.604 -0.374,-7.846c-1.119,-2.241 -10.077,-24.288 -13.809,-33.256c-3.635,-8.733 -7.327,-7.55 -10.077,-7.688c-2.609,-0.13 -5.598,-0.158 -8.583,-0.158c-2.986,0 -7.839,1.121 -11.944,5.604c-4.105,4.484 -15.675,15.32 -15.675,37.364c0,22.046 16.048,43.342 18.287,46.332c2.24,2.99 31.582,48.227 76.511,67.627c10.685,4.615 19.028,7.371 25.533,9.434c10.728,3.41 20.492,2.929 28.209,1.775c8.605,-1.285 26.499,-10.833 30.231,-21.295c3.732,-10.464 3.732,-19.431 2.612,-21.298c-1.119,-1.869 -4.105,-2.99 -8.583,-5.232Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share Git on telegram"
+            href="https://telegram.me/share/url?text=Git&amp;url=%2f%2flocalhost%3a1313%2fgitguide%2freadme%2f">
+            <svg version="1.1" xml:space="preserve" viewBox="2 2 28 28" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M26.49,29.86H5.5a3.37,3.37,0,0,1-2.47-1,3.35,3.35,0,0,1-1-2.47V5.48A3.36,3.36,0,0,1,3,3,3.37,3.37,0,0,1,5.5,2h21A3.38,3.38,0,0,1,29,3a3.36,3.36,0,0,1,1,2.46V26.37a3.35,3.35,0,0,1-1,2.47A3.38,3.38,0,0,1,26.49,29.86Zm-5.38-6.71a.79.79,0,0,0,.85-.66L24.73,9.24a.55.55,0,0,0-.18-.46.62.62,0,0,0-.41-.17q-.08,0-16.53,6.11a.59.59,0,0,0-.41.59.57.57,0,0,0,.43.52l4,1.24,1.61,4.83a.62.62,0,0,0,.63.43.56.56,0,0,0,.4-.17L16.54,20l4.09,3A.9.9,0,0,0,21.11,23.15ZM13.8,20.71l-1.21-4q8.72-5.55,8.78-5.55c.15,0,.23,0,.23.16a.18.18,0,0,1,0,.06s-2.51,2.3-7.52,6.8Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share Git on ycombinator"
+            href="https://news.ycombinator.com/submitlink?t=Git&u=%2f%2flocalhost%3a1313%2fgitguide%2freadme%2f">
+            <svg version="1.1" xml:space="preserve" width="30px" height="30px" viewBox="0 0 512 512" fill="currentColor"
+                xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape">
+                <path
+                    d="M449.446 0C483.971 0 512 28.03 512 62.554L512 449.446C512 483.97 483.97 512 449.446 512L62.554 512C28.03 512 0 483.97 0 449.446L0 62.554C0 28.03 28.029 0 62.554 0L449.446 0ZM183.8767 87.9921H121.8427L230.6673 292.4508V424.0079H281.3328V292.4508L390.1575 87.9921H328.1233L256 238.2489z" />
+            </svg>
+        </a>
+    </li>
+</ul>
+
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="//localhost:1313/">pipe的笔记</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerHTML = 'copy';
+
+        function copyingDone() {
+            copybutton.innerHTML = 'copied!';
+            setTimeout(() => {
+                copybutton.innerHTML = 'copy';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+</body>
+
+</html>

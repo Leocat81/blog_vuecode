@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto" data-theme="auto">
+
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Gitguides | pipe的笔记</title>
+<meta name="keywords" content="">
+<meta name="description" content="Gitguides - pipe的笔记">
+<meta name="author" content="">
+<link rel="canonical" href="//localhost:1313/gitguide/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.da3211e5ef867bf2b75fd5a6515cfed7195c011e8ab735694e203810a827097b.css" integrity="sha256-2jIR5e&#43;Ge/K3X9WmUVz&#43;1xlcAR6KtzVpTiA4EKgnCXs=" rel="preload stylesheet" as="style">
+<link rel="icon" href="//localhost:1313/img/logo2.webp">
+<link rel="icon" type="image/png" sizes="16x16" href="//localhost:1313/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="//localhost:1313/favicon-32x32.png">
+<link rel="apple-touch-icon" href="//localhost:1313/apple-touch-icon.png">
+<link rel="mask-icon" href="//localhost:1313/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" type="application/rss+xml" href="//localhost:1313/gitguide/index.xml" title="rss">
+<link rel="alternate" hreflang="en" href="//localhost:1313/gitguide/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script><meta property="og:url" content="//localhost:1313/gitguide/">
+  <meta property="og:site_name" content="pipe的笔记">
+  <meta property="og:title" content="Gitguides">
+  <meta property="og:locale" content="zh-cn">
+  <meta property="og:type" content="website">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Gitguides">
+<meta name="twitter:description" content="">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Gitguides",
+      "item": "//localhost:1313/gitguide/"
+    }
+  ]
+}
+</script>
+</head>
+<body class="list" id="top">
+    <header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="//localhost:1313/" accesskey="h" title="pipe的笔记 (Alt + H)">pipe的笔记</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="//localhost:1313/" title="首页">
+                    <span>首页</span>
+                </a>
+            </li>
+            <li>
+                <a href="//localhost:1313/search/" title="搜索">
+                    <span>搜索</span>
+                </a>
+            </li>
+            <li>
+                <a href="//localhost:1313/archives/" title="归档">
+                    <span>归档</span>
+                </a>
+            </li>
+            <li>
+                <a href="//localhost:1313/tags/" title="标签">
+                    <span>标签</span>
+                </a>
+            </li>
+            <li>
+                <a href="//localhost:1313/categories/" title="分类">
+                    <span>分类</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main"> 
+<header class="page-header"><div class="breadcrumbs"><a href="//localhost:1313/">Home</a></div>
+  <h1>
+    Gitguides
+  </h1>
+</header>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Git
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p> git 版本回滚有两种方式，其一为Git Reset,其二为Git Revert。下面来看这种具体操作及实现。文末对两种方式进行总结和比较。
+克隆 git clone用于拉取远程仓库到本地
+/* git clone 远程仓库地址 本地目录 */ $ git clone https://gitee.com/pipepandafeng/blog_vuecode.git blog_vuecode_local 拉取 git fetch 和git pull 都用于代码和分支的更新。
+git fetch 一旦远程主机的版本库有了更新（Git 术语叫做 commit），需要将这些更新取回本地，这时就要用到 git fetch 命令。
+/* * git fetch 主机名 远程分支:本地分支（创建一个新分支） * 特别注意:不建议本地分支写本地已有分支，否则拉取当有冲突时可能会有问题 */ ##1：拉取更新到本地新建tmp分支 $ git fetch origin master:tmp ##2：合并更新 $ git merge tmp ##3: 当有冲突时，手动解决冲突 然后git add .| git commit -m &#34;&#34;。无冲突时 最后直接push $ git push origin master git pull /* * git pull 主机名 远程分支:本地分支（无则创建一个新分支） */ ##1：取回origin主机的master分支，与本地的dev分支合并 ## || 如果远程分支是与当前分支合并，则冒号后面的部分可以省略。 $ git pull origin master:dev || git pull origin master ##2: 当有冲突时，手动解决冲突 然后git add .| git commit -m &#34;&#34;。无冲突时 最后直接push $ git push origin master ::: tip 结论 git fetch 是从远程获取最新版本到本地，但不会自动 merge。 而 git pull 则是会获取所有远程索引并合并到本地分支中来。效果相同时 git pull 将更为快捷。 :::
+...</p>
+  </div>
+  <footer class="entry-footer"><span>3 min</span></footer>
+  <a class="entry-link" aria-label="post link to Git" href="//localhost:1313/gitguide/readme/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">克隆
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>git clone用于拉取远程仓库到本地
+/* git clone 远程仓库地址 本地目录 */ $ git clone https://gitee.com/pipepandafeng/blog_vuecode.git blog_vuecode_local </p>
+  </div>
+  <footer class="entry-footer"><span>1 min</span></footer>
+  <a class="entry-link" aria-label="post link to 克隆" href="//localhost:1313/gitguide/clone/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">分支
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p> 基础操作 git branch用于查看本地分支
+git branch -a查看所有分支（包括远程分支）
+git branch XXX新建一个分支
+git checkout master 切换分支
+git checkout -t orgin/master 本地创建一个 master 并建立一个追踪关系，自动追踪远程分支（origin/master)
+同步本地与线上分支 🔔 将线上新增分支更新到本地
+第一种方式：拉取分支不创建本地分支, 其后一步完成创建分支与建立追踪关系
+##1：拉取远程分支(不创建本地分支) $ git pull || git fetch ##2：建立本地分支与远程分支的追踪关系 $ git checkout -t orgin/XXX 第二种方式 拉取分支就创建本地分支，但此时追踪关系未创建，其后手动建立追踪关系
+##1：拉取远程分支（本地没有的话，创建与远程分支同名的本地分支） git pull origin XXX || git fetch origin XXX:XXX ##2：手动指定本地分支与远程分支的追踪关系 $ git branch --set-upstream-to=origin/master master 🔔 删除线上分支
+git push origin --delete XXXXX(分支名) 🔔 将线上删除分支更新到本地
+如果远程主机删除了某个分支，默认情况下，git pull 不会在拉取远程分支的时候，删除对应的本地分支。这是为了防止，由于其他人操作了远程主机，导致 git pull 不知不觉删除了本地分支。
+但是，你可以改变这个行为，加上参数 -p 就会在本地删除远程已经删除的分支。
+...</p>
+  </div>
+  <footer class="entry-footer"><span>2 min</span></footer>
+  <a class="entry-link" aria-label="post link to 分支" href="//localhost:1313/gitguide/branch/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">合并
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Cherry-pick 对于多分支的代码库，将代码从一个分支转移到另一个分支是常见需求。
+这时分两种情况。一种情况是，你需要另一个分支的所有代码变动，那么就采用合并 git merge 。另一种情况是，你只需要部分代码变动（某几个提交），这时可以采用 Cherry pick。
+cherry-pick 可以选择性的合并某些commit到当前分支
+$ git cherry-pick &lt;commitHash&gt; 上面命令就会将指定的提交commitHash，应用于当前分支。这会在当前分支产生一个新的提交，当然它们的哈希值会不一样。
+详细用法可参照 git 使用手册 和 阮一峰-git cherry-pick 教程
+解决冲突 git merge 和 git rebase 都用于解决冲突
+git log --oneline --graph --decorate --all 以树形式查看 git 提交历史记录 vscode 中 Git Graph 也可以以树形式查看 git 提交历史记录 其下所有例子均假设有两个分支 master，dev 。 master 分支和 dev 有无冲突两种情况，现需要将 dev 分支合并到 master 上。
+🧯 git merge 无冲突 $ git checkout master $ git merge dev $ git push origin master 有冲突 $ git checkout master $ git merge dev ## 手动解决冲突 $ git add . $ git commit -m &#34;dev merge to master&#34; $ git push origin master ...</p>
+  </div>
+  <footer class="entry-footer"><span>2 min</span></footer>
+  <a class="entry-link" aria-label="post link to 合并" href="//localhost:1313/gitguide/merge/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">回滚
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>git reset 和 git revert 都可用于代码版本回滚
+🧽 git reset git reset --merge 回退到 merge 以前，用于不想解决冲突的时候 git reset 是回退到某个 commit ID 版本位置
+# 查询commitID $ git log # 执行版本回退 $ git reset --hard [commitID] # 强制push代码到远程仓库 $ git push -f ::: tip 注意
+当执行 git reset --hard [commitID] 后不想进行回滚操作了，你可以使用 git reset --hard ORIG_HEAD 将 HEAD 恢复到之前的位置 GIT 官网ORIG_HEAD解释 ::: 🧽 git revert git revert 是撤销某个 commit ID 版本，会撤销某个 commitID 的提交。
+...</p>
+  </div>
+  <footer class="entry-footer"><span>1 min</span></footer>
+  <a class="entry-link" aria-label="post link to 回滚" href="//localhost:1313/gitguide/reset/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">基础
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>三种状态 现在请注意，如果你希望后面的学习更顺利，请记住下面这些关于 Git 的概念。 Git 有三种状态，你的文件可能处于其中之一： 已提交（committed)、已修改（modified） 和 已暂存（staged）。
+已修改表示修改了文件，但还没保存到数据库中 已暂存表示对一个已修改的文件的当前版本做了标记，使之包含在下次提交的快照中 已提交表示数据已安全地保存在本地数据库中。 这会让我们的 Git 项目拥有三个阶段：工作区、暂存区以及 Git 目录。
+基本设置 git config --global user.email &#34;你的邮箱&#34;
+git config --global user.name &#34;你的github用户名&#34;
+参考文献： Git 是什么？
+</p>
+  </div>
+  <footer class="entry-footer"><span>1 min</span></footer>
+  <a class="entry-link" aria-label="post link to 基础" href="//localhost:1313/gitguide/base/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">拉取
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>git fetch 和git pull 都用于代码和分支的更新。
+🔥 git fetch 一旦远程主机的版本库有了更新（Git 术语叫做 commit），需要将这些更新取回本地，这时就要用到 git fetch 命令。
+/* * git fetch 主机名 远程分支:本地分支（创建一个新分支） * 特别注意:不建议本地分支写本地已有分支，否则拉取当有冲突时可能会有问题 */ ##1：拉取更新到本地新建tmp分支 $ git fetch origin master:tmp ##2：合并更新 $ git merge tmp ##3: 当有冲突时，手动解决冲突 然后git add .| git commit -m &#34;&#34;。无冲突时 最后直接push $ git push origin master 🔥 git pull /* * git pull 主机名 远程分支:本地分支（无则创建一个新分支） */ ##1：取回origin主机的master分支，与本地的dev分支合并 ## || 如果远程分支是与当前分支合并，则冒号后面的部分可以省略。 $ git pull origin master:dev || git pull origin master ##2: 当有冲突时，手动解决冲突 然后git add .| git commit -m &#34;&#34;。无冲突时 最后直接push $ git push origin master ::: tip 结论 git fetch 是从远程获取最新版本到本地，但不会自动 merge。 而 git pull 则是会获取所有远程索引并合并到本地分支中来。效果相同时 git pull 将更为快捷。 :::
+</p>
+  </div>
+  <footer class="entry-footer"><span>1 min</span></footer>
+  <a class="entry-link" aria-label="post link to 拉取" href="//localhost:1313/gitguide/fetch/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">贮藏
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>有时，当你在项目的一部分上已经工作一段时间后，所有东西都进入了混乱的状态， 而这时你想要切换到另一个分支做一点别的事情。 问题是，你不想仅仅因为过会儿回到这一点而为做了一半的工作创建一次提交。 针对这个问题的答案是 git stash 命令
+git stash 现在想要切换分支，但是还不想要提交之前的工作，想要贮藏修改。 将新的贮藏推送到栈上，运行 git stash 或 git stash push
+$ git stash 或 git stash push git stash list 要查看所有贮藏，运行 git stash list
+$ git stash list git stash apply 要应用（恢复但并不从栈上移除）一个贮藏，运行 git stash apply 加上要应用的贮藏的名字
+git stash drop 要从栈上移除一个贮藏，运行 git stash drop 加上要移除的贮藏的名字
+git stash pop 要应用（恢复）并从栈上移除一个贮藏，运行 git stash pop , 是 git stash apply 和 git stash drop 的简写。
+...</p>
+  </div>
+  <footer class="entry-footer"><span>1 min</span></footer>
+  <a class="entry-link" aria-label="post link to 贮藏" href="//localhost:1313/gitguide/stash/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">重写历史
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p> 本文摘录自 GIT BOOK
+许多时候，在使用 Git 时，你可能想要修订提交历史。 Git 很棒的一点是它允许你在最后时刻做决定。 你可以在将暂存区内容提交前决定哪些文件进入提交，可以通过 git stash 来决定不与某些内容工作， 也可以重写已经发生的提交就像它们以另一种方式发生的一样。 这可能涉及改变提交的顺序，改变提交中的信息或修改文件，将提交压缩或是拆分， 或完全地移除提交——在将你的工作成果与他人共享之前。
+修改最后一次提交 $ git commit --amend 这条命令相当于：
+# HEAD^ 表示当前分支的上一个提交 $ git reset --soft HEAD^ $ ... do something else to come up with the right tree ... # ORIG_HEAD 是一个临时性的引用，用于在某些操作中保存先前 HEAD 的位置，以便稍后可能需要时能够恢复到该位置, $ git commit -c ORIG_HEAD # 在执行 git reset --soft HEAD^ 操作之后，之前的 HEAD 的位置将存储在 ORIG_HEAD 中。这样，如果你意识到你不想进行这个重置，你可以使用 git reset --hard ORIG_HEAD 将 HEAD 恢复到之前的位置 上面这条命令会将最后一次的提交信息载入到编辑器中供你修改。 当保存并关闭编辑器后，编辑器会将更新后的提交信息写入新提交中，它会成为新的最后一次提交。
+...</p>
+  </div>
+  <footer class="entry-footer"><span>1 min</span></footer>
+  <a class="entry-link" aria-label="post link to 重写历史" href="//localhost:1313/gitguide/history/"></a>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="//localhost:1313/">pipe的笔记</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

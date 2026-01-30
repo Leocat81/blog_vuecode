@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Node on pipe的笔记</title>
+    <link>//localhost:1313/categories/node/</link>
+    <description>Recent content in Node on pipe的笔记</description>
+    <generator>Hugo -- 0.155.0</generator>
+    <language>zh-cn</language>
+    <atom:link href="//localhost:1313/categories/node/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>template 1</title>
+      <link>//localhost:1313/node/readme/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/node/readme/</guid>
+      <description>&lt;blockquote&gt;
+&lt;p&gt;项目地址：&lt;a href=&#34;https://github.com/Leocat81/node_koa_prisma_starter&#34;&gt;https://github.com/Leocat81/node_koa_prisma_starter&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;集成了 &lt;code&gt;Node&lt;/code&gt;,&lt;code&gt;TypeScript&lt;/code&gt;,&lt;code&gt;Koa&lt;/code&gt;,&lt;code&gt;Prisma&lt;/code&gt;,&lt;code&gt;Mongodb&lt;/code&gt;,&lt;code&gt;Docker&lt;/code&gt; 的服务端模版项目，可快速初始化一个服务端项目使用&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

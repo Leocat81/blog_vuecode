@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Home on pipe的笔记</title>
+    <link>//localhost:1313/categories/home/</link>
+    <description>Recent content in Home on pipe的笔记</description>
+    <generator>Hugo -- 0.155.0</generator>
+    <language>zh-cn</language>
+    <atom:link href="//localhost:1313/categories/home/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>README</title>
+      <link>//localhost:1313/home/readme/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/home/readme/</guid>
+      <description>&lt;p&gt;读书打卡&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;《图灵原创 曾探 &amp;ndash;人民邮电出版社 2015》&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;11 章-12 章&lt;/li&gt;
+&lt;li&gt;13 章-14 章&lt;/li&gt;
+&lt;li&gt;15 章(done)&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;《我在北京送快递》&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;《动物农场》&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;《芙蓉镇》&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;《活着》&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;</description>
+    </item>
+  </channel>
+</rss>

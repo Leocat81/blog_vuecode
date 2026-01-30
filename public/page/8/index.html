@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto" data-theme="auto">
+
+<head>
+	<meta name="generator" content="Hugo 0.155.0"><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>pipe的笔记</title>
+
+<meta name="description" content="欢迎来到我的博客">
+<meta name="author" content="">
+<link rel="canonical" href="//localhost:1313/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.da3211e5ef867bf2b75fd5a6515cfed7195c011e8ab735694e203810a827097b.css" integrity="sha256-2jIR5e&#43;Ge/K3X9WmUVz&#43;1xlcAR6KtzVpTiA4EKgnCXs=" rel="preload stylesheet" as="style">
+<link rel="icon" href="//localhost:1313/img/logo2.webp">
+<link rel="icon" type="image/png" sizes="16x16" href="//localhost:1313/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="//localhost:1313/favicon-32x32.png">
+<link rel="apple-touch-icon" href="//localhost:1313/apple-touch-icon.png">
+<link rel="mask-icon" href="//localhost:1313/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" type="application/rss+xml" href="//localhost:1313/index.xml" title="rss">
+<link rel="alternate" type="application/json" href="//localhost:1313/index.json" title="json">
+<link rel="alternate" hreflang="en" href="//localhost:1313/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script><meta property="og:url" content="//localhost:1313/">
+  <meta property="og:site_name" content="pipe的笔记">
+  <meta property="og:title" content="Hi, 我是 pipe">
+  <meta property="og:description" content="欢迎来到我的博客">
+  <meta property="og:locale" content="zh-cn">
+  <meta property="og:type" content="website">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Hi, 我是 pipe">
+<meta name="twitter:description" content="欢迎来到我的博客">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "pipe的笔记",
+  "url": "//localhost:1313/",
+  "description": "",
+  "logo": "//localhost:1313/img/logo2.webp",
+  "sameAs": [
+      
+  ]
+}
+</script>
+</head>
+<body class="list" id="top">
+    <header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="//localhost:1313/" accesskey="h" title="pipe的笔记 (Alt + H)">pipe的笔记</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="//localhost:1313/" title="首页">
+                    <span class="active">首页</span>
+                </a>
+            </li>
+            <li>
+                <a href="//localhost:1313/search/" title="搜索">
+                    <span>搜索</span>
+                </a>
+            </li>
+            <li>
+                <a href="//localhost:1313/archives/" title="归档">
+                    <span>归档</span>
+                </a>
+            </li>
+            <li>
+                <a href="//localhost:1313/tags/" title="标签">
+                    <span>标签</span>
+                </a>
+            </li>
+            <li>
+                <a href="//localhost:1313/categories/" title="分类">
+                    <span>分类</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main"> 
+<div class="post-content"><p>这里是我的技术笔记与日常记录。</p>
+<ul>
+<li>文章按主题分区，首页会汇总最新内容</li>
+<li>使用站内搜索快速定位内容</li>
+</ul>
+
+
+</div>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">简单模拟数据劫持
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>在实现简单模拟数据劫持之前，让我们先来了解一下 ECMAScript 对象的属性类型
+对象的属性类型 ECMAScript 中有两种属性：数据属性和访问器属性。
+一 ： 数据属性 数据属性包含一个数据值的位置。在这个位置可以读取和写入值。数据属性有 4 个描述其行为的特性。
+[[Configurable]]：表示能否通过 delete 删除属性从而重新定义属性，能否修改属性的特性，或者能否把属性修改为访问器属性。默认值为 true。 [[Enumberable]]：表示能否通过 for-in 循环返回属性。默认值为 true。 [[Writable]]：表示能否修改属性的值。默认值为 true。 [[Value]]：包含这个属性的数据值。读取属性值的时候，从这个位置读；写入属性值的时候，把新值保存在这个位置。默认值为 undefined。 要修改属性默认的特性，必须使用 ES5 的 Object.defineProperty()方法。
+let person = {} Object.defineProperty(person, &#39;name&#39;, { configurable:false, // 不能删除该属性,不能修改属性的特性，不能访问访问器属性 writable:false, // 不能进行赋值操作 value:&#39;Niko&#39; }) console.log(person.name); // &#39;Niko&#39; delete person.name // 因为configurable为false, 在删除属性操作 非严格模式下不会发生任何操作，在严格模式下报错 console.log(person.name); // &#39;Niko&#39; console.log(person.name); // &#39;Niko&#39; person.name=&#39;Simple&#39; // 因为writable为false, 故赋值操作在非严格模式下不会发生任何操作，在严格模式下报错 console.log(person.name); // &#39;Niko&#39; Object.defineProperty()方法可以被调用多次，但是把 configurable 特性设置为 false 之后就会有限制了。见下面例子：
+let person = {}; Object.defineProperty(person, &#34;name&#34;, { configurable: false, value: &#34;Niko&#34;, }); // 抛出错误 Object.defineProperty(person, &#34;name&#34;, { configurable: true, value: &#34;Niko&#34;, }); 在调用 Object.defineProperty()方法创建一个新的属性时，如果不指定，configurable，Enumberable，Writable 特性的默认值都是 false。
+...</p>
+  </div>
+  <footer class="entry-footer"><span>3 min</span></footer>
+  <a class="entry-link" aria-label="post link to 简单模拟数据劫持" href="//localhost:1313/guide/data-hijacking/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">箭头函数和普通函数的区别
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>主要区别 箭头函数
+let addUser = () =&gt; { console.log(&#34;添加一个用户&#34;) } 普通函数
+function addUser() { console.log(&#34;添加一个用户&#34;) } 区别1: 箭头函数使用箭头命名，普通函数中没有。
+区别2: 箭头函数都为匿名函数，普通函数可以为匿名函数，也可以为具体名函数。
+区别3: 箭头函数不能用于构造函数(不可以使用new) , 普通函数可以。
+let FunConstructor = () =&gt; { console.log(&#39;lll&#39;); } let fc = new FunConstructor(); 区别4：箭头函数不绑定`arguments`，取而代之用rest参数... 解决(`arguments` 是一个对应于传递给函数的参数的类数组对象。)
+function A(a) { console.log(arguments); } A(1, 2, 3, 4, 5, 8); // [1, 2, 3, 4, 5, 8, callee: ƒ, Symbol(Symbol.iterator): ƒ] let B = (b) =&gt; { console.log(arguments); } B(2, 92, 32, 32); // Uncaught ReferenceError: arguments is not defined let C = (...c) =&gt; { console.log(c); } C(3, 82, 32, 11323); // [3, 82, 32, 11323] this 区别5：箭头函数不绑定this，会捕获其所在的上下文的this值，作为自己的this值
+...</p>
+  </div>
+  <footer class="entry-footer"><span>2 min</span></footer>
+  <a class="entry-link" aria-label="post link to 箭头函数和普通函数的区别" href="//localhost:1313/guide/arrow-dif-nomal/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">类数组（ArrayLike）
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>简介 转换</p>
+  </div>
+  <footer class="entry-footer"><span>1 min</span></footer>
+  <a class="entry-link" aria-label="post link to 类数组（ArrayLike）" href="//localhost:1313/guide/array-like/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">自动化构建工具
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p> 自动化构建工具就是用来让我们不再做机械重复的事情，解放我们的双手的。
+webpack学习代码地址
+webpack优化学习代码地址
+gulp学习代码地址
+</p>
+  </div>
+  <footer class="entry-footer"><span>1 min</span></footer>
+  <a class="entry-link" aria-label="post link to 自动化构建工具" href="//localhost:1313/buildtools/readme/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">设计模式
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>主要阅读(图灵原创) 曾探 - JavaScript 设计模式与开发实践-人民邮电出版社 (2015), 其后将一些重点笔记记录如下:
+高级函数 高阶函数(Higher-order function)是指至少满足下条件之一的函数。
+函数可以作为参数被传递 函数可以作为返回值输出 实现 AOP AOP(面向切面编程)的主要作用是把一些跟核心业务逻辑模块无关的功能抽离出来，这些 跟业务逻辑无关的功能通常包括日志统计、安全控制、异常处理等。把这些功能抽离出来之后， 再通过“动态织入”的方式掺入业务逻辑模块中。这样做的好处首先是可以保持业务逻辑模的纯净和高内聚性，其次是可以很方便地复用日志统计等功能模块。
+Function.prototype.before = function(beforefn) { var __self = this; return function() { beforefn.apply(this, arguments); // 打印 1 return __self.apply(this, arguments); // 打印 2 }; }; Function.prototype.after = function(afterfn) { var __self = this; return function() { var ret = __self.apply(this, arguments); // 此处_self是对 打印1，打印2 函数在此处的引用，并在此处最终被执行 afterfn.apply(this, arguments); // 打印 3 return ret; }; }; var func = function() { console.log(2); }; func = func .before(function() { console.log(1); }) .after(function() { console.log(3); }); func(); // 打印 1 2 3 使用AOP动态改变函数的参数 // @ts-ignore Function.prototype.before = function(beforefn) { var __self = this; return function(params) { beforefn.apply(this, arguments); // arguments一开始为{a:&#39;a&#39;},但是执行beforefn方法后，beforefn修改了arguments的值，故此时arguments={a:&#39;a&#39;,b:&#39;b&#39;} return __self.apply(this, arguments); // 这里返回是因为：如果原函数有返回值，这里执行完原函数后，将返回值返回出去。避免原函数无法返回值。 }; }; var func = function(param) { console.log(param); // 输出: {a: &#34;a&#34;, b: &#34;b&#34;} }; // @ts-ignore func = func.before(function(param) { param.b = &#34;b&#34;; }); func({ a: &#34;a&#34; }); 单例模式 单例模式作用：比如每次都保证最多一个弹窗打开出现在页面中。例如 Vant Toast组件 即被设计为了单例模式。 Vant Toast 组件
+...</p>
+  </div>
+  <footer class="entry-footer"><span>3 min</span></footer>
+  <a class="entry-link" aria-label="post link to 设计模式" href="//localhost:1313/guide/designpattern/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">贮藏
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>有时，当你在项目的一部分上已经工作一段时间后，所有东西都进入了混乱的状态， 而这时你想要切换到另一个分支做一点别的事情。 问题是，你不想仅仅因为过会儿回到这一点而为做了一半的工作创建一次提交。 针对这个问题的答案是 git stash 命令
+git stash 现在想要切换分支，但是还不想要提交之前的工作，想要贮藏修改。 将新的贮藏推送到栈上，运行 git stash 或 git stash push
+$ git stash 或 git stash push git stash list 要查看所有贮藏，运行 git stash list
+$ git stash list git stash apply 要应用（恢复但并不从栈上移除）一个贮藏，运行 git stash apply 加上要应用的贮藏的名字
+git stash drop 要从栈上移除一个贮藏，运行 git stash drop 加上要移除的贮藏的名字
+git stash pop 要应用（恢复）并从栈上移除一个贮藏，运行 git stash pop , 是 git stash apply 和 git stash drop 的简写。
+...</p>
+  </div>
+  <footer class="entry-footer"><span>1 min</span></footer>
+  <a class="entry-link" aria-label="post link to 贮藏" href="//localhost:1313/gitguide/stash/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">跨域与同源策略
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>跨域：指的是浏览器不能执行其他网站的脚本。它是由浏览器的同源策略造成的，是浏览器对javascript施加的安全限制。
+同源策略：同源策略/SOP（Same origin policy）是一种约定，由Netscape公司1995年引入浏览器，它是浏览器最核心也最基本的安全功能，如果缺少了同源策略，浏览器很容易受到XSS、CSFR等攻击。所谓同源是指&#34;协议&#43;域名&#43;端口&#34;三者相同，即便两个不同的域名指向同一个ip地址，也非同源。
+同源策略限制以下几种行为：
+Cookie、LocalStorage 和 IndexDB 无法读取 DOM 和 Js对象无法获得 AJAX 请求不能发送 常见跨域场景 跨域解决方案 通过jsonp跨域 document.domain &#43; iframe跨域 location.hash &#43; iframe window.name &#43; iframe跨域 postMessage跨域 跨域资源共享（CORS） nginx代理跨域 nodejs中间件代理跨域 WebSocket协议跨域 JSONP 通常为了减轻web服务器的负载，我们把js、css，img等静态资源分离到另一台独立域名的服务器上，在html页面中再通过相应的标签从不同域名下加载静态资源，而被浏览器允许，基于此原理，我们可以通过动态创建script，再请求一个带参网址实现跨域通信。
+&lt;!DOCTYPE html&gt; &lt;html lang=&#34;en&#34;&gt; &lt;head&gt; &lt;meta charset=&#34;UTF-8&#34; /&gt; &lt;meta http-equiv=&#34;X-UA-Compatible&#34; content=&#34;IE=edge&#34; /&gt; &lt;meta name=&#34;viewport&#34; content=&#34;width=device-width, initial-scale=1.0&#34; /&gt; &lt;title&gt;Document&lt;/title&gt; &lt;/head&gt; &lt;body&gt; &lt;script&gt; function success(params) { console.log(params); } &lt;/script&gt; &lt;script type=&#34;text/javascript&#34; src=&#34;http://localhost:3000/upload?callback=success&#34; &gt;&lt;/script&gt; &lt;/body&gt; &lt;/html&gt; 🐬客户端🐬
+var express = require(&#34;express&#34;); var router = express.Router(); router.get(&#34;/&#34;, async (req, res, next) =&gt; { let func; if (req.originalUrl.indexOf(&#34;?&#34;) !== -1) { func = req.originalUrl.split(&#34;callback=&#34;)[1] &#43; &#34;(&#39;我真的&#39;)&#34;; } res.send(func); }); module.exports = router; 🐕‍🦺node服务端🐕‍🦺
+...</p>
+  </div>
+  <footer class="entry-footer"><span>1 min</span></footer>
+  <a class="entry-link" aria-label="post link to 跨域与同源策略" href="//localhost:1313/httpguide/cors/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">重写历史
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p> 本文摘录自 GIT BOOK
+许多时候，在使用 Git 时，你可能想要修订提交历史。 Git 很棒的一点是它允许你在最后时刻做决定。 你可以在将暂存区内容提交前决定哪些文件进入提交，可以通过 git stash 来决定不与某些内容工作， 也可以重写已经发生的提交就像它们以另一种方式发生的一样。 这可能涉及改变提交的顺序，改变提交中的信息或修改文件，将提交压缩或是拆分， 或完全地移除提交——在将你的工作成果与他人共享之前。
+修改最后一次提交 $ git commit --amend 这条命令相当于：
+# HEAD^ 表示当前分支的上一个提交 $ git reset --soft HEAD^ $ ... do something else to come up with the right tree ... # ORIG_HEAD 是一个临时性的引用，用于在某些操作中保存先前 HEAD 的位置，以便稍后可能需要时能够恢复到该位置, $ git commit -c ORIG_HEAD # 在执行 git reset --soft HEAD^ 操作之后，之前的 HEAD 的位置将存储在 ORIG_HEAD 中。这样，如果你意识到你不想进行这个重置，你可以使用 git reset --hard ORIG_HEAD 将 HEAD 恢复到之前的位置 上面这条命令会将最后一次的提交信息载入到编辑器中供你修改。 当保存并关闭编辑器后，编辑器会将更新后的提交信息写入新提交中，它会成为新的最后一次提交。
+...</p>
+  </div>
+  <footer class="entry-footer"><span>1 min</span></footer>
+  <a class="entry-link" aria-label="post link to 重写历史" href="//localhost:1313/gitguide/history/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">闭包
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>闭包是指有权访问另一个函数作用域中的变量的函数。
+原理 闭包的实现原理，其实是利用了作用域链的特性，我们都知道作用域链就是在当前执行环境下访问某个变量时，如果不存在就一直向外层寻找，最终寻找到最外层也就是全局作用域，这样就形成了一个链条。
+简单实现 function print() { var a = 1; return function() { return &#43;&#43;a; }; } let p = print(); console.log(p()); // 2 console.log(p()); // 3 console.log(p()); // 4 原理解释说明 在上面的例子中 print函数中的匿名函数有作用域链有三层。0:自己，1:print函数,2:全局。尽管匿名函数被return出去，但是他的作用域链在初始化的时候就已经完成了（被保存在了内存的[[Scope]]属性中）。所以尽管匿名函数在全局环境中被调用，但是他还是能获取到print函数中的变量。 ::: warning 提问 可能有的同学会产生疑问，按照js的垃圾回收机制，print()函数调用完成后，就应该回收销毁局部变量，这里为什么匿名函数还能获取到局部变量a的累加值呢? :::
+::: tip 结论 这是因为匿名函数的作用域链任然在引用print函数中的变量，导致垃圾回收机制GC不会回收a变量，所以我们才能得到a变量的累加值。 :::
+::: warning 提问 那我们什么时候能让a变量被垃圾回收呢？ :::
+::: tip 回答 print=null,将p设置为null时，解除了匿名函数对print函数的引用将print设置为null时，解除了匿名函数对a的引用,就等于通知垃圾回收例程将其清除。 :::
+作用 作用1：隐藏变量，避免全局污染
+作用2：可以读取函数内部的变量
+同时闭包使用不当，优点就变成了缺点：
+缺点1：导致变量不会被垃圾回收机制回收，造成内存消耗
+缺点2：不恰当的使用闭包可能会造成内存泄漏的问题
+https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Closures
+推荐文献 闭包:MDN </p>
+  </div>
+  <footer class="entry-footer"><span>1 min</span></footer>
+  <a class="entry-link" aria-label="post link to 闭包" href="//localhost:1313/guide/bibao/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">防抖和节流
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>防抖 介绍 需求 1：在第一次触发事件时，不立即执行函数，而是给出一个期限值比如 200ms，然后：
+如果在 200ms 内没有再次触发滚动事件，那么就执行函数 如果在 200ms 内再次触发滚动事件，那么当前的计时取消，重新开始计时 效果：如果短时间内大量触发同一事件，只会执行一次函数。
+实现：既然前面都提到了计时，那实现的关键就在于 setTimeout 这个函数，由于还需要一个变量来保存计时，考虑维护全局纯净，可以借助闭包来实现：
+// 防抖函数 function debounce(fn) { let timer = null; return function () { if (timer) { clearTimeout(timer); } timer = setTimeout(() =&gt; fn(), 2000); }; } 应用 在vue上应用防抖 /* 定义防抖函数 */ /** * @desc 防抖函数 * @param {需要防抖的函数} fn * @param {延迟时间} delay */ export function debounce(fn: () =&gt; void, delay: number) { let timer: number | null = null; // 借助闭包 return () =&gt; { if (timer) { clearTimeout(timer); } timer = setTimeout(fn, delay); // 简化写法 }; } /* 在vue文件中导入函数 */ import { debounce } from &#34;@/utils/debounce&#34;; export default class gasDetails extends Vue { private fn: any = debounce(this.availableCoupon, 500); // 防抖（定义在此处是采用闭包缓存timer) get something(){ if(...){ // debounce(this.availableCoupon, 500)() ❌ 此处不能打包缓存效果，每次都是执行新函数 fn() ✔ } return true } availableCoupon(){ // your code } } 节流 需求 2：使用上面的防抖方案来处理问题的结果是：
+...</p>
+  </div>
+  <footer class="entry-footer"><span>1 min</span></footer>
+  <a class="entry-link" aria-label="post link to 防抖和节流" href="//localhost:1313/guide/debounce-and-throttle/"></a>
+</article>
+<footer class="page-footer">
+  <nav class="pagination">
+    <a class="prev" href="//localhost:1313/page/7/">
+      «&nbsp;Prev&nbsp;
+    </a>
+  </nav>
+</footer>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="//localhost:1313/">pipe的笔记</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

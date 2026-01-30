@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto" data-theme="auto">
+
+<head>
+	<meta name="generator" content="Hugo 0.155.0"><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>pipe的笔记</title>
+
+<meta name="description" content="欢迎来到我的博客">
+<meta name="author" content="">
+<link rel="canonical" href="//localhost:1313/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.da3211e5ef867bf2b75fd5a6515cfed7195c011e8ab735694e203810a827097b.css" integrity="sha256-2jIR5e&#43;Ge/K3X9WmUVz&#43;1xlcAR6KtzVpTiA4EKgnCXs=" rel="preload stylesheet" as="style">
+<link rel="icon" href="//localhost:1313/img/logo2.webp">
+<link rel="icon" type="image/png" sizes="16x16" href="//localhost:1313/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="//localhost:1313/favicon-32x32.png">
+<link rel="apple-touch-icon" href="//localhost:1313/apple-touch-icon.png">
+<link rel="mask-icon" href="//localhost:1313/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" type="application/rss+xml" href="//localhost:1313/index.xml" title="rss">
+<link rel="alternate" type="application/json" href="//localhost:1313/index.json" title="json">
+<link rel="alternate" hreflang="en" href="//localhost:1313/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script><meta property="og:url" content="//localhost:1313/">
+  <meta property="og:site_name" content="pipe的笔记">
+  <meta property="og:title" content="Hi, 我是 pipe">
+  <meta property="og:description" content="欢迎来到我的博客">
+  <meta property="og:locale" content="zh-cn">
+  <meta property="og:type" content="website">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Hi, 我是 pipe">
+<meta name="twitter:description" content="欢迎来到我的博客">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "pipe的笔记",
+  "url": "//localhost:1313/",
+  "description": "",
+  "logo": "//localhost:1313/img/logo2.webp",
+  "sameAs": [
+      
+  ]
+}
+</script>
+</head>
+<body class="list" id="top">
+    <header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="//localhost:1313/" accesskey="h" title="pipe的笔记 (Alt + H)">pipe的笔记</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="//localhost:1313/" title="首页">
+                    <span class="active">首页</span>
+                </a>
+            </li>
+            <li>
+                <a href="//localhost:1313/search/" title="搜索">
+                    <span>搜索</span>
+                </a>
+            </li>
+            <li>
+                <a href="//localhost:1313/archives/" title="归档">
+                    <span>归档</span>
+                </a>
+            </li>
+            <li>
+                <a href="//localhost:1313/tags/" title="标签">
+                    <span>标签</span>
+                </a>
+            </li>
+            <li>
+                <a href="//localhost:1313/categories/" title="分类">
+                    <span>分类</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main"> 
+<div class="post-content"><p>这里是我的技术笔记与日常记录。</p>
+<ul>
+<li>文章按主题分区，首页会汇总最新内容</li>
+<li>使用站内搜索快速定位内容</li>
+</ul>
+
+
+</div>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">javascipt 面向对象编程
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>构造函数继承实现方法 👍➡️构造函数&#34;继承&#34;的六种方法⬅️
+//现在有一个&#34;动物&#34;对象的构造函数。 function Animal() { this.species = &#34;动物&#34;; } //还有一个&#34;猫&#34;对象的构造函数。 function Cat(name, color) { this.name = name; this.color = color; } console.log(typeof new Animal()); Cat.prototype = new Animal(); Cat.prototype.constructor = Cat; let cat = new Cat(&#34;xi&#34;, &#34;red&#34;); console.log(cat); console.log(cat.species); </p>
+  </div>
+  <footer class="entry-footer"><span>1 min</span></footer>
+  <a class="entry-link" aria-label="post link to javascipt 面向对象编程" href="//localhost:1313/guide/extend-object/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">javascript 执行机制
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>
+👍➡️ 掘金优质博文：这一次，彻底弄懂JavaScript 执行机制 ⬅️
+setTimeout(() =&gt; { var date3 = new Date(); //结束时间 console.log(date3.getTime() - date1.getTime()); console.log(&#34;object&#34;); }, 2000); var date1 = new Date(); //开始时间 for (let a = 0; a &lt; 10000000000; a&#43;&#43;) { // console.log(a); } var date2 = new Date(); //结束时间 console.log(date2.getTime() - date1.getTime()); 其他文献：MDN-微任务与Javascript运行时环境
+</p>
+  </div>
+  <footer class="entry-footer"><span>1 min</span></footer>
+  <a class="entry-link" aria-label="post link to javascript 执行机制" href="//localhost:1313/guide/implementation-mechanism/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Javascript模块化编程的前生今世
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p> CMD(Common Module Definition), AMD(Asynchronous Module Definition)
+TODO:补充内容
+参考文献 javascript模块化编程一 - 阮一峰的网络日志 javascript模块化编程二：AMD规范 - 阮一峰的网络日志 javascript模块化编程三：require.js的用法 - 阮一峰的网络日志 js模块化编程之彻底弄懂CommonJS和AMD/CMD！ - 莫笑我胡为 </p>
+  </div>
+  <footer class="entry-footer"><span>1 min</span></footer>
+  <a class="entry-link" aria-label="post link to Javascript模块化编程的前生今世" href="//localhost:1313/guide/module/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">js中变量提升和函数声明提升
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>变量提升 ::: tip 结论 使用var声明的变量会自动添加到最接近的环境中。(1)在函数内部，最接近的环境就是函数的局部环境；在with语句中，最接近的环境时函数环境。(2)如果初始化变量时没有使用var声明，该变量会自动被添加到全局环境。 :::
+console.log(a); var a = &#34;a&#34;; var foo = () =&gt; { console.log(a); var a = &#34;a1&#34;; } foo(); // 此时会打印undefined,undefined 由于js自上而下逐行解释执行的，有人可能会认为第一行代码引用了一个没有声明的变量a，会抛出 ReferenceError 异常，而注掉第一行后，由于变量 a 在第二行log之前已经声明并赋值，打印结果应该是 “a”。实际不然。
+什么是提升（Hosting）？ ::: tip 结论 引擎会在解释JavaScript代码之前首先对齐进行编译，编译过程中的一部分工作就是找到所有的声明，并用合适的作用域将他们关联起来，这也正是词法作用域的核心内容。 :::
+以上代码经过javascript预编译后，则会变成：
+var a; console.log(a); // undefined a = &#34;a&#34;; var foo = () =&gt; { var a; // 全局变量会被局部作用域中的同名变量覆盖 console.log(a); // undefined a = &#34;a1&#34;; } foo(); 这就是javascript变量提升带来的变化。
+函数声明提升 上面介绍了js中变量提升的效果，下面来解释一下js中函数提升，要了解函数提升，必须先了定义函数两种方式：一种是函数声明，另一种就是函数表达式。
+// 函数声明 function print(arg0,arg1,arg2) { //函数体 } // 函数表达式 var print = function (arg0,arg1,arg2) { // 函数体 } 关于函数声明，它的一个最重要的特征就是函数声明提升。意思时执行代码之前会先读取函数声明。这就意味着可以把函数声明放在调用它的语句后面。
+console.log(foo1); // [Function: foo1] foo1(); // foo1 console.log(foo2); // undefined foo2(); // TypeError: foo2 is not a function function foo1 () { console.log(&#34;foo1&#34;); }; var foo2 = function () { console.log(&#34;foo2&#34;); }; ::: tip 结论 即函数提升只会提升函数声明，而不会提升函数表达式。 :::
+</p>
+  </div>
+  <footer class="entry-footer"><span>1 min</span></footer>
+  <a class="entry-link" aria-label="post link to js中变量提升和函数声明提升" href="//localhost:1313/guide/variable-and-function/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">key 的作用详解
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>经典面试题：
+1：react/vue 中的key有什么作用？（key的作用是神什么） 2：为什么遍历列表时，key最好不要用index? 1：作用 简单的说: key是虚拟DOA对象的标识，在更新显示时key起着极其重要的作用。 详细的说:当状态中的数据发生变化时，react会根据【新数据】生成【新的虚拟DOM】,随后React进行【新虚拟DOM】与【旧虚拟DON】的diff比较，比较规则如下: a.旧虚教DOM中找到了与新虚拟DOM相同的key: (1).若虚拟DOM中内容没变,直接使用之前的真实DOM (2).若虚拟DOM中内容变了，则生成新的真实DOM，随后替换掉页面中之前的真实DoM b.旧虚拟DOM中未找到与新虚拟DOM相同的key 根据数据创建新的真实DOM，随后渲染到到页面 2: 用index作为key可能公引发的问题 1。若对数据进行: 逆序添加、逆序删除等破坏顺序操作:
+会产生没有必要的真实DOM更新==&gt;界面效果没问题，但效率低。 2．如果结构中还包含输入类的DOM:
+会产生错误DOM更新==&gt;界面有问题。 3．注意! 如果不存在对数据的逆序添加、逆序删除等破坏顺序操作，仅用于渲染列表用于展示，使用index作为key是没有问题的。
+3．开发中如何选择key? 最好使用每条数据的唯一标识作为key，比如id、手机号、身份证号、学号等唯一值。2. 如果确定只是简单的屁示数据，用index也是可以的。
+4: 举例 在两个表格的小李和小张后分别输入信息后，点击上方添加小王按钮，可以看到界面呈现出了不同的效果。
+/* 新旧虚拟dom比较 */ /* index作为key */ /* 旧dom */ &lt;li key=&#34;0&#34;&gt;小李---19岁&lt;input type=&#34;text&#34;/&gt;&lt;/li&gt; &lt;li key=&#34;1&#34;&gt;小张---29岁&lt;input type=&#34;text&#34;/&gt;&lt;/li&gt; /* 新dom */ &lt;li key=&#34;0&#34;&gt;小王---39岁&lt;input type=&#34;text&#34;/&gt;&lt;/li&gt; &lt;li key=&#34;1&#34;&gt;小李---19岁&lt;input type=&#34;text&#34;/&gt;&lt;/li&gt; &lt;li key=&#34;2&#34;&gt;小张---29岁&lt;input type=&#34;text&#34;/&gt;&lt;/li&gt; /* id作为key */ /* 旧dom */ &lt;li key=&#34;1&#34;&gt;小李---19岁&lt;input type=&#34;text&#34;/&gt;&lt;/li&gt; &lt;li key=&#34;2&#34;&gt;小张---29岁&lt;input type=&#34;text&#34;/&gt;&lt;/li&gt; /* 新dom */ &lt;li key=&#34;3&#34;&gt;小王---39岁&lt;input type=&#34;text&#34;/&gt;&lt;/li&gt; &lt;li key=&#34;1&#34;&gt;小李---19岁&lt;input type=&#34;text&#34;/&gt;&lt;/li&gt; &lt;li key=&#34;2&#34;&gt;小张---29岁&lt;input type=&#34;text&#34;/&gt;&lt;/li&gt; index作为key时
+...</p>
+  </div>
+  <footer class="entry-footer"><span>1 min</span></footer>
+  <a class="entry-link" aria-label="post link to key 的作用详解" href="//localhost:1313/vueguide/key/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">linux
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>主要总结linux上一些基本使用方法
+学习 快乐的 Linux 命令行
+vim 常用命令 https://github.com/jaywcjlove/linux-command
+https://wangchujiang.com/linux-command/
+lsof 选项
+-a：列出打开文件存在的进程； -c&lt;进程名&gt;：列出指定进程所打开的文件； -g：列出GID号进程详情； -d&lt;文件号&gt;：列出占用该文件号的进程； &#43;d&lt;目录&gt;：列出目录下被打开的文件； &#43;D&lt;目录&gt;：递归列出目录下被打开的文件； -n&lt;目录&gt;：列出使用NFS的文件； -i&lt;条件&gt;：列出符合条件的进程（协议、:端口、 @ip ） -p&lt;进程号&gt;：列出指定进程号所打开的文件； -u：列出UID号进程详情； -h：显示帮助信息； -v：显示版本信息 列出指定进程号所打开的文件: lsof -p $pid 获取端口对应的进程ID=&gt;pid: lsof -i:9981 -P -t -sTCP:LISTEN 列出打开文件的进程: lsof $filename 查看端口占用: lsof -i:$port </p>
+  </div>
+  <footer class="entry-footer"><span>1 min</span></footer>
+  <a class="entry-link" aria-label="post link to linux" href="//localhost:1313/funny/linux/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">macos
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>macos vscode 快捷键 # 单行注释 cmd &#43; / # 多行注释 opt &#43; shift &#43; A # 重新打开已关闭文件 cmd &#43; shift&#43; T # 返回该方法上一个层级 cmd &#43; [ # 进入该方法 cmd &#43; ] fig 自动补全工具 https://fig.io
+设置系统代理 临时代理 export http_proxy=&#34;http://127.0.0.1:1087&#34; export https_proxy=&#34;http://127.0.0.1:1087&#34; # 或者直接 export all_proxy=&#34;http://127.0.0.1:52891&#34; 这是直接设置了http/https省得麻烦，当然你要是有分开设置的需求就分开设置 # socks5 export http_proxy=&#34;socks5://127.0.0.1:1086&#34; export https_proxy=&#34;socks5://127.0.0.1:1086&#34; # 或者直接 export all_proxy=&#34;socks5://127.0.0.1:1086&#34; // 这是直接设置了http/https省得麻烦，当然你要是有分开设置的需求就分开设置 永久写入 如果使用的是zsh就在.zshrc中写入
+export http_proxy=&#34;http://127.0.0.1:1087&#34; export https_proxy=&#34;http://127.0.0.1:1087&#34; # 或者直接 export all_proxy=&#34;http://127.0.0.1:1087&#34; # socks5 export http_proxy=&#34;socks5://127.0.0.1:1086&#34; export https_proxy=&#34;socks5://127.0.0.1:1086&#34; # 或者直接 export all_proxy=&#34;socks5://127.0.0.1:1086&#34; 取消代理 unset http_proxy // 取消http代理 unset https_proxy // 取消https代理 # 或者直接全部取消 unset ALL_PROXY 终端快捷键 # 光标移动开头位置 Control &#43; A # 光标移动末尾位置 Control &#43; E # 光标向左移动一个字符 Control &#43; B # 光标向右移动一个字符 Control &#43; F # 删除光标所在的字符 Control &#43; D # 删除光标后面的字符 Control &#43; K # 删除整行 Control &#43; U # 搜索命令的历史记录 Control &#43; R # 清屏 Control &#43; L # 退出 Control &#43; C mdfind mdfind: macOS Spotlight的命令行界面
+...</p>
+  </div>
+  <footer class="entry-footer"><span>1 min</span></footer>
+  <a class="entry-link" aria-label="post link to macos" href="//localhost:1313/funny/macos/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">nginx
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p> nginx 中文网 DocsHome Nginx GitBook Nginx </p>
+  </div>
+  <footer class="entry-footer"><span>1 min</span></footer>
+  <a class="entry-link" aria-label="post link to nginx" href="//localhost:1313/funny/nginx/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">npm link 使用
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>npm link常用于调试npm 包
+如何解决开发调试中运行的多个版本 在开发node包的过程中，会存在项目中依赖A的版本和需要调试的包中依赖A的版本不一致的情况，此时又需要在项目中调试该包，那么需要如何处理呢？
+可在项目中
+首先需要先删除掉原有项目的依赖A
+链接该包（npm link）
+链接该包中的依赖A
+npm link path - to - app / node_modules / react 重新运行该项目即可 https://iws.io/2022/invalid-hook-multiple-react-instances 参考地址 https://blog.csdn.net/weixin_42274805/article/details/123474053 </p>
+  </div>
+  <footer class="entry-footer"><span>1 min</span></footer>
+  <a class="entry-link" aria-label="post link to npm link 使用" href="//localhost:1313/funny/npmlink/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">npm scripts 使用指南
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>
+Node 开发离不开 npm，而脚本功能是 npm 最强大、最常用的功能之一。
+本文介绍如何使用 npm 脚本（npm scripts）。
+学习地址 npm scripts 使用指南–阮一峰 npm script官方文档 </p>
+  </div>
+  <footer class="entry-footer"><span>1 min</span></footer>
+  <a class="entry-link" aria-label="post link to npm scripts 使用指南" href="//localhost:1313/funny/npmscripts/"></a>
+</article>
+<footer class="page-footer">
+  <nav class="pagination">
+    <a class="prev" href="//localhost:1313/page/2/">
+      «&nbsp;Prev&nbsp;
+    </a>
+    <a class="next" href="//localhost:1313/page/4/">Next&nbsp;&nbsp;»
+    </a>
+  </nav>
+</footer>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="//localhost:1313/">pipe的笔记</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

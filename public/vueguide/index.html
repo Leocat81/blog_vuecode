@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto" data-theme="auto">
+
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Vueguides | pipe的笔记</title>
+<meta name="keywords" content="">
+<meta name="description" content="Vueguides - pipe的笔记">
+<meta name="author" content="">
+<link rel="canonical" href="//localhost:1313/vueguide/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.da3211e5ef867bf2b75fd5a6515cfed7195c011e8ab735694e203810a827097b.css" integrity="sha256-2jIR5e&#43;Ge/K3X9WmUVz&#43;1xlcAR6KtzVpTiA4EKgnCXs=" rel="preload stylesheet" as="style">
+<link rel="icon" href="//localhost:1313/img/logo2.webp">
+<link rel="icon" type="image/png" sizes="16x16" href="//localhost:1313/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="//localhost:1313/favicon-32x32.png">
+<link rel="apple-touch-icon" href="//localhost:1313/apple-touch-icon.png">
+<link rel="mask-icon" href="//localhost:1313/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" type="application/rss+xml" href="//localhost:1313/vueguide/index.xml" title="rss">
+<link rel="alternate" hreflang="en" href="//localhost:1313/vueguide/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script><meta property="og:url" content="//localhost:1313/vueguide/">
+  <meta property="og:site_name" content="pipe的笔记">
+  <meta property="og:title" content="Vueguides">
+  <meta property="og:locale" content="zh-cn">
+  <meta property="og:type" content="website">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Vueguides">
+<meta name="twitter:description" content="">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Vueguides",
+      "item": "//localhost:1313/vueguide/"
+    }
+  ]
+}
+</script>
+</head>
+<body class="list" id="top">
+    <header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="//localhost:1313/" accesskey="h" title="pipe的笔记 (Alt + H)">pipe的笔记</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="//localhost:1313/" title="首页">
+                    <span>首页</span>
+                </a>
+            </li>
+            <li>
+                <a href="//localhost:1313/search/" title="搜索">
+                    <span>搜索</span>
+                </a>
+            </li>
+            <li>
+                <a href="//localhost:1313/archives/" title="归档">
+                    <span>归档</span>
+                </a>
+            </li>
+            <li>
+                <a href="//localhost:1313/tags/" title="标签">
+                    <span>标签</span>
+                </a>
+            </li>
+            <li>
+                <a href="//localhost:1313/categories/" title="分类">
+                    <span>分类</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main"> 
+<header class="page-header"><div class="breadcrumbs"><a href="//localhost:1313/">Home</a></div>
+  <h1>
+    Vueguides
+  </h1>
+</header>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">computed 和 watch 比较
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p> 计算属性定义必须和data中定义不一样。watch则必须一样。 计算属性是基于响应式依赖进行缓存的。watch则只要值变化就触发，不管值一样不一样。 不支持异步，当computed内有异步操作时无效，无法监听数据的变化。watch支持异步。 computed是一个属性由其他属性计算而来的，这个属性依赖其他属性，是一个多对一或者一对一，一般用computed。而watch为当一个属性发生变化时，需要执行对应的操作；一对多； watch支持深度监听(deep),和组件加载立即触发回调函数执行(immediate) </p>
+  </div>
+  <footer class="entry-footer"><span>1 min</span></footer>
+  <a class="entry-link" aria-label="post link to computed 和 watch 比较" href="//localhost:1313/vueguide/computed-dif-watch/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">element 使用总结
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>自定义组件结合 Form 表单验证 比如自己封装了一个上传图片的组件，如果要将fileList交给form表单校验，需要以下几步
+&lt;el-form label-position=&#34;right&#34; ref=&#34;ruleForm&#34; :rules=&#34;rules&#34; :model=&#34;formLabelAlign&#34; label-width=&#34;100px&#34; &gt; &lt;el-form-item label=&#34;banner图:&#34; prop=&#34;fileList&#34;&gt; &lt;UploadImage :limit=&#34;1&#34; v-model=&#34;formLabelAlign.fileList&#34;&gt;&lt;/UploadImage&gt; &lt;/el-form-item&gt; &lt;/el-form&gt; /* 本案例采用vue2,typescript编写 */ &lt;script lang=&#34;ts&#34;&gt; @Component export default class add extends Vue { rules = { fileList: [ { required: true, message: &#39;请上传banner图&#39;, trigger: &#39;change&#39; } ], } &lt;/script&gt; 第一步：混入 element-ui 的方法 import emitter from &#39;element-ui/lib/mixins/emitter&#39; @Component({ minxs:[emitter] }) 第一步：调用混入的方法 当你的组件fileList发生改变时，调用dispatch方法。 例如：
+&lt;template&gt; &lt;el-upload :limit=&#34;limit&#34; :on-exceed=&#34;handleExceed&#34; :file-list=&#34;fileList&#34; :action=&#34;$Api.wholefileUpload&#34; list-type=&#34;picture-card&#34; :on-preview=&#34;handlePictureCardPreview&#34; :on-change=&#34;handleChange&#34; :on-remove=&#34;handleRemove&#34; :on-success=&#34;handleSuccess&#34; &gt; &lt;i class=&#34;el-icon-plus&#34;&gt;&lt;/i&gt; &lt;/el-upload&gt; &lt;/template&gt; &lt;script lang=&#34;ts&#34;&gt; import emitter from &#34;element-ui/lib/mixins/emitter&#34;; @Component({ minxs: [emitter], }) export default class upload extends Vue { handleChange(file: FileListItem, fileList: FileListItem[]) { /* 全局混入的方法：主要处理自定义组件的表单验证 */ (this as any).dispatch(&#34;ElFormItem&#34;, &#34;el.form.change&#34;, fileList); } } &lt;/script&gt; ::: warning 调用 dispatch 方法时，一定要注意 this 的指向问题，需满足当前 this 指向(所在 vue 组件实例)必须是ElFormItem组件的子组件或孙子组件，因为dispatch会一直从当前组件向上查找到ElFormItem组件，并触发其ElFormItem组件上的el.form.change事件，通知表单重新校验。 :::
+</p>
+  </div>
+  <footer class="entry-footer"><span>1 min</span></footer>
+  <a class="entry-link" aria-label="post link to element 使用总结" href="//localhost:1313/vueguide/element/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">EventBus
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>TODO:
+相关文档和配套生态 Vue组件通信中eventBus的使用 </p>
+  </div>
+  <footer class="entry-footer"><span>1 min</span></footer>
+  <a class="entry-link" aria-label="post link to EventBus" href="//localhost:1313/vueguide/event-bus/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">key 的作用详解
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>经典面试题：
+1：react/vue 中的key有什么作用？（key的作用是神什么） 2：为什么遍历列表时，key最好不要用index? 1：作用 简单的说: key是虚拟DOA对象的标识，在更新显示时key起着极其重要的作用。 详细的说:当状态中的数据发生变化时，react会根据【新数据】生成【新的虚拟DOM】,随后React进行【新虚拟DOM】与【旧虚拟DON】的diff比较，比较规则如下: a.旧虚教DOM中找到了与新虚拟DOM相同的key: (1).若虚拟DOM中内容没变,直接使用之前的真实DOM (2).若虚拟DOM中内容变了，则生成新的真实DOM，随后替换掉页面中之前的真实DoM b.旧虚拟DOM中未找到与新虚拟DOM相同的key 根据数据创建新的真实DOM，随后渲染到到页面 2: 用index作为key可能公引发的问题 1。若对数据进行: 逆序添加、逆序删除等破坏顺序操作:
+会产生没有必要的真实DOM更新==&gt;界面效果没问题，但效率低。 2．如果结构中还包含输入类的DOM:
+会产生错误DOM更新==&gt;界面有问题。 3．注意! 如果不存在对数据的逆序添加、逆序删除等破坏顺序操作，仅用于渲染列表用于展示，使用index作为key是没有问题的。
+3．开发中如何选择key? 最好使用每条数据的唯一标识作为key，比如id、手机号、身份证号、学号等唯一值。2. 如果确定只是简单的屁示数据，用index也是可以的。
+4: 举例 在两个表格的小李和小张后分别输入信息后，点击上方添加小王按钮，可以看到界面呈现出了不同的效果。
+/* 新旧虚拟dom比较 */ /* index作为key */ /* 旧dom */ &lt;li key=&#34;0&#34;&gt;小李---19岁&lt;input type=&#34;text&#34;/&gt;&lt;/li&gt; &lt;li key=&#34;1&#34;&gt;小张---29岁&lt;input type=&#34;text&#34;/&gt;&lt;/li&gt; /* 新dom */ &lt;li key=&#34;0&#34;&gt;小王---39岁&lt;input type=&#34;text&#34;/&gt;&lt;/li&gt; &lt;li key=&#34;1&#34;&gt;小李---19岁&lt;input type=&#34;text&#34;/&gt;&lt;/li&gt; &lt;li key=&#34;2&#34;&gt;小张---29岁&lt;input type=&#34;text&#34;/&gt;&lt;/li&gt; /* id作为key */ /* 旧dom */ &lt;li key=&#34;1&#34;&gt;小李---19岁&lt;input type=&#34;text&#34;/&gt;&lt;/li&gt; &lt;li key=&#34;2&#34;&gt;小张---29岁&lt;input type=&#34;text&#34;/&gt;&lt;/li&gt; /* 新dom */ &lt;li key=&#34;3&#34;&gt;小王---39岁&lt;input type=&#34;text&#34;/&gt;&lt;/li&gt; &lt;li key=&#34;1&#34;&gt;小李---19岁&lt;input type=&#34;text&#34;/&gt;&lt;/li&gt; &lt;li key=&#34;2&#34;&gt;小张---29岁&lt;input type=&#34;text&#34;/&gt;&lt;/li&gt; index作为key时
+...</p>
+  </div>
+  <footer class="entry-footer"><span>1 min</span></footer>
+  <a class="entry-link" aria-label="post link to key 的作用详解" href="//localhost:1313/vueguide/key/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Tabbar(底部标签栏)
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>TODO:
+实现的两种方式</p>
+  </div>
+  <footer class="entry-footer"><span>1 min</span></footer>
+  <a class="entry-link" aria-label="post link to Tabbar(底部标签栏)" href="//localhost:1313/vueguide/tabbar/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">vue 渲染机制
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>vue 通过render函数生产虚拟dom，解析相应的指令和模板语法。最后通过update挂载到实际的dom节点上。
+vue mvvm实现以及响应式原理 :::tip 结论1 vue是采用数据劫持配合发布者-订阅者模式，通过Object.defineProperty()去劫持各个属性的getter和setter,在数据变化时，发布消息给依赖收集器，去通知观察者，做出相应的监听回调，去更新视图 :::
+:::tip 结论2 MVVM作为绑定的入口，整合了Observer,Compile和Watcher三者，通过Observe来监听model数据变化表，通过Compile来解析编译模板指令，最终利用Watcher搭起，Observer,Watcher之间的桥梁，达到数据变化=&gt;视图更新;视图交互变化=&gt;数据model变更的双向绑定效果。 :::
+</p>
+  </div>
+  <footer class="entry-footer"><span>1 min</span></footer>
+  <a class="entry-link" aria-label="post link to vue 渲染机制" href="//localhost:1313/vueguide/rendermechanism/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">vue3
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>相关文档和配套生态 vue3.0.js VueUse vite tailwindcss vue-next-v3.0.0,vue-v2.6.2,vue2-composition-api-v0.6.5 跑分结果 @vue/composition-api 用于提供 组合式 API 的 Vue 2 插件. </p>
+  </div>
+  <footer class="entry-footer"><span>1 min</span></footer>
+  <a class="entry-link" aria-label="post link to vue3" href="//localhost:1313/vueguide/vue3/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">多页应用
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>当系统项目越来越复杂化，需要根据类似渠道来区分系统（例如：OA系统，CRM系统），这个时候需要考虑采用多页配置来架构。
+项目地址 vue_multi_pages
+参考文献 VUE多入口多项目项目架构 VueCli官网-构建一个多页应用 </p>
+  </div>
+  <footer class="entry-footer"><span>1 min</span></footer>
+  <a class="entry-link" aria-label="post link to 多页应用" href="//localhost:1313/vueguide/multi-page/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">渲染函数 &amp; JSX 使用
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Vue 推荐在绝大多数情况下使用模板来创建你的 HTML。然而在一些场景中，你真的需要 JavaScript 的完全编程的能力。这时你可以用渲染函数，它比模板更接近编译器。
+render 使用 createElement 函数 vue 可以使用 createElement 函数来创建虚拟 DOM。看下面一段代码，我们创建了一个简单的 &lt;h1&gt; 标签。
+&lt;script&gt; export default { name: &#34;BaseComponent&#34;, props: { test: Number, }, methods: { handleClick() { this.$emit(&#34;customize-click&#34;); }, }, render() { const h = this.$createElement return h(&#39;div&#39;,{ &#39;class&#39;: { box: true }, style: { fontSize: &#39;14px&#39; } },[ &#39;我是字符串&#39;, h(&#39;p&#39;,{ &#39;class&#39;: { p: true } },&#39;我是p标签&#39;), h(&#39;a&#39;,{ &#39;class&#39;: { a: true } },&#39;我是a标签呀&#39;), h(&#39;p&#39;,{ on: { click: this.handleClick } },&#39;点我!!!&#39;) ]) }, }; &lt;/script&gt; &lt;style scoped&gt; .box { background: rgba(0, 0, 0, 0.5); } .a { color: blue; text-decoration: underline; } .p { color: firebrick; } &lt;/style&gt; 子组件
+...</p>
+  </div>
+  <footer class="entry-footer"><span>1 min</span></footer>
+  <a class="entry-link" aria-label="post link to 渲染函数 & JSX 使用" href="//localhost:1313/vueguide/readme/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">滑动穿透问题
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>问题描述 设置弹窗以 fixed 定位显示后，弹窗内有滚动条，当弹窗内滚动到最底部时，此时滑动弹窗外，再次切回滑动弹窗内，弹窗内的内容不能正常滑动。以下示例请在手机端查看：
+解决方案 采用 BetterScroll npm 包来解决 /* 第一步：引入better-scroll */ import BScroll from &#34;better-scroll&#34;; /* 第二部: 初始化 此处需注意初始的节点必须存在，要注意节点上是否有v-if,否则会提示节点找不到 */ new BScroll(&#34;.dialog_body&#34;, { pullUpLoad: true, scrollbar: true, click: true, pullDownRefresh: true, scrollY: true, }); 参考文献 滑动穿透六种解决方案
+</p>
+  </div>
+  <footer class="entry-footer"><span>1 min</span></footer>
+  <a class="entry-link" aria-label="post link to 滑动穿透问题" href="//localhost:1313/vueguide/scrollthrough/"></a>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="//localhost:1313/">pipe的笔记</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>
