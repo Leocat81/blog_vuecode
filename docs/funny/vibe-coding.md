@@ -1,0 +1,7 @@
+# AI 编码
+
+- [opencode 文档](https://opencode.ai/docs/zh-tw)
+
+- [智普 AI 文档](https://bigmodel.cn/)
+
+- [claude code 文档](https://code.claude.com/docs)
