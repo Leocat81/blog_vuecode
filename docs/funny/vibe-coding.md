@@ -5,3 +5,5 @@
 - [智普 AI 文档](https://bigmodel.cn/)
 
 - [claude code 文档](https://code.claude.com/docs)
+
+- [minimax code 文档](https://platform.minimaxi.com/docs/coding-plan/intro)
