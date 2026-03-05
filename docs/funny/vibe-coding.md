@@ -10,7 +10,7 @@
 
 - [智普 AI 文档](https://bigmodel.cn/)
 
-  智谱AI大模型开放平台，提供全模态、全尺寸模型 API 服务，覆盖文本生成、语言推理、图像理解、视频生成等场景
+  智谱 AI 大模型开放平台，提供全模态、全尺寸模型 API 服务，覆盖文本生成、语言推理、图像理解、视频生成等场景
 
 - [claude code 文档](https://code.claude.com/docs)
 
@@ -26,9 +26,12 @@
 
 - [superpowers](https://github.com/obra/superpowers)
 
-  Agentic 技能框架和软件开发方法论，62.8k stars。提供完整开发流程：头脑风暴→写设计→TDD→子代理开发→代码审查→合并，支持 Claude Code、Codex、Cursor、OpenCode
+  Agentic 技能框架和软件开发方法论，62.8k stars。提供完整开发流程：头脑风暴 → 写设计 →TDD→ 子代理开发 → 代码审查 → 合并，支持 Claude Code、Codex、Cursor、OpenCode
 
 - [skillsmp](https://skillsmp.com/)
-  
-  海量 AI Agent 技能市场，拥有 87000+ 技能，支持 Claude Code、OpenAI Codex CLI 和 ChatGPT。采用 Anthropic 2025年12月发布的 SKILL.md 开放标准，支持智能搜索和分类筛选，每日自动更新
-  
+
+  海量 AI Agent 技能市场，拥有 87000+ 技能，支持 Claude Code、OpenAI Codex CLI 和 ChatGPT。采用 Anthropic 2025 年 12 月发布的 SKILL.md 开放标准，支持智能搜索和分类筛选，每日自动更新
+
+  - [codeflow](https://codeflow.asia/)
+
+  cluade 和 chatgpt 的 AI 代理中转站
