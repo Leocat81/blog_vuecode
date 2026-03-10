@@ -43,3 +43,7 @@
 - [huggingface](https://huggingface.co)
 
   AI 模型市场，提供 10000+ 模型，支持 1000+ 语言，支持 1000+ 框架
+
+- [深度学习书籍](https://zh.d2l.ai)
+
+  《动手学深度学习》中文版，开源书籍，提供完整代码和 Jupyter Notebook
