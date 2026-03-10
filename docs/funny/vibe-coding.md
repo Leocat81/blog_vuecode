@@ -39,3 +39,7 @@
 - [codeflow](https://codeflow.asia/)
 
   cluade 和 chatgpt 的 AI 代理中转站
+
+- [huggingface](https://huggingface.co)
+
+  AI 模型市场，提供 10000+ 模型，支持 1000+ 语言，支持 1000+ 框架
