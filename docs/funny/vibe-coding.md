@@ -32,6 +32,10 @@
 
   海量 AI Agent 技能市场，拥有 87000+ 技能，支持 Claude Code、OpenAI Codex CLI 和 ChatGPT。采用 Anthropic 2025 年 12 月发布的 SKILL.md 开放标准，支持智能搜索和分类筛选，每日自动更新
 
-  - [codeflow](https://codeflow.asia/)
+- [clawhub](https://clawhub.ai/)
+
+  海量 AI Agent 技能市场
+
+- [codeflow](https://codeflow.asia/)
 
   cluade 和 chatgpt 的 AI 代理中转站
