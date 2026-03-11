@@ -47,3 +47,7 @@
 - [深度学习书籍](https://zh.d2l.ai)
 
   《动手学深度学习》中文版，开源书籍，提供完整代码和 Jupyter Notebook
+
+- [zenmux.ai](https://zenmux.ai/)
+
+  一个统一的门户，囊括所有模型，效果不理想？我们会补偿！
