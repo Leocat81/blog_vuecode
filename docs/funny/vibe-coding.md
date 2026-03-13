@@ -51,3 +51,7 @@
 - [zenmux.ai](https://zenmux.ai/)
 
   一个统一的门户，囊括所有模型，效果不理想？我们会补偿！
+
+- [https://api.bltcy.ai/](https://api.bltcy.ai/)
+
+  模型中转站
