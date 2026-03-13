@@ -55,3 +55,7 @@
 - [https://api.bltcy.ai/](https://api.bltcy.ai/)
 
   模型中转站
+
+- [https://docs.langflow.org/](https://docs.langflow.org/)
+
+  LangFlow 是一个流程化的agent搭建平台
