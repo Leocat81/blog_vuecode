@@ -112,6 +112,11 @@ export default defineConfig({
         children: ["funny/book", "funny/codesnippet", "funny/google", "funny/curl", "funny/npmlink", "funny/npmscripts", "funny/nginx", "funny/crawler", "funny/macos", "funny/linux", "funny/regexp", "funny/license", "funny/proxy-pool", "funny/search", "funny/penetration-test", "funny/pixi", "funny/download", "funny/vibe-coding"],
       },
       {
+        title: "Python",
+        children: ["python/"],
+        sidebarDepth: 1,
+      },
+      {
         title: "GIT",
         children: ["gitguide/base", "gitguide/clone", "gitguide/fetch", "gitguide/branch", "gitguide/merge", "gitguide/reset", "gitguide/history", "gitguide/stash"],
       },
