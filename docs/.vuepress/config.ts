@@ -143,7 +143,7 @@ export default defineConfig({
       },
       {
         title: "Build",
-        children: ["buildtools/", "buildtools/jenkins", "buildtools/deploy", "buildtools/sentry", "buildtools/docker", "buildtools/Clash", "buildtools/shell", "buildtools/cdn"],
+        children: ["buildtools/", "buildtools/jenkins", "buildtools/deploy", "buildtools/sentry", "buildtools/docker", "buildtools/Clash", "buildtools/shell", "buildtools/cdn", "buildtools/vps"],
       },
       {
         title: "HTTP",
