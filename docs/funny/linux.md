@@ -1,12 +1,16 @@
-# linux 
+# linux
 
-主要总结linux上一些基本使用方法
+主要总结 linux 上一些基本使用方法
 
 ## 学习
 
 [快乐的 Linux 命令行](https://github.com/billie66/TLCL)
 
-## vim 
+## ssh 登陆
+
+[ssh-copy-id 实现 ssh 无密码登陆](https://www.ssh.com/academy/ssh/copy-id)
+
+## vim
 
 ![vim](../assets/vim.jpeg)
 
@@ -18,7 +22,7 @@
 
 ### lsof
 
-选项 
+选项
 
 ```bash
 -a：列出打开文件存在的进程；
@@ -42,7 +46,7 @@
 lsof -p $pid
 ```
 
-2. 获取端口对应的进程ID=>pid:
+2. 获取端口对应的进程 ID=>pid:
 
 ```bash
 lsof -i:9981 -P -t -sTCP:LISTEN
